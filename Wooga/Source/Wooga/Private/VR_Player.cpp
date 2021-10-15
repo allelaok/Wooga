@@ -10,6 +10,8 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/TextRenderComponent.h"
 #include "MoveActorComponent.h"
+#include "HandActorComponent.h"
+#include "GrabActorComponent.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
 
 // Sets default values
@@ -115,7 +117,10 @@ AVR_Player::AVR_Player()
 	// 글씨 색상
 	rightLog->SetTextRenderColor(FColor::Yellow);
 
+	// 액터 컴포넌트들
 	moveComp = CreateDefaultSubobject<UMoveActorComponent>(TEXT("MoveComponent"));
+	handComp = CreateDefaultSubobject<UHandActorComponent>(TEXT("HandComponent"));
+	grabComp = CreateDefaultSubobject<UGrabActorComponent>(TEXT("GrabComponent"));
 
 	//플레이어 컨트롤러 빙의
 	AutoPossessPlayer = EAutoReceiveInput::Player0;

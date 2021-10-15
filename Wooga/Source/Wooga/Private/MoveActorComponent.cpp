@@ -3,6 +3,9 @@
 
 #include "MoveActorComponent.h"
 #include "VR_Player.h"
+#include "MotionControllerComponent.h"
+#include "VRHandAnimInstance.h"
+#include "HandActorComponent.h"
 
 // Sets default values for this component's properties
 UMoveActorComponent::UMoveActorComponent()
@@ -38,19 +41,20 @@ void UMoveActorComponent::SetupPlayerInputComponent(UInputComponent* PlayerInput
 	PlayerInputComponent->BindAxis("RightThumbstick_X", this, &UMoveActorComponent::MoveHorizontal);
 	PlayerInputComponent->BindAxis("RightThumbstick_Y", this, &UMoveActorComponent::MoveVertical);
 	PlayerInputComponent->BindAxis("LeftThumbstick_X", this, &UMoveActorComponent::RotateHorizontal);
+	/*PlayerInputComponent->BindAction("LeftGrip", IE_Pressed, this, &UMoveActorComponent::LeftGripOn);
+	PlayerInputComponent->BindAction("LeftGrip", IE_Released, this, &UMoveActorComponent::LeftGripOff);
+	PlayerInputComponent->BindAction("RightGrip", IE_Pressed, this, &UMoveActorComponent::RightGripOn);
+	PlayerInputComponent->BindAction("RightGrip", IE_Released, this, &UMoveActorComponent::RightGripOff);*/
 }
 
 void UMoveActorComponent::MoveHorizontal(float value)
 {
-	
-
 	FVector dir = player->GetActorRightVector() * value;
 	player->SetActorLocation(player->GetActorLocation() + dir * moveSpeed * GetWorld()->DeltaTimeSeconds);
 }
 
 void UMoveActorComponent::MoveVertical(float value)
 {
-	
 	FVector dir = player->GetActorForwardVector() * value;
 	player->SetActorLocation(player->GetActorLocation() + dir * moveSpeed * GetWorld()->DeltaTimeSeconds);
 }
@@ -60,5 +64,26 @@ void UMoveActorComponent::RotateHorizontal(float value)
 	
 	FRotator rot = FRotator(0, value * rotateSpeed * GetWorld()->DeltaTimeSeconds, 0);
 	player->AddActorLocalRotation(rot);
+}
+
+void UMoveActorComponent::LeftGripOn()
+{
+	player->handComp->targetGripValueLeft = 1.0f;
+}
+
+void UMoveActorComponent::LeftGripOff()
+{
+	player->handComp->targetGripValueLeft = 0.0f;
+}
+
+void UMoveActorComponent::RightGripOn()
+{
+	player->handComp->targetGripValueRight = 1.0f;
+
+}
+
+void UMoveActorComponent::RightGripOff()
+{
+	player->handComp->targetGripValueRight = 0.0f;
 }
 

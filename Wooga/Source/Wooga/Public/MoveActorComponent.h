@@ -34,6 +34,10 @@ private:
 	void MoveHorizontal(float value);
 	void MoveVertical(float value);
 	void RotateHorizontal(float value);
+	void LeftGripOn();
+	void LeftGripOff();
+	void RightGripOn();
+	void RightGripOff();
 
 	class AVR_Player* player;
 

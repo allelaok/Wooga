@@ -64,7 +64,14 @@ public:
 
 		// 액터 컴포넌트들 추가하기
 		UPROPERTY(VisibleAnywhere, Category = PlayerSettings)
-		class UMoveActorComponent* moveComp;
+			class UMoveActorComponent* moveComp;
+
+		// 손 애니메이션 추가
+		UPROPERTY(VisibleAnywhere, Category = PlayerSettings)
+			class UHandActorComponent* handComp;
+
+		UPROPERTY(VisibleAnywhere, Category = PlayerSettings)
+			class UGrabActorComponent* grabComp;
 
 private:
 	void ResetHMD();

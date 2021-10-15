@@ -1,0 +1,25 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\TFG5076XG\Documents\GitHub\Wooga).
+  Building WoogaEditor...
+  Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Distributing 3 actions to XGE
+  --------------------Build System Warning---------------------------------------
+  License is invalid:
+      License information is invalid. Please try reloading your license file using the Coordinator Monitor application on the Coordinator machine, or reinstall IncrediBuild.
+      This build will run in standalone mode.
+  
+  -------------------------------------------------------------------------------
+  --------------------Project: Default-------------------------------------------
+  UE4Editor-Wooga-0053.lib (0:00.14 at +0:00)
+     C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0053.lib 라이브러리 및 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0053.exp 개체를 생성하고 있습니다.
+  UE4Editor-Wooga-0053.dll (0:00.65 at +0:00)
+     C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0053.suppressed.lib 라이브러리 및 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0053.suppressed.exp 개체를 생성하고 있습니다.
+  WoogaEditor.target (0:00.20 at +0:00)
+  ---------------------- Done ----------------------
+  
+      Rebuild All: 1 succeeded, 0 failed, 0 skipped
+  
+  1 build system warning(s):
+     - License is invalid
+  
+  Total time in XGE executor: 1.20 seconds
+  Total execution time: 1.83 seconds
