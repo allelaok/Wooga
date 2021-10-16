@@ -35,11 +35,19 @@ private:
 	void RightReleaseAction();
 	void LeftGrabAction();
 	void LeftReleaseAction();
-	void GripFireRock(AActor* grabActor);
+
+	// 잡는 액터들
+	void RGripFireRock(AActor* grabActor);
+	void LGripFireRock(AActor* grabActor);
+
 
 	bool bIsShowing = false;
+	bool bisRightGrab = false;
+	bool bisLeftGrab = false;
 	class AVR_Player* player;
-	class AFireRock* fireRock;
+	class AFireRock* fireRockR;
+	class AFireRock* fireRockL;
+
 	FHitResult grabObject;
 
 public:

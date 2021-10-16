@@ -34,11 +34,6 @@ void UGrabActorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (bIsShowing)
-	{
-		RightDrawGrabLine();
-	}
-
 }
 
 void UGrabActorComponent::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -48,7 +43,7 @@ void UGrabActorComponent::SetupPlayerInputComponent(class UInputComponent* Playe
 	PlayerInputComponent->BindAction("LeftGrip", IE_Pressed, this, &UGrabActorComponent::LeftGrabAction);
 	PlayerInputComponent->BindAction("LeftGrip", IE_Released, this, &UGrabActorComponent::LeftReleaseAction);
 	//PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &UGrabActorComponent::Reload);
-	
+
 }
 
 // 그랩 라인
@@ -66,6 +61,7 @@ void UGrabActorComponent::HideGrabLine()
 
 void UGrabActorComponent::RightDrawGrabLine()
 {
+	DrawDebugSphere(GetWorld(), player->rightHand->GetComponentLocation(), grabRange, 30, FColor::Green, false, -1, 0, 1);
 	FHitResult hitInfo;
 	FVector startPos = player->rightHand->GetComponentLocation();
 
@@ -80,27 +76,43 @@ void UGrabActorComponent::RightDrawGrabLine()
 	if (GetWorld()->SweepSingleByObjectType(hitInfo, startPos, startPos, FQuat::Identity, objParams, FCollisionShape::MakeSphere(grabRange), queryParams))
 	{
 		grabObject = hitInfo;
-
-		// 오른손 쥐는 애니메이션
-		
 	}
 	else
 	{
 		grabObject = FHitResult();
 	}
-	DrawDebugSphere(GetWorld(), startPos, 15.f, 30, FColor::Green, false, -1, 0, 1);
+
 }
 
 void UGrabActorComponent::LeftDrawGrabLine()
 {
+	DrawDebugSphere(GetWorld(), player->leftHand->GetComponentLocation(), grabRange, 30, FColor::Green, false, -1, 0, 1);
+	FHitResult hitInfo;
+	FVector startPos = player->leftHand->GetComponentLocation();
 
+	FCollisionObjectQueryParams objParams;
+	objParams.AddObjectTypesToQuery(ECC_WorldDynamic);
+	objParams.AddObjectTypesToQuery(ECC_PhysicsBody);
+
+	FCollisionQueryParams queryParams;
+	queryParams.AddIgnoredActor(player);
+	player->handComp->targetGripValueLeft = 1.0f;
+
+	if (GetWorld()->SweepSingleByObjectType(hitInfo, startPos, startPos, FQuat::Identity, objParams, FCollisionShape::MakeSphere(grabRange), queryParams))
+	{
+		grabObject = hitInfo;
+	}
+	else
+	{
+		grabObject = FHitResult();
+	}
 }
 
 void UGrabActorComponent::RightGrabAction()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+	bisRightGrab = true;
 	RightDrawGrabLine();
-	
+
 	AActor* grabActor = grabObject.GetActor();
 
 	if (grabActor == nullptr)
@@ -108,52 +120,128 @@ void UGrabActorComponent::RightGrabAction()
 		return;
 	}
 
-	GripFireRock(grabActor);
+	RGripFireRock(grabActor);
 }
 
 void UGrabActorComponent::RightReleaseAction()
 {
+	if (bisRightGrab == true)
+	{
+		if (fireRockR)
+		{
+			fireRockR->boxComp->SetEnableGravity(true);
+			// 그 자리에서 떨어지게
+			fireRockR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
+			fireRockR->boxComp->SetSimulatePhysics(true);
+
+			fireRockR = nullptr;
+			bisRightGrab = false;
+		}
+	}
+	// 오른손 피는 애니메이션
+	player->handComp->targetGripValueRight = 0.0f;
 
 }
 
 void UGrabActorComponent::LeftGrabAction()
 {
+	bisLeftGrab = true;
+	LeftDrawGrabLine();
 
+	AActor* grabActor = grabObject.GetActor();
+
+	if (grabActor == nullptr)
+	{
+		return;
+	}
+
+	LGripFireRock(grabActor);
 }
 
 void UGrabActorComponent::LeftReleaseAction()
 {
-
-}
-
-void UGrabActorComponent::GripFireRock(AActor* grabActor)
-{
-	FString fr = grabActor->GetName();
-	if (fireRock == nullptr)
+	if (bisLeftGrab == true)
 	{
-		if(fr.Contains("FireRock"))
+		if (fireRockL)
 		{
-		fireRock = Cast<AFireRock>(grabActor);
+			fireRockL->boxComp->SetEnableGravity(true);
+			// 그 자리에서 떨어지게
+			fireRockL->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
-		if(fireRock)
-		{
-		//fireRock->SetActorHiddenInGame(false);
-		//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
-		FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+			fireRockL->boxComp->SetSimulatePhysics(true);
 
-		// 손에 붙이기
-		fireRock->boxComp->SetSimulatePhysics(false);
-		fireRock->AttachToComponent(player->rightHand, attachRules, TEXT("GrabPoint"));
-		// 오브젝트를 잡았을때 위치 잡기
-		fireRock->boxComp->SetRelativeLocation((fireRock->grabOffset));
-
-		fireRock->boxComp->SetEnableGravity(false);
-
-		// 왼손 쥐는 애니메이션
-		player->handComp->targetGripValueLeft = 0.7f;
-		}
+			fireRockL = nullptr;
+			bisLeftGrab = false;
 		}
 	}
+	// 오른손 피는 애니메이션
+	player->handComp->targetGripValueLeft = 0.0f;
 }
 
+void UGrabActorComponent::RGripFireRock(AActor* grabActor)
+{
+	FString fr = grabActor->GetName();
+	/*if (fireRock == nullptr)
+	{*/
+		if (fr.Contains("GR"))
+		{
+			fireRockR = Cast<AFireRock>(grabActor);
+
+			if (fireRockR)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+				//fireRock->SetActorHiddenInGame(false);
+				//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
+				FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+
+				// 손에 붙이기
+				fireRockR->boxComp->SetSimulatePhysics(false);
+
+				fireRockR->AttachToComponent(player->rightHand, attachRules, TEXT("RGrabPoint"));
+				// 오른손 쥐는 애니메이션
+				player->handComp->targetGripValueRight = 0.7f;
+
+				// 오브젝트를 잡았을때 위치 잡기
+				fireRockR->boxComp->SetRelativeLocation((fireRockR->grabOffset));
+
+				fireRockR->boxComp->SetEnableGravity(false);
+			}
+		}
+	//}
+}
+
+void UGrabActorComponent::LGripFireRock(AActor* grabActor)
+{
+	FString fr = grabActor->GetName();
+	/*if (fireRock == nullptr)
+	{*/
+		if (fr.Contains("GR"))
+		{
+			fireRockL = Cast<AFireRock>(grabActor);
+
+			if (fireRockL)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+				//fireRock->SetActorHiddenInGame(false);
+				//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
+				FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+
+				// 손에 붙이기
+				fireRockL->boxComp->SetSimulatePhysics(false);
+
+
+				fireRockL->AttachToComponent(player->leftHand, attachRules, TEXT("LGrabPoint"));
+				// 왼손 쥐는 애니메이션
+				player->handComp->targetGripValueLeft = 0.7f;
+
+
+				// 오브젝트를 잡았을때 위치 잡기
+				fireRockL->boxComp->SetRelativeLocation((fireRockL->grabOffset));
+
+				fireRockL->boxComp->SetEnableGravity(false);
+			}
+		}
+	//}
+}
 

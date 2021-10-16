@@ -70,7 +70,7 @@ public:
 		UPROPERTY(VisibleAnywhere, Category = PlayerSettings)
 			class UHandActorComponent* handComp;
 
-		UPROPERTY(VisibleAnywhere, Category = PlayerSettings)
+		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = PlayerSettings)
 			class UGrabActorComponent* grabComp;
 
 private:

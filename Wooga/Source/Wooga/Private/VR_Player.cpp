@@ -152,6 +152,7 @@ void AVR_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
 	moveComp->SetupPlayerInputComponent(PlayerInputComponent);
+	grabComp->SetupPlayerInputComponent(PlayerInputComponent);
 
 	// Action Bindings
 	PlayerInputComponent->BindAction("HMDReset", IE_Pressed, this, &AVR_Player::ResetHMD);
