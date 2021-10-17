@@ -190,22 +190,22 @@ void UGrabActorComponent::RGripFireRock(AActor* grabActor)
 
 			if (fireRockR)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
 				//fireRock->SetActorHiddenInGame(false);
 				//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
 				FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
 
-				// 손에 붙이기
 				fireRockR->boxComp->SetSimulatePhysics(false);
+				fireRockR->boxComp->SetEnableGravity(true);
+				
 
-				fireRockR->AttachToComponent(player->rightHand, attachRules, TEXT("RGrabPoint"));
+				fireRockR->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
 				// 오른손 쥐는 애니메이션
 				player->handComp->targetGripValueRight = 0.7f;
 
 				// 오브젝트를 잡았을때 위치 잡기
 				fireRockR->boxComp->SetRelativeLocation((fireRockR->grabOffset));
-
-				fireRockR->boxComp->SetEnableGravity(false);
+				
 			}
 		}
 	//}
@@ -227,19 +227,16 @@ void UGrabActorComponent::LGripFireRock(AActor* grabActor)
 				//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
 				FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
 
-				// 손에 붙이기
 				fireRockL->boxComp->SetSimulatePhysics(false);
+				fireRockL->boxComp->SetEnableGravity(true);
 
-
-				fireRockL->AttachToComponent(player->leftHand, attachRules, TEXT("LGrabPoint"));
+				fireRockL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));
 				// 왼손 쥐는 애니메이션
 				player->handComp->targetGripValueLeft = 0.7f;
 
 
 				// 오브젝트를 잡았을때 위치 잡기
 				fireRockL->boxComp->SetRelativeLocation((fireRockL->grabOffset));
-
-				fireRockL->boxComp->SetEnableGravity(false);
 			}
 		}
 	//}

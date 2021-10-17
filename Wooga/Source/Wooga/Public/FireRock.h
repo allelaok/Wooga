@@ -23,13 +23,52 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION()
+		void OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UBoxComponent* boxComp;
 
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UStaticMeshComponent* meshComp;
 
+	
+	UPROPERTY()
+	class AFireRock* me;
+	
+	UPROPERTY()
+	class AVR_Player* player;
+
 	// 소켓에 넣을떄 Offset 값을 조정
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		FVector grabOffset;
+
+	// 넉벡 종료지점
+	UPROPERTY()
+		FVector knockbackPos;
+
+	UPROPERTY()
+		FVector returnKnockbackPos;
+
+	UPROPERTY()
+	FVector myPos;
+
+	UPROPERTY()
+	bool bisOverlab = false;
+
+	UPROPERTY(EditAnywhere, Category = "Explosion")
+		class UParticleSystem* explosionFactory;
+
+	// sound
+	const UObject* WorldContextObject;
+
+	UPROPERTY(EditAnywhere, Category = "Sound")
+	USoundBase* SoundBase;
+	
+	float VolumeMultiplier = 1.f;
+	float PitchMultiplier = 1.f;
+	float StartTime = 0.f;
+	class USoundAttenuation* AttenuationSettings;
+	USoundConcurrency* ConcurrencySettings;
+	bool bAutoDestroy = false;
 };

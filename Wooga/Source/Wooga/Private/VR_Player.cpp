@@ -80,9 +80,9 @@ AVR_Player::AVR_Player()
 	// 왼손에 붙여줌
 	leftHandLoc->SetupAttachment(leftHand);
 	// 물체를 잡을때의 Location 값 
-	leftHandLoc->SetRelativeLocation(FVector(-12.5f, 21.3f, 1.5f));
+	leftHandLoc->SetRelativeLocation(FVector(10.f, 0.f, -3.f));
 	// 물체를 잡을때의 Rotation 값
-	leftHandLoc->SetRelativeRotation(FRotator(0.f, -42.5f, 180.f));
+	leftHandLoc->SetRelativeRotation(FRotator(0.f, 0.f, 0.f));
 
 
 
@@ -100,7 +100,7 @@ AVR_Player::AVR_Player()
 	// 오른손에 붙여줌
 	rightHandLoc->SetupAttachment(rightHand);
 	// 물체를 잡을때의 Location 값 
-	rightHandLoc->SetRelativeLocation(FVector(5.f, 0.f, 0.f));
+	rightHandLoc->SetRelativeLocation(FVector(10.f, 0.f, -3.f));
 	// 물체를 잡을때의 Rotation 값
 	rightHandLoc->SetRelativeRotation(FRotator(0.f, 0.f, -90.f));
 
@@ -112,8 +112,8 @@ AVR_Player::AVR_Player()
 	// 글씨 정렬 (가운데 정렬)
 	rightLog->SetHorizontalAlignment(EHTA_Center);
 	rightLog->SetVerticalAlignment(EVRTA_TextCenter);
-	rightLog->SetRelativeLocation(FVector(0, 0, 40.f));
-	rightLog->SetRelativeRotation(FRotator(0, 180.f, 0));
+	rightLog->SetRelativeLocation(FVector(0.f, 0.f, 0.f));
+	rightLog->SetRelativeRotation(FRotator(0.f, 0.f, 0.f));
 	// 글씨 색상
 	rightLog->SetTextRenderColor(FColor::Yellow);
 
