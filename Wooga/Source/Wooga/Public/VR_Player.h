@@ -75,9 +75,10 @@ public:
 		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = PlayerSettings)
 			class UGrabActorComponent* grabComp;
 
+
 private:
 	void ResetHMD();
 
 	FRotator hmdRotation;
-	FVector hmdLocation;		
+	FVector hmdLocation;
 };
