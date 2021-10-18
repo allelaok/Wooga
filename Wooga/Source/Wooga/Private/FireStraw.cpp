@@ -31,6 +31,7 @@ void AFireStraw::BeginPlay()
 	//firePosition = Cast<AFirePosition>(UGameplayStatics::GetActorOfClass(GetWorld(), AFirePosition::StaticClass()));
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
+	isClear = false;
 }
 
 // Called every frame
@@ -52,6 +53,7 @@ void AFireStraw::Tick(float DeltaTime)
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Fireeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!!")));
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), smogFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 				bisSmog = true;
+				isClear = true;
 			}
 		}
 

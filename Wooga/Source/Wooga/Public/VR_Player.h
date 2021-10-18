@@ -75,6 +75,13 @@ public:
 		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = PlayerSettings)
 			class UGrabActorComponent* grabComp;
 
+		UPROPERTY()
+			class ASJ_UIPannel* uiPannel;
+
+		void TurnOff();
+
+		UPROPERTY(VisibleDefaultsOnly, Category = state)
+			bool isClose;
 
 private:
 	void ResetHMD();

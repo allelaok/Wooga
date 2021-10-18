@@ -50,4 +50,6 @@ public:
 
 		float smogCurrentTime = 0;
 		float fireCurrentTime = 0;
+
+		bool isClear;
 };

@@ -14,6 +14,8 @@
 #include "HandActorComponent.h"
 #include "GrabActorComponent.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
+#include "SJ_UIPannel.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 AVR_Player::AVR_Player()
@@ -139,6 +141,8 @@ void AVR_Player::BeginPlay()
 	UHeadMountedDisplayFunctionLibrary::SetTrackingOrigin(EHMDTrackingOrigin::Eye);
 	// HMD 의 위치를 초기화하기
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+
+	isClose = false;
 }
 
 // Called every frame
@@ -158,6 +162,7 @@ void AVR_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 
 	// Action Bindings
 	PlayerInputComponent->BindAction("HMDReset", IE_Pressed, this, &AVR_Player::ResetHMD);
+	PlayerInputComponent->BindAction("TurnOffUI", IE_Pressed, this, &AVR_Player::TurnOff);
 	//PlayerInputComponent->BindAction("RightTrigger", IE_Pressed, this, &AVR_Player::         );
 	//PlayerInputComponent->BindAction("RightGrip", IE_Pressed, this, &AVR_Player::         );
 
@@ -169,6 +174,12 @@ void AVR_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 void AVR_Player::ResetHMD()
 {
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+}
+
+void AVR_Player::TurnOff()
+{
+	isClose = true;
+	uiPannel->SetActorHiddenInGame(true);
 }
 
 //void AVR_Player::HorizontalMove(float value)

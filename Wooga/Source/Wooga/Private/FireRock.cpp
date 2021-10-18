@@ -24,6 +24,9 @@ AFireRock::AFireRock()
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
+
+	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Outline"));
+	outLine->SetupAttachment(meshComp);
 }
 
 // Called when the game starts or when spawned
@@ -33,6 +36,8 @@ void AFireRock::BeginPlay()
 
 	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AFireRock::OnCollisionEnter);
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
+
+	// outLine->SetVisibility(false);
 }
 
 // Called every frame

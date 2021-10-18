@@ -15,3 +15,13 @@ enum class EFlowState : uint8
 	DugoutHut
 };
 
+UENUM(BlueprintType)
+enum class EFireDiscoveryState : uint8
+{
+	GrabActorUI,
+	Firing,
+	CompleteCourse,
+	InformWatch,
+	GoToNextStep
+};
+
