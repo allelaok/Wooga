@@ -7,6 +7,7 @@
 #include <Kismet/GameplayStatics.h>
 #include "FireRock.h"
 #include "FireStraw.h"
+#include "SJ_Hologram.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -142,6 +143,11 @@ void ASJ_WoogaGameModeBase::Firing()
 
 	if (fireStraw->isClear == true)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("Fire"));
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		GetWorld()->SpawnActor<ASJ_Hologram>(fireDisCoveryHologram, Param);
 		SetDiscoveryState(EFireDiscoveryState::CompleteCourse);
 	}
 }

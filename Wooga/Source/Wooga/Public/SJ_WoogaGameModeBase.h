@@ -48,6 +48,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_UIPannel> howToGrab;
 
+	UPROPERTY(EditAnywhere, Category = Hologram)
+	TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
+
 	class ASJ_UIPannel* useUI;
 
 	class AVR_Player* player;

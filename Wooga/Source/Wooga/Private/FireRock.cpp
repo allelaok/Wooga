@@ -27,6 +27,7 @@ AFireRock::AFireRock()
 
 	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Outline"));
 	outLine->SetupAttachment(meshComp);
+	outLine->SetCollisionProfileName(TEXT("NoCollision"));
 }
 
 // Called when the game starts or when spawned

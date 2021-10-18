@@ -135,6 +135,7 @@ void UGrabActorComponent::RightReleaseAction()
 			fireRockR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 			fireRockR->boxComp->SetSimulatePhysics(true);
+			fireRockR->outLine->SetVisibility(true);
 
 			fireRockR = nullptr;
 			bisRightGrab = false;
@@ -184,6 +185,7 @@ void UGrabActorComponent::LeftReleaseAction()
 			fireRockL->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 			fireRockL->boxComp->SetSimulatePhysics(true);
+			fireRockL->outLine->SetVisibility(true);
 
 			fireRockL = nullptr;
 			bisLeftGrab = false;
@@ -223,6 +225,7 @@ void UGrabActorComponent::RGripFireRock(AActor* grabActor)
 
 				fireRockR->boxComp->SetSimulatePhysics(false);
 				fireRockR->boxComp->SetEnableGravity(true);
+				fireRockR->outLine->SetVisibility(false);
 				
 
 				fireRockR->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
@@ -255,6 +258,7 @@ void UGrabActorComponent::LGripFireRock(AActor* grabActor)
 
 				fireRockL->boxComp->SetSimulatePhysics(false);
 				fireRockL->boxComp->SetEnableGravity(true);
+				fireRockL->outLine->SetVisibility(false);
 
 				fireRockL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));
 				// 왼손 쥐는 애니메이션
