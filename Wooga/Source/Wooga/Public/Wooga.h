@@ -4,3 +4,14 @@
 
 #include "CoreMinimal.h"
 
+UENUM(BlueprintType)
+enum class EFlowState : uint8
+{
+	FireDiscovery,
+	Collection,
+	FistAx,
+	FireUse,
+	Smelts,
+	DugoutHut
+};
+
