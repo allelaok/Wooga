@@ -33,9 +33,6 @@ void AFireRock::BeginPlay()
 
 	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AFireRock::OnCollisionEnter);
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
-
-
-
 }
 
 // Called every frame
@@ -49,10 +46,15 @@ void AFireRock::Tick(float DeltaTime)
 		myPos = FMath::Lerp(myPos, returnKnockbackPos, 5.f * GetWorld()->DeltaTimeSeconds);
 		player->leftHand->SetRelativeLocation(myPos);
 		// 물어보기
-		if (FVector::Dist(myPos, knockbackPos) < 3.f)
+		if (FVector::Dist(myPos, returnKnockbackPos) < 1.f)
 		{
 			bisOverlab = true;
 		}
+	}
+
+	if (overlabCount == 15)
+	{
+		
 	}
 }
 
@@ -76,6 +78,7 @@ void AFireRock::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, clas
 			FVector Location = me->GetActorLocation();
 			FRotator Rotation = me->GetActorRotation();
 			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, Location, Rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+			overlabCount++;
 		}
 	}
 }

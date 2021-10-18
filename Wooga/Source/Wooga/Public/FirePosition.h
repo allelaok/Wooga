@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "FireRock.generated.h"
+#include "FirePosition.generated.h"
 
 UCLASS()
-class WOOGA_API AFireRock : public AActor
+class WOOGA_API AFirePosition : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AFireRock();
+	AFirePosition();
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,50 +26,27 @@ public:
 	UFUNCTION()
 		void OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+public:
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UBoxComponent* boxComp;
 
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UStaticMeshComponent* meshComp;
 
-	
-	UPROPERTY()
-	class AFireRock* me;
-	
-	UPROPERTY()
-	class AVR_Player* player;
-
-	// 소켓에 넣을떄 Offset 값을 조정
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		FVector grabOffset;
 
-	// 넉벡 종료지점
 	UPROPERTY()
-		FVector knockbackPos;
-
-	UPROPERTY()
-		FVector returnKnockbackPos;
+		class AVR_Player* player;
 
 	UPROPERTY()
-	FVector myPos;
+		class AFireRock* fireRock;
 
 	UPROPERTY()
-	bool bisOverlab = false;
+	bool bisFire = false;
 
-	UPROPERTY(EditAnywhere, Category = "Explosion")
-		class UParticleSystem* explosionFactory;
+	UPROPERTY(EditAnywhere, Category = "Fire")
+		class UParticleSystem* emberFactory;
 
-	// sound
-	const UObject* WorldContextObject;
-
-	UPROPERTY(EditAnywhere, Category = "Sound")
-	USoundBase* SoundBase;
 	
-	float VolumeMultiplier = 1.f;
-	float PitchMultiplier = 1.f;
-	float StartTime = 0.f;
-	class USoundAttenuation* AttenuationSettings;
-	USoundConcurrency* ConcurrencySettings;
-	bool bAutoDestroy = false;
-	int32 overlabCount = 0;
 };

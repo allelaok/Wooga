@@ -4,6 +4,7 @@
 #include "VR_Player.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SceneComponent.h"
+#include "Components/BoxComponent.h"
 #include "Camera/CameraComponent.h"
 #include "MotionControllerComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -31,7 +32,7 @@ AVR_Player::AVR_Player()
 	// Player Collision Setting
 	capsuleComp->SetCollisionProfileName(TEXT("VR_Player"));
 
-
+	
 
 	// Camera Location 持失
 	cameraRoot = CreateDefaultSubobject<USceneComponent>(TEXT("Camera Root"));
@@ -40,7 +41,8 @@ AVR_Player::AVR_Player()
 	// Camera Location
 	cameraRoot->SetRelativeLocation(FVector(0, 0, 30.0f));
 
-
+	headComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Component"));
+	headComp->SetupAttachment(cameraRoot);
 
 	// Main Camera 持失
 	playerCam = CreateDefaultSubobject<UCameraComponent>(TEXT("MainCamera"));

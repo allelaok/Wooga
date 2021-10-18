@@ -40,6 +40,9 @@ private:
 	void RGripFireRock(AActor* grabActor);
 	void LGripFireRock(AActor* grabActor);
 
+	void RGripFirePosition(AActor* grabActor);
+	void LGripFirePosition(AActor* grabActor);
+
 
 	bool bIsShowing = false;
 	bool bisRightGrab = false;
@@ -47,6 +50,8 @@ private:
 	class AVR_Player* player;
 	class AFireRock* fireRockR;
 	class AFireRock* fireRockL;
+	class AFirePosition* firePositionR;
+	class AFirePosition* firePositionL;
 
 	FHitResult grabObject;
 

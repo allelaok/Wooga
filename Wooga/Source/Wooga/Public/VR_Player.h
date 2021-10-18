@@ -36,6 +36,8 @@ public:
 		// Main Camera
 		UPROPERTY(EditAnywhere, Category = PlayerSettings)
 			class UCameraComponent* playerCam;
+		UPROPERTY(EditAnywhere, Category = PickUPSettings)
+			class UBoxComponent* headComp;
 		// LeftController
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = PlayerSettings)
 			class UMotionControllerComponent* leftController;
