@@ -16,6 +16,7 @@
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "SJ_UIPannel.h"
 #include <Kismet/GameplayStatics.h>
+#include <DrawDebugHelpers.h>
 
 // Sets default values
 AVR_Player::AVR_Player()
@@ -149,7 +150,6 @@ void AVR_Player::BeginPlay()
 void AVR_Player::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input

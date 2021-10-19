@@ -41,5 +41,6 @@ private:
 
 	class AVR_Player* player;
 
-	
+	FRotator hmdRotation;
+	FVector hmdLocation;
 };

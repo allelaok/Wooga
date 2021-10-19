@@ -83,9 +83,12 @@ public:
 		UPROPERTY(VisibleDefaultsOnly, Category = state)
 			bool isClose;
 
-private:
+public:
 	void ResetHMD();
 
 	FRotator hmdRotation;
 	FVector hmdLocation;
+
+	FRotator hmdRotation2;
+	FVector hmdLocation2;
 };
