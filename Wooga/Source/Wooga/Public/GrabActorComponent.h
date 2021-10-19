@@ -26,6 +26,9 @@ public:
 
 	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
 
+	class AFireRock* fireRockR;
+	class AFireRock* fireRockL;
+
 private:
 	void ShowGrabLine();
 	void HideGrabLine();
@@ -51,8 +54,7 @@ private:
 	bool bisRightGrab = false;
 	bool bisLeftGrab = false;
 	class AVR_Player* player;
-	class AFireRock* fireRockR;
-	class AFireRock* fireRockL;
+	
 	class AFirePosition* firePositionR;
 	class AFirePosition* firePositionL;
 	class AApple* appleR;

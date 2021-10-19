@@ -38,7 +38,7 @@ void AFireRock::BeginPlay()
 	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AFireRock::OnCollisionEnter);
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
-	// outLine->SetVisibility(false);
+	outLine->SetVisibility(false);
 }
 
 // Called every frame
