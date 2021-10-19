@@ -51,10 +51,6 @@ void ASJ_UIPannel::Tick(float DeltaTime)
 
 }
 
-void ASJ_UIPannel::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-
-}
 
 
 

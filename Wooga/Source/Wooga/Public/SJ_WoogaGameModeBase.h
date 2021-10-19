@@ -40,13 +40,21 @@ public:
 	EFireDiscoveryState GetDiscoveryState();
 
 	void GrabActorUI();
+	void HowToFireUI();
 	void Firing();
 	void CompleteFireCourse();
 	void InformWatch();
 	void GoToCollectState();
 
+	FTimerHandle howToGrabOpenTIme;
+
+	void OpenGrabUI();
+
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_UIPannel> howToGrab;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_UIPannel> howToFireUIPannel;
 
 	UPROPERTY(EditAnywhere, Category = Hologram)
 	TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
@@ -55,9 +63,18 @@ public:
 
 	class AVR_Player* player;
 
+	class ASJ_Hologram* hologram;
+
+	UPROPERTY()
+		float currentTime;
+	UPROPERTY()
+		float destroyTime = 3.0f;
+
 	TArray<class AFireRock*> fireRocks;
 
 	FVector p;
 
 	void TurnOff();
+	UPROPERTY(EditAnywhere, Category = Haptic)
+		class UHapticFeedbackEffect_Base* watchHaptic;
 };
