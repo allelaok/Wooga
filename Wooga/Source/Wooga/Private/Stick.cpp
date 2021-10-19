@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Apple.h"
+#include "Stick.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 
 // Sets default values
-AApple::AApple()
+AStick::AStick()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -28,15 +28,14 @@ AApple::AApple()
 }
 
 // Called when the game starts or when spawned
-void AApple::BeginPlay()
+void AStick::BeginPlay()
 {
 	Super::BeginPlay();
 	
-
 }
 
 // Called every frame
-void AApple::Tick(float DeltaTime)
+void AStick::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 

@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Apple.generated.h"
+#include "Stick.generated.h"
 
 UCLASS()
-class WOOGA_API AApple : public AActor
+class WOOGA_API AStick : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AApple();
+	AStick();
 
 protected:
 	// Called when the game starts or when spawned
