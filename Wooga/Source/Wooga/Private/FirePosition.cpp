@@ -11,7 +11,7 @@
 // Sets default values
 AFirePosition::AFirePosition()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	boxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Component"));
@@ -37,9 +37,11 @@ void AFirePosition::Tick(float DeltaTime)
 
 	if (fireRock->overlabCount >= 7)
 	{
-		
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), emberFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
-		bisFire = true;
+		if (bisFire == false)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), emberFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
+			bisFire = true;
+		}
 	}
 }
 

@@ -46,6 +46,7 @@ void AFireRock::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	
 
 	if (bisOverlab == false)
 	{
@@ -81,9 +82,11 @@ void AFireRock::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, clas
 			bisOverlab = false;
 
 			// Sound
-			FVector Location = me->GetActorLocation();
-			FRotator Rotation = me->GetActorRotation();
-			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, Location, Rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+			
+			location = me->GetActorLocation();
+			rotation = me->GetActorRotation();
+
+			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
 			overlabCount++;
 		}
 	}
