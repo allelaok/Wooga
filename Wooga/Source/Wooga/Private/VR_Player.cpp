@@ -179,7 +179,7 @@ void AVR_Player::ResetHMD()
 void AVR_Player::TurnOff()
 {
 	isClose = true;
-	uiPannel->SetActorHiddenInGame(true);
+	// uiPannel->SetActorHiddenInGame(true);
 }
 
 //void AVR_Player::HorizontalMove(float value)

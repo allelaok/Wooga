@@ -34,6 +34,7 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 	switch (flowState)
 	{
 	case EFlowState::FireDiscovery:
+		FireDiscovery();
 		break;
 	case EFlowState::Collection:
 		break;
@@ -136,7 +137,7 @@ void ASJ_WoogaGameModeBase::GrabActorUI()
 	if (player->isClose == true)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("OpenHowToFireUI"));
-
+		player->uiPannel = nullptr;
 
 		// UI 를 끄면 근처 아웃 라인이 켜지게
 		TArray<AActor*> bpFireRocks;

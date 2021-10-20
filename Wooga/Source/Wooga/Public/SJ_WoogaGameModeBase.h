@@ -19,7 +19,6 @@ public:
 
 	virtual void Tick(float DeltaSeconds) override;
 
-	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
 
 public:
 	// 전체 상태 머신
@@ -51,13 +50,13 @@ public:
 	void OpenGrabUI();
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_UIPannel> howToGrab;
+		TSubclassOf<class ASJ_UIPannel> howToGrab;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_UIPannel> howToFireUIPannel;
+		TSubclassOf<class ASJ_UIPannel> howToFireUIPannel;
 
 	UPROPERTY(EditAnywhere, Category = Hologram)
-	TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
+		TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
 
 	class ASJ_UIPannel* useUI;
 

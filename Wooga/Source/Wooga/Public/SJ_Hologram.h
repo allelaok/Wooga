@@ -16,7 +16,10 @@ public:
 	ASJ_Hologram();
 
 	UPROPERTY(VisibleAnywhere, Category = Hologram)
-	class UStaticMeshComponent* meshComp;
+		class USceneComponent* rootComp;
+
+	UPROPERTY(VisibleAnywhere, Category = Hologram)
+		class UStaticMeshComponent* meshComp;
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,4 +30,19 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	class AVR_Player* player;
+
+	float createTime;
+	float RunningTime;
+
+	float startParam;
+	float destroyParam;
+
+	float destroyTime;
+	float downTime;
+
+	FTimerHandle createTimer;
+	FTimerHandle destroyTimer;
+
+	void CreateHologram();
+	void DestroyHologram();
 };
