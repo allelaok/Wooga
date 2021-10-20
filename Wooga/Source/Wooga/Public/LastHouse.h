@@ -49,4 +49,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
 		class UStaticMeshComponent* tree7;
+
+public:
+
+	UPROPERTY()
+		class AStick* stick;
+
+	UPROPERTY()
+		class AVR_Player* player;
 };

@@ -191,10 +191,12 @@ void UGrabActorComponent::RightReleaseAction()
 		// 그 자리에서 떨어지게
 		stickR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
-		stickR->boxComp->SetSimulatePhysics(true);
+		stickR->boxComp->SetSimulatePhysics(false);
+		stickR->boxComp->SetEnableGravity(false);
 
 		stickR = nullptr;
 		bisLeftGrab = false;
+		bisStickR = false;
 	}
 
 	// 오른손 피는 애니메이션
@@ -280,10 +282,12 @@ void UGrabActorComponent::LeftReleaseAction()
 			// 그 자리에서 떨어지게
 			stickL->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
-			stickL->boxComp->SetSimulatePhysics(true);
+			stickL->boxComp->SetSimulatePhysics(false);
+			stickL->boxComp->SetEnableGravity(false);
 
 			stickL = nullptr;
 			bisLeftGrab = false;
+			bisStickL = false;
 		}
 	}
 	// 오른손 피는 애니메이션
@@ -470,7 +474,7 @@ void UGrabActorComponent::LGripApple(AActor* grabActor)
 
 			appleL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));
 			// 오른손 쥐는 애니메이션
-			player->handComp->targetGripValueRight = 0.7f;
+			player->handComp->targetGripValueLeft = 0.7f;
 
 			// 오브젝트를 잡았을때 위치 잡기
 			appleL->boxComp->SetRelativeLocation((appleL->grabOffset));
@@ -532,7 +536,7 @@ void UGrabActorComponent::LGripStem(AActor* grabActor)
 
 			stemL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));
 			// 오른손 쥐는 애니메이션
-			player->handComp->targetGripValueRight = 0.7f;
+			player->handComp->targetGripValueLeft = 0.7f;
 
 			// 오브젝트를 잡았을때 위치 잡기
 			stemL->boxComp->SetRelativeLocation((stemL->grabOffset));
@@ -558,7 +562,7 @@ void UGrabActorComponent::RGripStick(AActor* grabActor)
 			FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
 
 			stickR->boxComp->SetSimulatePhysics(false);
-			stickR->boxComp->SetEnableGravity(true);
+			stickR->boxComp->SetEnableGravity(false);
 
 
 			stickR->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
@@ -568,6 +572,8 @@ void UGrabActorComponent::RGripStick(AActor* grabActor)
 			// 오브젝트를 잡았을때 위치 잡기
 			stickR->boxComp->SetRelativeLocation((stickR->grabOffset));
 
+			// 오른손에 stick이 있냐?
+			bisStickR = true;
 		}
 	}
 }
@@ -589,16 +595,18 @@ void UGrabActorComponent::LGripStick(AActor* grabActor)
 			FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
 
 			stickL->boxComp->SetSimulatePhysics(false);
-			stickL->boxComp->SetEnableGravity(true);
+			stickL->boxComp->SetEnableGravity(false);
 
 
 			stickL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));
 			// 오른손 쥐는 애니메이션
-			player->handComp->targetGripValueRight = 0.7f;
+			player->handComp->targetGripValueLeft = 0.7f;
 
 			// 오브젝트를 잡았을때 위치 잡기
 			stickL->boxComp->SetRelativeLocation((stickL->grabOffset));
 
+			// 오른손에 stick이 있냐?
+			bisStickL = true;
 		}
 	}
 }

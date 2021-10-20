@@ -29,7 +29,7 @@ public:
 	class AFireRock* fireRockR;
 	class AFireRock* fireRockL;
 
-private:
+public:
 	void ShowGrabLine();
 	void HideGrabLine();
 	void RightDrawGrabLine();
@@ -56,9 +56,8 @@ private:
 	void LGripStick(AActor* grabActor);
 
 
-	bool bIsShowing = false;
-	bool bisRightGrab = false;
-	bool bisLeftGrab = false;
+	
+
 	class AVR_Player* player;
 	
 	// 잡을 액터
@@ -82,4 +81,10 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = AAA)
 		float grabRange = 15;
+
+	bool bIsShowing = false;
+	bool bisRightGrab = false;
+	bool bisLeftGrab = false;
+	bool bisStickR = false;
+	bool bisStickL = false;
 };
