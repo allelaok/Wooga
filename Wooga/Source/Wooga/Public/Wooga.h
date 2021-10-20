@@ -26,3 +26,11 @@ enum class EFireDiscoveryState : uint8
 	GoToNextStep
 };
 
+UENUM(BlueprintType)
+enum class EHologramState : uint8
+{
+	TurnOnHologram,
+	PlayHologram,
+	TurnOffHologram
+};
+

@@ -150,6 +150,18 @@ void AVR_Player::BeginPlay()
 void AVR_Player::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (isClose == true)
+	{
+		change += DeltaTime;
+
+		if (change >= 0.1f)
+		{
+			isClose = false;
+			change = 0;
+		}
+
+	}
 }
 
 // Called to bind functionality to input
@@ -178,8 +190,10 @@ void AVR_Player::ResetHMD()
 
 void AVR_Player::TurnOff()
 {
-	isClose = true;
-	// uiPannel->SetActorHiddenInGame(true);
+	if (isClose == false)
+	{
+		isClose = true;
+	}
 }
 
 //void AVR_Player::HorizontalMove(float value)

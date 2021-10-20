@@ -19,7 +19,6 @@ public:
 
 	virtual void Tick(float DeltaSeconds) override;
 
-
 public:
 	// 전체 상태 머신
 	EFlowState flowState;
@@ -68,12 +67,16 @@ public:
 		float currentTime;
 	UPROPERTY()
 		float destroyTime = 3.0f;
+		UPROPERTY()
+		float changeStateDelayTime;
 
 	TArray<class AFireRock*> fireRocks;
 
 	FVector p;
 
-	void TurnOff();
+	void DestroyUI();
+	FTimerHandle destroyTimer;
+
 	UPROPERTY(EditAnywhere, Category = Haptic)
 		class UHapticFeedbackEffect_Base* watchHaptic;
 };

@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Wooga.h"
 #include "GameFramework/Actor.h"
 #include "SJ_Hologram.generated.h"
 
@@ -31,18 +31,21 @@ public:
 
 	class AVR_Player* player;
 
-	float createTime;
-	float RunningTime;
+	EHologramState holoState;
+	void SetState(EHologramState state);
+	EHologramState GetState();
 
+	void TurnOnHologram();
+	void PlayHologram();
+	void TurnOffHologram();
+
+	float createTime;
 	float startParam;
-	float destroyParam;
+	
+	float playTime;
+	UPROPERTY(EditAnywhere, Category = Time)
+	float playChangeTime = 5.0f;
 
 	float destroyTime;
-	float downTime;
-
-	FTimerHandle createTimer;
-	FTimerHandle destroyTimer;
-
-	void CreateHologram();
-	void DestroyHologram();
+	float destroyParam;
 };
