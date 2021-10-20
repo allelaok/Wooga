@@ -50,10 +50,8 @@ void AFireStraw::Tick(float DeltaTime)
 		{
 			if (smogCurrentTime >= 5.f)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Fireeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!!")));
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), smogFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 				bisSmog = true;
-				isClear = true;
 			}
 		}
 
@@ -63,6 +61,7 @@ void AFireStraw::Tick(float DeltaTime)
 			{
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), fireFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 				bisFire = true;
+				isClear = true;
 			}
 		}
 	}
@@ -79,7 +78,6 @@ void AFireStraw::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, cla
 		{
 			if (player->headComp)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("overLab!!!!!!!!!!!!!!!!!")));
 				bisOverlab = true;
 			}
 		}

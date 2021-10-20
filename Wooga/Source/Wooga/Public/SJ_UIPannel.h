@@ -32,7 +32,5 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
-
 	class AVR_Player* player;
 };

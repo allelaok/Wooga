@@ -6,6 +6,7 @@
 #include "MotionControllerComponent.h"
 #include "VRHandAnimInstance.h"
 #include "HandActorComponent.h"
+#include <Camera/CameraComponent.h>
 
 // Sets default values for this component's properties
 UMoveActorComponent::UMoveActorComponent()
@@ -38,9 +39,9 @@ void UMoveActorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 void UMoveActorComponent::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	PlayerInputComponent->BindAxis("RightThumbstick_X", this, &UMoveActorComponent::MoveHorizontal);
+	//PlayerInputComponent->BindAxis("RightThumbstick_X", this, &UMoveActorComponent::MoveHorizontal);
 	PlayerInputComponent->BindAxis("RightThumbstick_Y", this, &UMoveActorComponent::MoveVertical);
-	PlayerInputComponent->BindAxis("LeftThumbstick_X", this, &UMoveActorComponent::RotateHorizontal);
+	//PlayerInputComponent->BindAxis("LeftThumbstick_X", this, &UMoveActorComponent::RotateHorizontal);
 	/*PlayerInputComponent->BindAction("LeftGrip", IE_Pressed, this, &UMoveActorComponent::LeftGripOn);
 	PlayerInputComponent->BindAction("LeftGrip", IE_Released, this, &UMoveActorComponent::LeftGripOff);
 	PlayerInputComponent->BindAction("RightGrip", IE_Pressed, this, &UMoveActorComponent::RightGripOn);
@@ -50,18 +51,20 @@ void UMoveActorComponent::SetupPlayerInputComponent(UInputComponent* PlayerInput
 void UMoveActorComponent::MoveHorizontal(float value)
 {
 	FVector dir = player->GetActorRightVector() * value;
+	dir.Z = 0;
 	player->SetActorLocation(player->GetActorLocation() + dir * moveSpeed * GetWorld()->DeltaTimeSeconds);
 }
 
 void UMoveActorComponent::MoveVertical(float value)
 {
-	FVector dir = player->GetActorForwardVector() * value;
+	auto cam = Cast<UCameraComponent>(player->GetDefaultSubobjectByName(TEXT("MainCamera")));
+	FVector dir = cam->GetForwardVector() * value;
+
 	player->SetActorLocation(player->GetActorLocation() + dir * moveSpeed * GetWorld()->DeltaTimeSeconds);
 }
 
 void UMoveActorComponent::RotateHorizontal(float value)
 {
-	
 	FRotator rot = FRotator(0, value * rotateSpeed * GetWorld()->DeltaTimeSeconds, 0);
 	player->AddActorLocalRotation(rot);
 }

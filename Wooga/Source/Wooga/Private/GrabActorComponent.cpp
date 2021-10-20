@@ -3,6 +3,7 @@
 
 #include "GrabActorComponent.h"
 #include "VR_Player.h"
+#include "Apple.h"
 #include "FireRock.h"
 #include "FirePosition.h"
 #include "DrawDebugHelpers.h"
@@ -122,6 +123,9 @@ void UGrabActorComponent::RightGrabAction()
 
 	RGripFireRock(grabActor);
 	RGripFirePosition(grabActor);
+	RGripApple(grabActor);
+	
+
 }
 
 void UGrabActorComponent::RightReleaseAction()
@@ -153,6 +157,19 @@ void UGrabActorComponent::RightReleaseAction()
 		firePositionR = nullptr;
 		bisLeftGrab = false;
 	}
+
+	if (appleR)
+	{
+		appleR->boxComp->SetEnableGravity(true);
+		// 그 자리에서 떨어지게
+		appleR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
+		appleR->boxComp->SetSimulatePhysics(true);
+
+		appleR = nullptr;
+		bisLeftGrab = false;
+	}
+
 	// 오른손 피는 애니메이션
 	player->handComp->targetGripValueRight = 0.0f;
 
@@ -172,6 +189,7 @@ void UGrabActorComponent::LeftGrabAction()
 
 	LGripFireRock(grabActor);
 	LGripFirePosition(grabActor);
+	LGripApple(grabActor);
 }
 
 void UGrabActorComponent::LeftReleaseAction()
@@ -200,6 +218,18 @@ void UGrabActorComponent::LeftReleaseAction()
 			firePositionL->boxComp->SetSimulatePhysics(true);
 
 			firePositionL = nullptr;
+			bisLeftGrab = false;
+		}
+
+		if (appleL)
+		{
+			appleL->boxComp->SetEnableGravity(true);
+			// 그 자리에서 떨어지게
+			appleL->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
+			appleL->boxComp->SetSimulatePhysics(true);
+
+			appleL = nullptr;
 			bisLeftGrab = false;
 		}
 	}
@@ -323,12 +353,74 @@ void UGrabActorComponent::LGripFirePosition(AActor* grabActor)
 			firePositionL->boxComp->SetEnableGravity(true);
 
 
-			firePositionL->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
+			firePositionL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("RGrabPoint"));
+			// 오른손 쥐는 애니메이션
+			player->handComp->targetGripValueLeft = 0.7f;
+
+			// 오브젝트를 잡았을때 위치 잡기
+			firePositionL->boxComp->SetRelativeLocation((firePositionL->grabOffset));
+
+		}
+	}
+}
+
+void UGrabActorComponent::RGripApple(AActor* grabActor)
+{
+	FString fr = grabActor->GetName();
+	/*if (fireRock == nullptr)
+	{*/
+	if (fr.Contains("Apple"))
+	{
+		appleR = Cast<AApple>(grabActor);
+
+		if (appleR)
+		{
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+			//fireRock->SetActorHiddenInGame(false);
+			//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
+			FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+
+			appleR->boxComp->SetSimulatePhysics(false);
+			appleR->boxComp->SetEnableGravity(true);
+
+
+			appleR->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
 			// 오른손 쥐는 애니메이션
 			player->handComp->targetGripValueRight = 0.7f;
 
 			// 오브젝트를 잡았을때 위치 잡기
-			firePositionL->boxComp->SetRelativeLocation((firePositionL->grabOffset));
+			appleR->boxComp->SetRelativeLocation((appleR->grabOffset));
+
+		}
+	}
+}
+
+void UGrabActorComponent::LGripApple(AActor* grabActor)
+{
+	FString fr = grabActor->GetName();
+	/*if (fireRock == nullptr)
+	{*/
+	if (fr.Contains("Apple"))
+	{
+		appleL = Cast<AApple>(grabActor);
+
+		if (appleL)
+		{
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+			//fireRock->SetActorHiddenInGame(false);
+			//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
+			FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+
+			appleL->boxComp->SetSimulatePhysics(false);
+			appleL->boxComp->SetEnableGravity(true);
+
+
+			appleL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));
+			// 오른손 쥐는 애니메이션
+			player->handComp->targetGripValueRight = 0.7f;
+
+			// 오브젝트를 잡았을때 위치 잡기
+			appleL->boxComp->SetRelativeLocation((appleL->grabOffset));
 
 		}
 	}

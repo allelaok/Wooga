@@ -67,6 +67,11 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Sound")
 	USoundBase* SoundBase;
+
+	UPROPERTY()
+		FVector location;
+	UPROPERTY()
+		FRotator rotation;
 	
 	float VolumeMultiplier = 1.f;
 	float PitchMultiplier = 1.f;

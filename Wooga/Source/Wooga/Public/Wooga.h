@@ -19,6 +19,7 @@ UENUM(BlueprintType)
 enum class EFireDiscoveryState : uint8
 {
 	GrabActorUI,
+	HowToFireUI,
 	Firing,
 	CompleteCourse,
 	InformWatch,
