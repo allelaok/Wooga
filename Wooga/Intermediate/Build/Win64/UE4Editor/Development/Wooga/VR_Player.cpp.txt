@@ -1,0 +1,47 @@
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/CapsuleComponent.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CapsuleComponent.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/BoxComponent.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\BoxComponent.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Camera/CameraComponent.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CameraComponent.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\HeadMountedDisplay\Public\MotionControllerComponent.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Public\SceneViewExtension.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Public\SceneViewExtensionContext.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\SceneViewExtensionContext.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\HeadMountedDisplay\Public\IMotionController.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\HeadMountedDisplay\Public\LateUpdateManager.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\HeadMountedDisplay\Public\IIdentifiableXRDevice.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\HeadMountedDisplay\IIdentifiableXRDevice.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\HeadMountedDisplay\MotionControllerComponent.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/TextRenderComponent.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\TextRenderComponent.generated.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Source\Wooga\Public\MoveActorComponent.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\MoveActorComponent.generated.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Source\Wooga\Public\HandActorComponent.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\HandActorComponent.generated.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Source\Wooga\Public\GrabActorComponent.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\GrabActorComponent.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\HeadMountedDisplay\Public\HeadMountedDisplayFunctionLibrary.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\HeadMountedDisplay\Public\HeadMountedDisplayTypes.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\HeadMountedDisplay\HeadMountedDisplayTypes.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\HeadMountedDisplay\Public\XRGestureConfig.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\HeadMountedDisplay\XRGestureConfig.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\HeadMountedDisplay\HeadMountedDisplayFunctionLibrary.generated.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Source\Wooga\Public\SJ_UIPannel.h
+C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_UIPannel.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/CollisionProfile.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CollisionProfile.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\KismetSystemLibrary.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Sound/DialogueTypes.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DialogueTypes.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h

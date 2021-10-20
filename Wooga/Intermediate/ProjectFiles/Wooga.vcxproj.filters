@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Wooga.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{9900B037-0BEF-4C1E-AE59-0D9E628A281A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Wooga.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\WoogaEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{7447D09B-A132-48C4-8D48-A8DD95C9E693}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultScalability.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Wooga">
+      <UniqueIdentifier>{C4F352EA-B150-4F1C-B98E-72A3075DE962}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Wooga\Wooga.Build.cs">
+      <Filter>Source\Wooga</Filter>
+    </None>
+    <Filter Include="Source\Wooga\Private">
+      <UniqueIdentifier>{0A8C3348-4458-483A-B6E8-D11E152ED85C}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Wooga\Private\FirePosition.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\FireRock.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\FireStraw.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\GrabActorComponent.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\HandActorComponent.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\MoveActorComponent.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_Hologram.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_UIPannel.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_WoogaGameModeBase.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\VRGameModeBase.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\VRHandAnimInstance.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\VR_Player.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\Wooga.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\Wooga\Public">
+      <UniqueIdentifier>{BE42DFA1-6BFA-482B-A4F0-6C997A2CB07F}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\Wooga\Public\FirePosition.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\FireRock.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\FireStraw.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\GrabActorComponent.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\HandActorComponent.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\MoveActorComponent.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_Hologram.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_UIPannel.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_WoogaGameModeBase.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\VRGameModeBase.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\VRHandAnimInstance.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\VR_Player.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\Wooga.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
