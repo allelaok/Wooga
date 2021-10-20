@@ -31,7 +31,7 @@ void EmptyLinkFunctionForGeneratedCodeWooga() {}
 		return EFireDiscoveryState_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EFireDiscoveryState(EFireDiscoveryState_StaticEnum, TEXT("/Script/Wooga"), TEXT("EFireDiscoveryState"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_Wooga_EFireDiscoveryState_Hash() { return 1931062009U; }
+	uint32 Get_Z_Construct_UEnum_Wooga_EFireDiscoveryState_Hash() { return 3633178181U; }
 	UEnum* Z_Construct_UEnum_Wooga_EFireDiscoveryState()
 	{
 #if WITH_HOT_RELOAD
@@ -44,6 +44,7 @@ void EmptyLinkFunctionForGeneratedCodeWooga() {}
 		{
 			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
 				{ "EFireDiscoveryState::GrabActorUI", (int64)EFireDiscoveryState::GrabActorUI },
+				{ "EFireDiscoveryState::HowToFireUI", (int64)EFireDiscoveryState::HowToFireUI },
 				{ "EFireDiscoveryState::Firing", (int64)EFireDiscoveryState::Firing },
 				{ "EFireDiscoveryState::CompleteCourse", (int64)EFireDiscoveryState::CompleteCourse },
 				{ "EFireDiscoveryState::InformWatch", (int64)EFireDiscoveryState::InformWatch },
@@ -56,6 +57,7 @@ void EmptyLinkFunctionForGeneratedCodeWooga() {}
 				{ "Firing.Name", "EFireDiscoveryState::Firing" },
 				{ "GoToNextStep.Name", "EFireDiscoveryState::GoToNextStep" },
 				{ "GrabActorUI.Name", "EFireDiscoveryState::GrabActorUI" },
+				{ "HowToFireUI.Name", "EFireDiscoveryState::HowToFireUI" },
 				{ "InformWatch.Name", "EFireDiscoveryState::InformWatch" },
 				{ "ModuleRelativePath", "Public/Wooga.h" },
 			};

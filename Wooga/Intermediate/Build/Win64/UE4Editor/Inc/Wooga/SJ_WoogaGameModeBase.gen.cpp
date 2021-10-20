@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeSJ_WoogaGameModeBase() {}
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	WOOGA_API UClass* Z_Construct_UClass_ASJ_UIPannel_NoRegister();
 	WOOGA_API UClass* Z_Construct_UClass_ASJ_Hologram_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UHapticFeedbackEffect_Base_NoRegister();
 // End Cross Module References
 	void ASJ_WoogaGameModeBase::StaticRegisterNativesASJ_WoogaGameModeBase()
 	{
@@ -39,9 +40,25 @@ void EmptyLinkFunctionForGeneratedCodeSJ_WoogaGameModeBase() {}
 #endif
 		static const UE4CodeGen_Private::FClassPropertyParams NewProp_howToGrab;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_howToFireUIPannel_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FClassPropertyParams NewProp_howToFireUIPannel;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_fireDisCoveryHologram_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FClassPropertyParams NewProp_fireDisCoveryHologram;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_currentTime_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_currentTime;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_destroyTime_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_destroyTime;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_watchHaptic_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_watchHaptic;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -66,15 +83,45 @@ void EmptyLinkFunctionForGeneratedCodeSJ_WoogaGameModeBase() {}
 #endif
 	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToGrab = { "howToGrab", nullptr, (EPropertyFlags)0x0014000000000001, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASJ_WoogaGameModeBase, howToGrab), Z_Construct_UClass_ASJ_UIPannel_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToGrab_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToGrab_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToFireUIPannel_MetaData[] = {
+		{ "Category", "UI" },
+		{ "ModuleRelativePath", "Public/SJ_WoogaGameModeBase.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToFireUIPannel = { "howToFireUIPannel", nullptr, (EPropertyFlags)0x0014000000000001, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASJ_WoogaGameModeBase, howToFireUIPannel), Z_Construct_UClass_ASJ_UIPannel_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToFireUIPannel_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToFireUIPannel_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_fireDisCoveryHologram_MetaData[] = {
 		{ "Category", "Hologram" },
 		{ "ModuleRelativePath", "Public/SJ_WoogaGameModeBase.h" },
 	};
 #endif
 	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_fireDisCoveryHologram = { "fireDisCoveryHologram", nullptr, (EPropertyFlags)0x0014000000000001, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASJ_WoogaGameModeBase, fireDisCoveryHologram), Z_Construct_UClass_ASJ_Hologram_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_fireDisCoveryHologram_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_fireDisCoveryHologram_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_currentTime_MetaData[] = {
+		{ "ModuleRelativePath", "Public/SJ_WoogaGameModeBase.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_currentTime = { "currentTime", nullptr, (EPropertyFlags)0x0010000000000000, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASJ_WoogaGameModeBase, currentTime), METADATA_PARAMS(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_currentTime_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_currentTime_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_destroyTime_MetaData[] = {
+		{ "ModuleRelativePath", "Public/SJ_WoogaGameModeBase.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_destroyTime = { "destroyTime", nullptr, (EPropertyFlags)0x0010000000000000, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASJ_WoogaGameModeBase, destroyTime), METADATA_PARAMS(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_destroyTime_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_destroyTime_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_watchHaptic_MetaData[] = {
+		{ "Category", "Haptic" },
+		{ "ModuleRelativePath", "Public/SJ_WoogaGameModeBase.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_watchHaptic = { "watchHaptic", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASJ_WoogaGameModeBase, watchHaptic), Z_Construct_UClass_UHapticFeedbackEffect_Base_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_watchHaptic_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_watchHaptic_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToGrab,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_howToFireUIPannel,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_fireDisCoveryHologram,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_currentTime,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_destroyTime,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::NewProp_watchHaptic,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ASJ_WoogaGameModeBase_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ASJ_WoogaGameModeBase>::IsAbstract,
@@ -103,7 +150,7 @@ void EmptyLinkFunctionForGeneratedCodeSJ_WoogaGameModeBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASJ_WoogaGameModeBase, 2109298493);
+	IMPLEMENT_CLASS(ASJ_WoogaGameModeBase, 3028217131);
 	template<> WOOGA_API UClass* StaticClass<ASJ_WoogaGameModeBase>()
 	{
 		return ASJ_WoogaGameModeBase::StaticClass();

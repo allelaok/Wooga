@@ -19,6 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define FOREACH_ENUM_EFIREDISCOVERYSTATE(op) \
 	op(EFireDiscoveryState::GrabActorUI) \
+	op(EFireDiscoveryState::HowToFireUI) \
 	op(EFireDiscoveryState::Firing) \
 	op(EFireDiscoveryState::CompleteCourse) \
 	op(EFireDiscoveryState::InformWatch) \

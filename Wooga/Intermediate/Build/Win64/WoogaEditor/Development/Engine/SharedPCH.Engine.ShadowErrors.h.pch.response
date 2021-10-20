@@ -259,11 +259,11 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"
-/I C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine
-/Yc"C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
-"C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.cpp"
-/Fo"C:\Users\Default.DESKTOP-6F3BTUF\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+/I C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine
+/Yc"C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Fp"C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+"C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.cpp"
+/Fo"C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
 /TP
 /GR-
 /W4

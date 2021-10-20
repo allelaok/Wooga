@@ -26,6 +26,7 @@ void EmptyLinkFunctionForGeneratedCodeFireRock() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_UParticleSystem_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FRotator();
 // End Cross Module References
 	DEFINE_FUNCTION(AFireRock::execOnCollisionEnter)
 	{
@@ -189,6 +190,14 @@ void EmptyLinkFunctionForGeneratedCodeFireRock() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SoundBase_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SoundBase;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_location_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_location;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_rotation_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_rotation;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -295,6 +304,18 @@ void EmptyLinkFunctionForGeneratedCodeFireRock() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFireRock_Statics::NewProp_SoundBase = { "SoundBase", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFireRock, SoundBase), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AFireRock_Statics::NewProp_SoundBase_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFireRock_Statics::NewProp_SoundBase_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFireRock_Statics::NewProp_location_MetaData[] = {
+		{ "ModuleRelativePath", "Public/FireRock.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_AFireRock_Statics::NewProp_location = { "location", nullptr, (EPropertyFlags)0x0010000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFireRock, location), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_AFireRock_Statics::NewProp_location_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFireRock_Statics::NewProp_location_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFireRock_Statics::NewProp_rotation_MetaData[] = {
+		{ "ModuleRelativePath", "Public/FireRock.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_AFireRock_Statics::NewProp_rotation = { "rotation", nullptr, (EPropertyFlags)0x0010000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFireRock, rotation), Z_Construct_UScriptStruct_FRotator, METADATA_PARAMS(Z_Construct_UClass_AFireRock_Statics::NewProp_rotation_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFireRock_Statics::NewProp_rotation_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFireRock_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireRock_Statics::NewProp_boxComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireRock_Statics::NewProp_meshComp,
@@ -308,6 +329,8 @@ void EmptyLinkFunctionForGeneratedCodeFireRock() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireRock_Statics::NewProp_bisOverlab,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireRock_Statics::NewProp_explosionFactory,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireRock_Statics::NewProp_SoundBase,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireRock_Statics::NewProp_location,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireRock_Statics::NewProp_rotation,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AFireRock_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AFireRock>::IsAbstract,
@@ -336,7 +359,7 @@ void EmptyLinkFunctionForGeneratedCodeFireRock() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AFireRock, 942321875);
+	IMPLEMENT_CLASS(AFireRock, 3627206052);
 	template<> WOOGA_API UClass* StaticClass<AFireRock>()
 	{
 		return AFireRock::StaticClass();
