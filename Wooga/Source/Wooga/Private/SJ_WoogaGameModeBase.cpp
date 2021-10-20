@@ -37,14 +37,19 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 		FireDiscovery();
 		break;
 	case EFlowState::Collection:
+		Collection();
 		break;
 	case EFlowState::FistAx:
+		FistAx();
 		break;
 	case EFlowState::FireUse:
+		FireUse();
 		break;
 	case EFlowState::Smelts:
+		Smelts();
 		break;
 	case EFlowState::DugoutHut:
+		DogoutHut();
 		break;
 	}
 #pragma endregion
@@ -90,7 +95,6 @@ EFlowState ASJ_WoogaGameModeBase::GetFlowState()
 
 void ASJ_WoogaGameModeBase::FireDiscovery()
 {
-	SetDiscoveryState(EFireDiscoveryState::GrabActorUI);
 
 }
 
@@ -133,11 +137,12 @@ EFireDiscoveryState ASJ_WoogaGameModeBase::GetDiscoveryState()
 
 void ASJ_WoogaGameModeBase::GrabActorUI()
 {
+	UE_LOG(LogTemp, Warning, TEXT("GrabActorUI"));
 	// 잡는 방법을 알려주는 UI 가 꺼지면 부싯돌을 잡는 상태로 넘어간다.
 	if (player->isClose == true)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("OpenHowToFireUI"));
-		player->uiPannel = nullptr;
+		GetWorldTimerManager().SetTimer(destroyTimer, this, &ASJ_WoogaGameModeBase::DestroyUI, 3.0f);
 
 		// UI 를 끄면 근처 아웃 라인이 켜지게
 		TArray<AActor*> bpFireRocks;
@@ -165,7 +170,7 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 	if (player->grabComp->fireRockR && player->grabComp->fireRockL)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Fire"));
-
+		
 		// 불을 지필 수 있는 방법을 알려주는 UI
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
@@ -183,15 +188,19 @@ void ASJ_WoogaGameModeBase::Firing()
 	// 불을 켜면 홀로그램이 생성되고 첫번째 교육 이수 상태로 넘어간다.
 	if (fireStraw->isClear == true)
 	{
-		// UI 꺼주기
-		player->TurnOff();
+		changeStateDelayTime += GetWorld()->DeltaTimeSeconds;
+		if (changeStateDelayTime >= 3.0f)
+		{
+			// UI 꺼주기
+			player->TurnOff();
 
-		UE_LOG(LogTemp, Warning, TEXT("CompleteFireCourse"));
-		FActorSpawnParameters Param;
-		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+			UE_LOG(LogTemp, Warning, TEXT("CompleteFireCourse"));
+			FActorSpawnParameters Param;
+			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-		hologram = GetWorld()->SpawnActor<ASJ_Hologram>(fireDisCoveryHologram, Param);
-		SetDiscoveryState(EFireDiscoveryState::CompleteCourse);
+			hologram = GetWorld()->SpawnActor<ASJ_Hologram>(fireDisCoveryHologram, Param);
+			SetDiscoveryState(EFireDiscoveryState::CompleteCourse);
+		}
 	}
 }
 void ASJ_WoogaGameModeBase::CompleteFireCourse()
@@ -201,7 +210,7 @@ void ASJ_WoogaGameModeBase::CompleteFireCourse()
 
 	if (currentTime >= destroyTime)
 	{
-		hologram->Destroy();
+		// hologram->Destroy();
 
 		// 시계 햅틱 기능
 		GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
@@ -229,7 +238,7 @@ void ASJ_WoogaGameModeBase::OpenGrabUI()
 	player->uiPannel = GetWorld()->SpawnActor<ASJ_UIPannel>(howToGrab, Param);
 }
 
-void ASJ_WoogaGameModeBase::TurnOff()
+void ASJ_WoogaGameModeBase::DestroyUI()
 {
-	useUI->SetActorHiddenInGame(true);
+	player->uiPannel->Destroy();
 }

@@ -91,4 +91,6 @@ public:
 
 	FRotator hmdRotation2;
 	FVector hmdLocation2;
+
+	float change;
 };

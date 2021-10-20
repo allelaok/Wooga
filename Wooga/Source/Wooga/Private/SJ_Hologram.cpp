@@ -39,6 +39,8 @@ void ASJ_Hologram::BeginPlay()
 	dir.Normalize();
 
 	SetActorRotation(dir.Rotation());
+
+	SetState(EHologramState::TurnOnHologram);
 }
 
 // Called every frame
@@ -46,45 +48,65 @@ void ASJ_Hologram::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	switch (holoState)
+	{
+	case EHologramState::TurnOnHologram:
+		TurnOnHologram();
+		break;
+	case EHologramState::PlayHologram:
+		PlayHologram();
+		break;
+	case EHologramState::TurnOffHologram:
+		TurnOffHologram();
+		break;
+	}
+}
+
+void ASJ_Hologram::SetState(EHologramState state)
+{
+	holoState = state;
+}
+
+EHologramState ASJ_Hologram::GetState()
+{
+	return EHologramState();
+}
+
+void ASJ_Hologram::TurnOnHologram()
+{
 	// 홀로그램 생성
-	createTime += DeltaTime;
+	createTime +=GetWorld()->DeltaTimeSeconds;
 
-	if (createTime >= 1.0f)
+	startParam = FMath::Lerp(-1.0f, 1.0f, createTime * 0.5f);
+
+	meshComp->SetScalarParameterValueOnMaterials(TEXT("Dissolve"), startParam);
+
+	if (createTime >= 2.0f)
 	{
-		return;
-	}
-	else
-	{
-		startParam = FMath::Lerp(-1.0f, 1.0f, createTime * 0.5f);
-
-		meshComp->SetScalarParameterValueOnMaterials(TEXT("Dissolve"), startParam);
-	}
-
-	destroyTime += DeltaTime;
-
-	if (destroyTime >= 4.0f)
-	{
-
-		downTime += DeltaTime;
-
-		if (downTime >= 1.0f)
-		{
-			return;
-		}
-		else
-		{
-			destroyParam = FMath::Lerp(1.0f, -1.0f, downTime * 0.5f);
-
-			meshComp->SetScalarParameterValueOnMaterials(TEXT("Dissolve"), destroyParam);
-		}
+		SetState(EHologramState::PlayHologram);
 	}
 }
 
-void ASJ_Hologram::CreateHologram()
+void ASJ_Hologram::PlayHologram()
 {
+	// 홀로그램 플레이 시간에 맞춰 설정
+	playTime += GetWorld()->DeltaTimeSeconds;
+
+	if (playTime >= playChangeTime)
+	{
+		SetState(EHologramState::TurnOffHologram);
+	}
 }
 
-void ASJ_Hologram::DestroyHologram()
+void ASJ_Hologram::TurnOffHologram()
 {
+	destroyTime += GetWorld()->DeltaTimeSeconds;
+
+	destroyParam = FMath::Lerp(1.0f, -1.0f, destroyTime * 0.5f);
+
+	meshComp->SetScalarParameterValueOnMaterials(TEXT("Dissolve"), destroyParam);
+
+	// 지식 이동 로직
 }
+
 
