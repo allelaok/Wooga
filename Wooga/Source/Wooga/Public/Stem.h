@@ -10,8 +10,8 @@ UCLASS()
 class WOOGA_API AStem : public AActor
 {
 	GENERATED_BODY()
-
-public:
+	
+public:	
 	// Sets default values for this actor's properties
 	AStem();
 
@@ -19,29 +19,26 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:
+public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION()
-		void OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UStaticMeshComponent* boxComp;
 
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = StemSetting)
-		class USceneComponent* rootComp;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UStaticMeshComponent* base;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = StemSetting)
-		class UStaticMeshComponent* startC;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite ,Category = Setting)
+		class USkeletalMeshComponent* cable;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = StemSetting)
-		class UStaticMeshComponent* endC;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UPhysicsConstraintComponent* baseRope;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = StemSetting)
-		class UPhysicsConstraintComponent* rope;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = StemSetting)
-		class UCableComponent* cable;
+	// 소켓에 넣을떄 Offset 값을 조정
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		FVector grabOffset;
 
-	UPROPERTY()
-		class AStick* stick;
+	
 };

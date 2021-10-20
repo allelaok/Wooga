@@ -49,16 +49,30 @@ private:
 	void RGripApple(AActor* grabActor);
 	void LGripApple(AActor* grabActor);
 
+	void RGripStem(AActor* grabActor);
+	void LGripStem(AActor* grabActor);
+
+	void RGripStick(AActor* grabActor);
+	void LGripStick(AActor* grabActor);
+
 
 	bool bIsShowing = false;
 	bool bisRightGrab = false;
 	bool bisLeftGrab = false;
 	class AVR_Player* player;
 	
+	// 잡을 액터
 	class AFirePosition* firePositionR;
 	class AFirePosition* firePositionL;
+
 	class AApple* appleR;
 	class AApple* appleL;
+
+	class AStem* stemR;
+	class AStem* stemL;
+
+	class AStick* stickR;
+	class AStick* stickL;
 
 	FHitResult grabObject;
 

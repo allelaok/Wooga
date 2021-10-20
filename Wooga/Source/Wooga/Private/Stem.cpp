@@ -1,44 +1,38 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Stem.h"
-#include "Stick.h"
-#include "Components/SceneComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
-#include "Components/SphereComponent.h"
-#include "CableComponent.h"
 #include "PhysicsEngine/PhysicsConstraintComponent.h"
+#include <Components/SphereComponent.h>
 
 // Sets default values
 AStem::AStem()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	rootComp = CreateDefaultSubobject<USceneComponent>(TEXT("RootComp"));
-	SetRootComponent(rootComp);
+	boxComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Root Component"));
+	SetRootComponent(boxComp);
+	boxComp->SetSimulatePhysics(true);
+	boxComp->SetEnableGravity(false);
 
-	startC = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StartC"));
-	startC->SetupAttachment(rootComp);
+	base = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Component"));
+	base->SetupAttachment(boxComp);
 
-	endC = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("EndC"));
-	endC->SetupAttachment(rootComp);
+	cable = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Cable Component"));
+	cable->SetupAttachment(boxComp);
 
-	rope = CreateDefaultSubobject<UPhysicsConstraintComponent>(TEXT("Rope"));
-	rope->SetupAttachment(rootComp);
-
-	cable = CreateDefaultSubobject<UCableComponent>(TEXT("Cable"));
-	cable->SetupAttachment(endC);
-
-	//cable->AttachToComponent(this->GetRootComponent(), FAttachmentTransformRules::KeepWorldTransform);
-	//cable->SetupAttachment(endComp);
-
+	baseRope = CreateDefaultSubobject<UPhysicsConstraintComponent>(TEXT("baseRope Component"));
+	baseRope->SetupAttachment(boxComp);
 }
 
 // Called when the game starts or when spawned
 void AStem::BeginPlay()
 {
 	Super::BeginPlay();
+	
 }
 
 // Called every frame
@@ -46,19 +40,5 @@ void AStem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-}
-
-void AStem::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	FString st = OtherActor->GetName();
-
-	if (st.Contains("Stick"))
-	{
-		stick = Cast<AStick>(OtherActor);
-		if (stick)
-		{
-
-		}
-	}
 }
 

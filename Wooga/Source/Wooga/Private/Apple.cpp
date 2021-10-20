@@ -17,7 +17,6 @@ AApple::AApple()
 	// 물리 관련 설정
 	boxComp->SetSimulatePhysics(true);
 	boxComp->SetEnableGravity(false);
-	boxComp->SetCollisionProfileName(TEXT("PickUp"));
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);

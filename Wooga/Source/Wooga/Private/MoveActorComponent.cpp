@@ -51,14 +51,16 @@ void UMoveActorComponent::SetupPlayerInputComponent(UInputComponent* PlayerInput
 void UMoveActorComponent::MoveHorizontal(float value)
 {
 	FVector dir = player->GetActorRightVector() * value;
-	dir.Z = 0;
+	
 	player->SetActorLocation(player->GetActorLocation() + dir * moveSpeed * GetWorld()->DeltaTimeSeconds);
 }
 
 void UMoveActorComponent::MoveVertical(float value)
 {
 	auto cam = Cast<UCameraComponent>(player->GetDefaultSubobjectByName(TEXT("MainCamera")));
+
 	FVector dir = cam->GetForwardVector() * value;
+	dir.Z = 0;
 
 	player->SetActorLocation(player->GetActorLocation() + dir * moveSpeed * GetWorld()->DeltaTimeSeconds);
 }
