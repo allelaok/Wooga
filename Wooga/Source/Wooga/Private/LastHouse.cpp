@@ -31,6 +31,9 @@ ALastHouse::ALastHouse()
 
 	tree6 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("tree6"));
 	tree6->SetupAttachment(sceneComponent);
+
+	tree7 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("tree7"));
+	tree7->SetupAttachment(sceneComponent);
 }
 
 // Called when the game starts or when spawned
