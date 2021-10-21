@@ -1,0 +1,52 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "SJ_InformUIPannel.generated.h"
+
+UCLASS()
+class WOOGA_API ASJ_InformUIPannel : public AActor
+{
+	GENERATED_BODY()
+	
+public:	
+	// Sets default values for this actor's properties
+	ASJ_InformUIPannel();
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	class USceneComponent* rootComp;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	class UWidgetComponent* informUI;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	class UBoxComponent* range;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	class UStaticMeshComponent* informMark;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION()
+	void  RangeIn(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	FVector startRot = FVector(0.0f, 0.0f, 90.0f);
+	FVector endRot = FVector(180.0f, 0.0f, 90.0f);
+
+	FVector startPos = FVector(0.0f, 0.0f, 80.0f);
+	FVector endPos = FVector(0.0f, 0.0f, 140.0f);
+
+	float RunningTime;
+
+	bool isTrigger;
+
+	class AVR_Player* player;
+};

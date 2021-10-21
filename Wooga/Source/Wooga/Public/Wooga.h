@@ -18,12 +18,18 @@ enum class EFlowState : uint8
 UENUM(BlueprintType)
 enum class EFireDiscoveryState : uint8
 {
-	GrabActorUI,
+	// 불의  발견
+	HowToGrabActorUI,
 	HowToFireUI,
 	Firing,
-	CompleteCourse,
+	CompleteFireDiscovery,
 	InformWatch,
-	GoToNextStep
+	GoToCollectCourse,
+	// 채집
+	HowToCollectActorUI,
+	CollectAndEat,
+	CompleteCollect,
+	 GoToFistAxCourse
 };
 
 UENUM(BlueprintType)

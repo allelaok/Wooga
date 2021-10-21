@@ -57,18 +57,25 @@ public:
 	UPROPERTY(EditAnywhere, Category = Hologram)
 		TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
 
+	UPROPERTY(EditAnywhere, Category = GuideLine)
+		TSubclassOf<class ASJ_GuidLine> goToCollectGuideLine;
+
 	class ASJ_UIPannel* useUI;
 
 	class AVR_Player* player;
 
 	class ASJ_Hologram* hologram;
 
+	class ASJ_GuidLine* guideLine;
+
 	UPROPERTY()
 		float currentTime;
 	UPROPERTY()
 		float destroyTime = 3.0f;
-		UPROPERTY()
+	UPROPERTY()
 		float changeStateDelayTime;
+	UPROPERTY()
+	float temporaryTime;
 
 	TArray<class AFireRock*> fireRocks;
 
@@ -79,4 +86,10 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = Haptic)
 		class UHapticFeedbackEffect_Base* watchHaptic;
+
+	// Ã¤Áý ±³À°
+	void HowToCollectActorUI();
+	void CollectAndEat();
+	void CompleteCollect();
+	void GoToFistAxCourse();
 };
