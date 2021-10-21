@@ -31,13 +31,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UStaticMeshComponent* meshComp;
-
-	UPROPERTY()
-		class AFirePosition* firePosition;
-
-	UPROPERTY()
-		class AVR_Player* player;
-
+	
 	UPROPERTY(EditAnywhere, Category = "Fire")
 		class UParticleSystem* smogFactory;
 
@@ -47,6 +41,7 @@ public:
 		bool bisOverlab = false;
 		bool bisSmog = false;
 		bool bisFire = false;
+		bool bisReadyFire = false;
 
 		float smogCurrentTime = 0;
 		float fireCurrentTime = 0;

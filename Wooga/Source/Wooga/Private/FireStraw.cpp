@@ -29,7 +29,6 @@ void AFireStraw::BeginPlay()
 	Super::BeginPlay();
 	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AFireStraw::OnCollisionEnter);
 	//firePosition = Cast<AFirePosition>(UGameplayStatics::GetActorOfClass(GetWorld(), AFirePosition::StaticClass()));
-	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
 	isClear = false;
 }
@@ -70,14 +69,23 @@ void AFireStraw::Tick(float DeltaTime)
 
 void AFireStraw::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	firePosition = Cast<AFirePosition>(OtherActor);
+	auto firePosition = Cast<AFirePosition>(OtherActor);
+	auto player = Cast<AVR_Player>(OtherActor);
 
 	if (firePosition)
 	{
 		if (firePosition->bisFire == true)
 		{
+			bisReadyFire = true;
+		}
+	}
+	if (bisReadyFire == true)
+	{
+		if (player)
+		{
 			if (player->headComp)
 			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Fireeeeeeeeeeeeeeee!!")));
 				bisOverlab = true;
 			}
 		}
