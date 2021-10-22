@@ -7,17 +7,6 @@
 UENUM(BlueprintType)
 enum class EFlowState : uint8
 {
-	FireDiscovery,
-	Collection,
-	FistAx,
-	FireUse,
-	Smelts,
-	DugoutHut
-};
-
-UENUM(BlueprintType)
-enum class EFireDiscoveryState : uint8
-{
 	// 불의  발견
 	HowToGrabActorUI,
 	HowToFireUI,
@@ -29,7 +18,7 @@ enum class EFireDiscoveryState : uint8
 	HowToCollectActorUI,
 	CollectAndEat,
 	CompleteCollect,
-	 GoToFistAxCourse
+	GoToFistAxCourse
 };
 
 UENUM(BlueprintType)
