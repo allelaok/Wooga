@@ -1,3 +1,20 @@
 ﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\TFG5076XG\Documents\GitHub\Wooga).
-  Target is up to date
-  Total execution time: 0.56 seconds
+  Invalidating makefile for WoogaEditor (source file added)
+  Parsing headers for WoogaEditor
+    Running UnrealHeaderTool "C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Wooga.uproject" "C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\WoogaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\TFG5076XG\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+  Reflection code generated for WoogaEditor in 3.9683783 seconds
+  Building WoogaEditor...
+  Using Visual Studio 2019 14.29.30136 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 8 actions with 16 processes...
+    [1/8] Wooga.init.gen.cpp
+    [2/8] SJ_InformUICreate.gen.cpp
+    [3/8] Wooga.gen.cpp
+    [4/8] SJ_InformUIPannel.gen.cpp
+    [5/8] SJ_InformUICreate.cpp
+    [6/8] UE4Editor-Wooga.lib
+       C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.lib 라이브러리 및 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.exp 개체를 생성하고 있습니다.
+    [7/8] UE4Editor-Wooga.dll
+       C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.suppressed.lib 라이브러리 및 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.suppressed.exp 개체를 생성하고 있습니다.
+    [8/8] WoogaEditor.target
+  Total time in Parallel executor: 9.23 seconds
+  Total execution time: 15.39 seconds
