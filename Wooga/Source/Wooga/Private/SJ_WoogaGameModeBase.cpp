@@ -21,136 +21,69 @@ void ASJ_WoogaGameModeBase::BeginPlay()
 	Super::BeginPlay();
 
 	// 맨 처음 불의 발견 교육으로 시작
-	SetDiscoveryState(EFireDiscoveryState::HowToGrabActorUI);
+	SetState(EFlowState::HowToGrabActorUI);
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
 	GetWorldTimerManager().SetTimer(howToGrabOpenTIme, this, &ASJ_WoogaGameModeBase::OpenGrabUI, 3.0f);
 }
 
+#pragma region FlowStateFunction
 void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-#pragma region FlowStateMachine
+
 	switch (flowState)
 	{
-	case EFlowState::FireDiscovery:
-		FireDiscovery();
-		break;
-	case EFlowState::Collection:
-		Collection();
-		break;
-	case EFlowState::FistAx:
-		FistAx();
-		break;
-	case EFlowState::FireUse:
-		FireUse();
-		break;
-	case EFlowState::Smelts:
-		Smelts();
-		break;
-	case EFlowState::DugoutHut:
-		DogoutHut();
-		break;
-	}
-#pragma endregion
-
-#pragma region DiscoveryStateMachine
-	switch (discoveryState)
-	{
-	case EFireDiscoveryState::HowToGrabActorUI:
+	case EFlowState::HowToGrabActorUI:
 		GrabActorUI();
 		break;
-	case EFireDiscoveryState::HowToFireUI:
+	case EFlowState::HowToFireUI:
 		HowToFireUI();
 		break;
-	case EFireDiscoveryState::Firing:
+	case EFlowState::Firing:
 		Firing();
 		break;
-	case EFireDiscoveryState::CompleteFireDiscovery:
+	case EFlowState::CompleteFireDiscovery:
 		CompleteFireCourse();
 		break;
-	case EFireDiscoveryState::InformWatch:
+	case EFlowState::InformWatch:
 		InformWatch();
 		break;
-	case EFireDiscoveryState::GoToCollectCourse:
-		GoToCollectState();
+	case EFlowState::GoToCollectCourse:
+	GoToCollectState();
 		break;
-	case EFireDiscoveryState::HowToCollectActorUI:
+	case EFlowState::HowToCollectActorUI:
 		HowToCollectActorUI();
 		break;
-	case EFireDiscoveryState::CollectAndEat:
+	case EFlowState::CollectAndEat:
 		CollectAndEat();
 		break;
-	case EFireDiscoveryState::CompleteCollect:
+	case EFlowState::CompleteCollect:
 		CompleteCollect();
 		break;
-	case EFireDiscoveryState::GoToFistAxCourse:
+	case EFlowState::GoToFistAxCourse:
 		GoToFistAxCourse();
 		break;
 	}
-
-#pragma endregion
-
 }
 
-#pragma region FlowStateFunction
 // 캡슐화
-void ASJ_WoogaGameModeBase::SetFlowState(EFlowState state)
+void ASJ_WoogaGameModeBase::SetState(EFlowState state)
 {
 	flowState = state;
 }
 
-EFlowState ASJ_WoogaGameModeBase::GetFlowState()
+EFlowState ASJ_WoogaGameModeBase::GetState()
 {
 	return EFlowState();
-}
-
-void ASJ_WoogaGameModeBase::FireDiscovery()
-{
-
-}
-
-void ASJ_WoogaGameModeBase::Collection()
-{
-
-}
-
-void ASJ_WoogaGameModeBase::FistAx()
-{
-
-}
-
-void ASJ_WoogaGameModeBase::FireUse()
-{
-
-}
-
-void ASJ_WoogaGameModeBase::Smelts()
-{
-
-}
-
-void ASJ_WoogaGameModeBase::DogoutHut()
-{
-
 }
 
 #pragma endregion
 
 #pragma region DiscoveryStateFunction
-void ASJ_WoogaGameModeBase::SetDiscoveryState(EFireDiscoveryState state)
-{
-	discoveryState = state;
-}
-EFireDiscoveryState ASJ_WoogaGameModeBase::GetDiscoveryState()
-{
-	return EFireDiscoveryState();
-}
-
 void ASJ_WoogaGameModeBase::GrabActorUI()
 {
-
 	// 잡는 방법을 알려주는 UI 가 꺼지면 부싯돌을 잡는 상태로 넘어간다.
 	if (player->isClose == true)
 	{
@@ -173,7 +106,7 @@ void ASJ_WoogaGameModeBase::GrabActorUI()
 			fr->outLine->SetVisibility(true);
 		}
 
-		SetDiscoveryState(EFireDiscoveryState::HowToFireUI);
+		SetState(EFlowState::HowToFireUI);
 	}
 }
 
@@ -190,7 +123,7 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 
 		player->uiPannel = GetWorld()->SpawnActor<ASJ_UIPannel>(howToFireUIPannel, Param);
 
-		SetDiscoveryState(EFireDiscoveryState::Firing);
+		SetState(EFlowState::Firing);
 	}
 }
 
@@ -212,7 +145,7 @@ void ASJ_WoogaGameModeBase::Firing()
 			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 			hologram = GetWorld()->SpawnActor<ASJ_Hologram>(fireDisCoveryHologram, Param);
-			SetDiscoveryState(EFireDiscoveryState::CompleteFireDiscovery);
+			SetState(EFlowState::CompleteFireDiscovery);
 		}
 	}
 }
@@ -228,7 +161,7 @@ void ASJ_WoogaGameModeBase::CompleteFireCourse()
 		// 시계 햅틱 기능
 		GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
 
-		SetDiscoveryState(EFireDiscoveryState::InformWatch);
+		SetState(EFlowState::InformWatch);
 	}
 }
 void ASJ_WoogaGameModeBase::InformWatch()
@@ -265,6 +198,7 @@ void ASJ_WoogaGameModeBase::DestroyUI()
 	player->uiPannel->Destroy();
 }
 
+#pragma region CollectStateFunction
 void ASJ_WoogaGameModeBase::HowToCollectActorUI()
 {
 }
@@ -280,3 +214,6 @@ void ASJ_WoogaGameModeBase::CompleteCollect()
 void ASJ_WoogaGameModeBase::GoToFistAxCourse()
 {
 }
+#pragma endregion
+
+

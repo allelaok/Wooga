@@ -22,21 +22,10 @@ public:
 public:
 	// 전체 상태 머신
 	EFlowState flowState;
-	void SetFlowState(EFlowState state);
-	EFlowState GetFlowState();
+	void SetState(EFlowState state);
+	EFlowState GetState();
 
-	void FireDiscovery();
-	void Collection();
-	void FistAx();
-	void FireUse();
-	void Smelts();
-	void DogoutHut();
-
-	// 불의 발견 상태머신
-	EFireDiscoveryState discoveryState;
-	void SetDiscoveryState(EFireDiscoveryState state);
-	EFireDiscoveryState GetDiscoveryState();
-
+	// 불의 발견 교육
 	void GrabActorUI();
 	void HowToFireUI();
 	void Firing();
