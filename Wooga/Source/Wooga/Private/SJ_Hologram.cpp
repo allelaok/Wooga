@@ -5,6 +5,9 @@
 #include <Components/StaticMeshComponent.h>
 #include "VR_Player.h"
 #include <Kismet/GameplayStatics.h>
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
+#include "NiagaraSystem.h"
 
 // Sets default values
 ASJ_Hologram::ASJ_Hologram()
@@ -18,6 +21,7 @@ ASJ_Hologram::ASJ_Hologram()
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComp"));
 	meshComp->SetupAttachment(rootComp);
 	meshComp->CreateDynamicMaterialInstance(0);
+
 }
 
 // Called when the game starts or when spawned
@@ -41,6 +45,14 @@ void ASJ_Hologram::BeginPlay()
 	SetActorRotation(dir.Rotation());
 
 	SetState(EHologramState::TurnOnHologram);
+
+
+	if (destroyFX->IsValid())
+	{
+		auto effect = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), destroyFX, GetActorLocation(), GetActorRotation(), GetActorScale());
+
+	}
+	
 }
 
 // Called every frame

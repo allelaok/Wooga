@@ -29,3 +29,10 @@ enum class EHologramState : uint8
 	TurnOffHologram
 };
 
+UENUM(BlueprintType)
+enum class EBlinkState : uint8
+{
+	OnOpacity,
+	PlayOpacity,
+	OffOpacity
+};

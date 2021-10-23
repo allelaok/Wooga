@@ -8,9 +8,9 @@ public class Wooga : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "AIModule", "NavigationSystem", "UMG", "CableComponent" });
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "AIModule", "NavigationSystem", "UMG", "CableComponent", "Niagara" });
 
-        PrivateDependencyModuleNames.AddRange(new string[] { "HeadMountedDisplay", "CableComponent" });
+        PrivateDependencyModuleNames.AddRange(new string[] { "HeadMountedDisplay", "CableComponent", "Niagara" });
 
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
