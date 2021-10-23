@@ -33,21 +33,24 @@ public:
 	void InformWatch();
 	void GoToCollectState();
 
+	// 시작 시 잡는방법 알려주는 UI 타이머
 	FTimerHandle howToGrabOpenTIme;
-
 	void OpenGrabUI();
 
-	UPROPERTY(EditAnywhere, Category = UI)
-		TSubclassOf<class ASJ_UIPannel> howToGrab;
+	// 잡는 방법 알려주는 UI
+	class ASJ_HowToGrabUIActor* howToGrab;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-		TSubclassOf<class ASJ_UIPannel> howToFireUIPannel;
+	TSubclassOf<class ASJ_HowToGrabUIActor> howToGrabActor;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_UIPannel> howToFireUIPannel;
 
 	UPROPERTY(EditAnywhere, Category = Hologram)
-		TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
+	TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
 
 	UPROPERTY(EditAnywhere, Category = GuideLine)
-		TSubclassOf<class ASJ_GuidLine> goToCollectGuideLine;
+	TSubclassOf<class ASJ_GuidLine> goToCollectGuideLine;
 
 	class ASJ_UIPannel* useUI;
 

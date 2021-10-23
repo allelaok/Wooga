@@ -20,9 +20,6 @@ protected:
 public:
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
-	UPROPERTY(EditDefaultsOnly, BluePrintReadWrite, Category = "Image", meta = (BindWidget))
-	class UImage* howToGrabImg;
-
 	class AVR_Player* player;
 
 	UPROPERTY(EditDefaultsOnly, BluePrintReadWrite, Category = "Animation", meta = (BindWidgetAnim), Transient)

@@ -10,6 +10,7 @@
 #include "SJ_Hologram.h"
 #include "GrabActorComponent.h"
 #include "SJ_GuidLine.h"
+#include "SJ_HowToGrabUIActor.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -51,7 +52,7 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 		InformWatch();
 		break;
 	case EFlowState::GoToCollectCourse:
-	GoToCollectState();
+		GoToCollectState();
 		break;
 	case EFlowState::HowToCollectActorUI:
 		HowToCollectActorUI();
@@ -88,7 +89,6 @@ void ASJ_WoogaGameModeBase::GrabActorUI()
 	if (player->isClose == true)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("OpenHowToFireUI"));
-		GetWorldTimerManager().SetTimer(destroyTimer, this, &ASJ_WoogaGameModeBase::DestroyUI, 3.0f);
 
 		// UI 를 끄면 근처 아웃 라인이 켜지게
 		TArray<AActor*> bpFireRocks;
@@ -190,13 +190,8 @@ void ASJ_WoogaGameModeBase::OpenGrabUI()
 	Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 	// 시작시 잡는 방법 알려주는 UI 생성 코드
-	player->uiPannel = GetWorld()->SpawnActor<ASJ_UIPannel>(howToGrab, Param);
-}
-
-void ASJ_WoogaGameModeBase::DestroyUI()
-{
-	player->uiPannel->Destroy();
-}
+	howToGrab = GetWorld()->SpawnActor<ASJ_HowToGrabUIActor>(howToGrabActor, Param);
+} 
 
 #pragma region CollectStateFunction
 void ASJ_WoogaGameModeBase::HowToCollectActorUI()

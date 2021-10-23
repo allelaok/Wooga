@@ -15,6 +15,7 @@ public:
 	// Sets default values for this actor's properties
 	ASJ_HowToGrabUIActor();
 
+	// ∑Á∆Æ
 	UPROPERTY(VisibleDefaultsOnly, Category = Controller)
 		class USceneComponent* rootComp;
 
@@ -47,6 +48,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	class AVR_Player* player;
+
 	EBlinkState blink;
 	EBlinkState GetState();
 	void SetState(EBlinkState state);
@@ -58,4 +61,6 @@ public:
 	float createTime;
 	float startParam;
 
+	float destroyTime;
+	float destroyParam;
 };

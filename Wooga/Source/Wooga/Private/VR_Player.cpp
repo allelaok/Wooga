@@ -35,8 +35,6 @@ AVR_Player::AVR_Player()
 	// Player Collision Setting
 	capsuleComp->SetCollisionProfileName(TEXT("VR_Player"));
 
-	
-
 	// Camera Location 생성
 	cameraRoot = CreateDefaultSubobject<USceneComponent>(TEXT("Camera Root"));
 	// CapsuleComp 에 붙임
@@ -51,8 +49,6 @@ AVR_Player::AVR_Player()
 	playerCam = CreateDefaultSubobject<UCameraComponent>(TEXT("MainCamera"));
 	// Camera Location 에 붙임
 	playerCam->SetupAttachment(cameraRoot);
-
-
 
 	// LeftController 생성
 	leftController = CreateDefaultSubobject<UMotionControllerComponent>(TEXT("LeftMotionController"));
@@ -160,7 +156,6 @@ void AVR_Player::Tick(float DeltaTime)
 			isClose = false;
 			change = 0;
 		}
-
 	}
 }
 

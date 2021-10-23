@@ -21,8 +21,6 @@ void USJ_HowToGrabUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	if (player->isClose == true)
 	{
 		Close();
-		// player->isClose = false;
-		// SetVisibility(ESlateVisibility::Hidden);
 	}
 }
 

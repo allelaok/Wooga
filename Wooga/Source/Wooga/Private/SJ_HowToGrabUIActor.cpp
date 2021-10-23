@@ -2,9 +2,10 @@
 
 
 #include "SJ_HowToGrabUIActor.h"
-#include "Components/StaticMeshComponent.h"
 #include <Components/StaticMeshComponent.h>
 #include <Components/WidgetComponent.h>
+#include "VR_Player.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 ASJ_HowToGrabUIActor::ASJ_HowToGrabUIActor()
@@ -42,6 +43,20 @@ void ASJ_HowToGrabUIActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
+
+	float playerX = player->GetActorLocation().X;
+	float playerY = player->GetActorLocation().Y;
+	float playerZ = player->GetActorLocation().Z;
+
+	FVector p = FVector(playerX + 300, playerY, playerZ);
+
+	SetActorLocation(p);
+
+	/*FVector dir = player->GetActorLocation() - GetActorLocation();
+	dir.Normalize();
+
+	SetActorRotation(dir.Rotation());*/
 }
 
 // Called every frame
@@ -86,15 +101,32 @@ void ASJ_HowToGrabUIActor::OnOpacity()
 
 	if (createTime >= 2.0f)
 	{
-		SetState(EBlinkState::OnOpacity);
+		SetState(EBlinkState::PlayOpacity);
 	}
 }
 
 void ASJ_HowToGrabUIActor::PlayOpacity()
 {
+	if (player->isClose == true)
+	{
+		SetState(EBlinkState::OffOpacity);
+	}
 }
 
 void ASJ_HowToGrabUIActor::OffOpacity()
 {
+	destroyTime += GetWorld()->DeltaTimeSeconds;
+	destroyParam = FMath::Lerp(1.0f, -1.0f, destroyTime * 0.5f);
+
+	body->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
+	grib->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
+	handle->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
+	trigger->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
+	button->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
+
+	if (destroyTime >= 2.0f)
+	{
+		Destroy();
+	}
 }
 
