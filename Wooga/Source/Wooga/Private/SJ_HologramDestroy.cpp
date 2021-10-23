@@ -38,7 +38,7 @@ void ASJ_HologramDestroy::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FVector me = GetActorLocation();
-	FVector target = player->playerWatch->GetComponentLocation();
+	FVector target = player->GetActorLocation();
 	FVector dir = target - me;
 	dir.Normalize();
 

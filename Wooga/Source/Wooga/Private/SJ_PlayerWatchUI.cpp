@@ -19,13 +19,13 @@ void USJ_PlayerWatchUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 
 	// hungryGaze->Percent = 0.1;
 
-	if (player->knoweldgePoint == 1)
-	{
+	//if (player->knoweldgePoint == 1)
+	//{
 		UE_LOG(LogTemp, Warning, TEXT("WWAWAWAWAWAW"));
 		PlayAnimation(FireDiscoveryClear);
 
 		hungryGaze->Percent = 0.7;
-	}
+	//}
 }
 
 void USJ_PlayerWatchUI::FireDiscovery()
