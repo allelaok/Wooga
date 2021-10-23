@@ -16,7 +16,7 @@
 	],
 	"Plugins": [
 		{
-			"Name": "CascadeToNiagaraConverter",
+			"Name": "NiagaraExtras",
 			"Enabled": true
 		}
 	],

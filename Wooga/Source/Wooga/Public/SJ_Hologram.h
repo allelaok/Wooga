@@ -48,4 +48,7 @@ public:
 
 	float destroyTime;
 	float destroyParam;
+
+	UPROPERTY(EditAnywhere, Category = "FX")
+	class UNiagaraSystem* destroyFX;
 };
