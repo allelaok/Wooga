@@ -27,13 +27,19 @@ public:
 		class UStaticMeshComponent* boxComp;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
-		class UStaticMeshComponent* base;
-
-	UPROPERTY(EditAnywhere,BlueprintReadWrite ,Category = Setting)
-		class USkeletalMeshComponent* cable;
+		class UStaticMeshComponent* top;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
-		class UPhysicsConstraintComponent* baseRope;
+		class UStaticMeshComponent* mid;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UStaticMeshComponent* bottom;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UPhysicsConstraintComponent* constraint1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UPhysicsConstraintComponent* constraint2;
 
 
 	// 소켓에 넣을떄 Offset 값을 조정

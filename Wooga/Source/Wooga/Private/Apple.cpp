@@ -4,6 +4,10 @@
 #include "Apple.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include <Kismet/GameplayStatics.h>
+#include "NiagaraFunctionLibrary.h"
+
+
 
 // Sets default values
 AApple::AApple()
@@ -15,8 +19,8 @@ AApple::AApple()
 	SetRootComponent(boxComp);
 
 	// 물리 관련 설정
-	boxComp->SetSimulatePhysics(true);
-	boxComp->SetEnableGravity(true);
+	boxComp->SetSimulatePhysics(false);
+	boxComp->SetEnableGravity(false);
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
@@ -31,13 +35,16 @@ void AApple::BeginPlay()
 {
 	Super::BeginPlay();
 	
-
+	FVector explosionLoc = GetActorLocation();
+	UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), explosion, explosionLoc);
+		
+	
 }
 
 // Called every frame
 void AApple::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
 }
 

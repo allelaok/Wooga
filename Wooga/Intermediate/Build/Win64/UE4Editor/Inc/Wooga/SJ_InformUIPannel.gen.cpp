@@ -24,6 +24,8 @@ void EmptyLinkFunctionForGeneratedCodeSJ_InformUIPannel() {}
 	UMG_API UClass* Z_Construct_UClass_UWidgetComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	WOOGA_API UClass* Z_Construct_UClass_ASJ_InformUICreate_NoRegister();
 // End Cross Module References
 	DEFINE_FUNCTION(ASJ_InformUIPannel::execRangeIn)
 	{
@@ -154,6 +156,10 @@ void EmptyLinkFunctionForGeneratedCodeSJ_InformUIPannel() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_informMark_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_informMark;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_informUICreate_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FClassPropertyParams NewProp_informUICreate;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -203,11 +209,19 @@ void EmptyLinkFunctionForGeneratedCodeSJ_InformUIPannel() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informMark = { "informMark", nullptr, (EPropertyFlags)0x0010000000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASJ_InformUIPannel, informMark), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informMark_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informMark_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informUICreate_MetaData[] = {
+		{ "Category", "UI" },
+		{ "ModuleRelativePath", "Public/SJ_InformUIPannel.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informUICreate = { "informUICreate", nullptr, (EPropertyFlags)0x0014000000000001, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASJ_InformUIPannel, informUICreate), Z_Construct_UClass_ASJ_InformUICreate_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informUICreate_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informUICreate_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ASJ_InformUIPannel_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_rootComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informUI,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_range,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informMark,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASJ_InformUIPannel_Statics::NewProp_informUICreate,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ASJ_InformUIPannel_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ASJ_InformUIPannel>::IsAbstract,
@@ -236,7 +250,7 @@ void EmptyLinkFunctionForGeneratedCodeSJ_InformUIPannel() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASJ_InformUIPannel, 1557046973);
+	IMPLEMENT_CLASS(ASJ_InformUIPannel, 1661067185);
 	template<> WOOGA_API UClass* StaticClass<ASJ_InformUIPannel>()
 	{
 		return ASJ_InformUIPannel::StaticClass();

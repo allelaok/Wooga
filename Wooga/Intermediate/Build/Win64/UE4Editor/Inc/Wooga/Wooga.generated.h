@@ -25,28 +25,17 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 enum class EHologramState : uint8;
 template<> WOOGA_API UEnum* StaticEnum<EHologramState>();
 
-#define FOREACH_ENUM_EFIREDISCOVERYSTATE(op) \
-	op(EFireDiscoveryState::HowToGrabActorUI) \
-	op(EFireDiscoveryState::HowToFireUI) \
-	op(EFireDiscoveryState::Firing) \
-	op(EFireDiscoveryState::CompleteFireDiscovery) \
-	op(EFireDiscoveryState::InformWatch) \
-	op(EFireDiscoveryState::GoToCollectCourse) \
-	op(EFireDiscoveryState::HowToCollectActorUI) \
-	op(EFireDiscoveryState::CollectAndEat) \
-	op(EFireDiscoveryState::CompleteCollect) \
-	op(EFireDiscoveryState::GoToFistAxCourse) 
-
-enum class EFireDiscoveryState : uint8;
-template<> WOOGA_API UEnum* StaticEnum<EFireDiscoveryState>();
-
 #define FOREACH_ENUM_EFLOWSTATE(op) \
-	op(EFlowState::FireDiscovery) \
-	op(EFlowState::Collection) \
-	op(EFlowState::FistAx) \
-	op(EFlowState::FireUse) \
-	op(EFlowState::Smelts) \
-	op(EFlowState::DugoutHut) 
+	op(EFlowState::HowToGrabActorUI) \
+	op(EFlowState::HowToFireUI) \
+	op(EFlowState::Firing) \
+	op(EFlowState::CompleteFireDiscovery) \
+	op(EFlowState::InformWatch) \
+	op(EFlowState::GoToCollectCourse) \
+	op(EFlowState::HowToCollectActorUI) \
+	op(EFlowState::CollectAndEat) \
+	op(EFlowState::CompleteCollect) \
+	op(EFlowState::GoToFistAxCourse) 
 
 enum class EFlowState : uint8;
 template<> WOOGA_API UEnum* StaticEnum<EFlowState>();
