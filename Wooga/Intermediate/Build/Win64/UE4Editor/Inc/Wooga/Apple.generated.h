@@ -13,10 +13,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define WOOGA_Apple_generated_h
 
-#define Wooga_Source_Wooga_Public_Apple_h_12_SPARSE_DATA
-#define Wooga_Source_Wooga_Public_Apple_h_12_RPC_WRAPPERS
-#define Wooga_Source_Wooga_Public_Apple_h_12_RPC_WRAPPERS_NO_PURE_DECLS
-#define Wooga_Source_Wooga_Public_Apple_h_12_INCLASS_NO_PURE_DECLS \
+#define Wooga_Source_Wooga_Public_Apple_h_14_SPARSE_DATA
+#define Wooga_Source_Wooga_Public_Apple_h_14_RPC_WRAPPERS
+#define Wooga_Source_Wooga_Public_Apple_h_14_RPC_WRAPPERS_NO_PURE_DECLS
+#define Wooga_Source_Wooga_Public_Apple_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAApple(); \
 	friend struct Z_Construct_UClass_AApple_Statics; \
@@ -25,7 +25,7 @@ public: \
 	DECLARE_SERIALIZER(AApple)
 
 
-#define Wooga_Source_Wooga_Public_Apple_h_12_INCLASS \
+#define Wooga_Source_Wooga_Public_Apple_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesAApple(); \
 	friend struct Z_Construct_UClass_AApple_Statics; \
@@ -34,7 +34,7 @@ public: \
 	DECLARE_SERIALIZER(AApple)
 
 
-#define Wooga_Source_Wooga_Public_Apple_h_12_STANDARD_CONSTRUCTORS \
+#define Wooga_Source_Wooga_Public_Apple_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AApple(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AApple) \
@@ -47,7 +47,7 @@ private: \
 public:
 
 
-#define Wooga_Source_Wooga_Public_Apple_h_12_ENHANCED_CONSTRUCTORS \
+#define Wooga_Source_Wooga_Public_Apple_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AApple(AApple&&); \
@@ -58,28 +58,28 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AApple); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AApple)
 
 
-#define Wooga_Source_Wooga_Public_Apple_h_12_PRIVATE_PROPERTY_OFFSET
-#define Wooga_Source_Wooga_Public_Apple_h_9_PROLOG
-#define Wooga_Source_Wooga_Public_Apple_h_12_GENERATED_BODY_LEGACY \
+#define Wooga_Source_Wooga_Public_Apple_h_14_PRIVATE_PROPERTY_OFFSET
+#define Wooga_Source_Wooga_Public_Apple_h_11_PROLOG
+#define Wooga_Source_Wooga_Public_Apple_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Wooga_Source_Wooga_Public_Apple_h_12_PRIVATE_PROPERTY_OFFSET \
-	Wooga_Source_Wooga_Public_Apple_h_12_SPARSE_DATA \
-	Wooga_Source_Wooga_Public_Apple_h_12_RPC_WRAPPERS \
-	Wooga_Source_Wooga_Public_Apple_h_12_INCLASS \
-	Wooga_Source_Wooga_Public_Apple_h_12_STANDARD_CONSTRUCTORS \
+	Wooga_Source_Wooga_Public_Apple_h_14_PRIVATE_PROPERTY_OFFSET \
+	Wooga_Source_Wooga_Public_Apple_h_14_SPARSE_DATA \
+	Wooga_Source_Wooga_Public_Apple_h_14_RPC_WRAPPERS \
+	Wooga_Source_Wooga_Public_Apple_h_14_INCLASS \
+	Wooga_Source_Wooga_Public_Apple_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Wooga_Source_Wooga_Public_Apple_h_12_GENERATED_BODY \
+#define Wooga_Source_Wooga_Public_Apple_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Wooga_Source_Wooga_Public_Apple_h_12_PRIVATE_PROPERTY_OFFSET \
-	Wooga_Source_Wooga_Public_Apple_h_12_SPARSE_DATA \
-	Wooga_Source_Wooga_Public_Apple_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	Wooga_Source_Wooga_Public_Apple_h_12_INCLASS_NO_PURE_DECLS \
-	Wooga_Source_Wooga_Public_Apple_h_12_ENHANCED_CONSTRUCTORS \
+	Wooga_Source_Wooga_Public_Apple_h_14_PRIVATE_PROPERTY_OFFSET \
+	Wooga_Source_Wooga_Public_Apple_h_14_SPARSE_DATA \
+	Wooga_Source_Wooga_Public_Apple_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	Wooga_Source_Wooga_Public_Apple_h_14_INCLASS_NO_PURE_DECLS \
+	Wooga_Source_Wooga_Public_Apple_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

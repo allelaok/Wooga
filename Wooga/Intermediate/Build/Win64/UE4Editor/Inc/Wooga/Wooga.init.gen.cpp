@@ -21,8 +21,8 @@ void EmptyLinkFunctionForGeneratedCodeWooga_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xF288DEAC,
-				0x4C2B2441,
+				0xE95D01B4,
+				0x1827706C,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);

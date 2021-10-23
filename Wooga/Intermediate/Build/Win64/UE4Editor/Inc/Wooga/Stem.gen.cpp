@@ -18,7 +18,6 @@ void EmptyLinkFunctionForGeneratedCodeStem() {}
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_Wooga();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
-	ENGINE_API UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UPhysicsConstraintComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 // End Cross Module References
@@ -40,17 +39,25 @@ void EmptyLinkFunctionForGeneratedCodeStem() {}
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_boxComp;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_base_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_top_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_base;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_top;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_cable_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_mid_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_cable;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_mid;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_baseRope_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_bottom_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_baseRope;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_bottom;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_constraint1_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_constraint1;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_constraint2_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_constraint2;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_grabOffset_MetaData[];
 #endif
@@ -78,29 +85,45 @@ void EmptyLinkFunctionForGeneratedCodeStem() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_boxComp = { "boxComp", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, boxComp), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_boxComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_boxComp_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_base_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_top_MetaData[] = {
 		{ "Category", "Setting" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Stem.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_base = { "base", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, base), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_base_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_base_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_top = { "top", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, top), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_top_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_top_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_cable_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_mid_MetaData[] = {
 		{ "Category", "Setting" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Stem.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_cable = { "cable", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, cable), Z_Construct_UClass_USkeletalMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_cable_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_cable_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_mid = { "mid", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, mid), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_mid_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_mid_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_baseRope_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_bottom_MetaData[] = {
 		{ "Category", "Setting" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Stem.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_baseRope = { "baseRope", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, baseRope), Z_Construct_UClass_UPhysicsConstraintComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_baseRope_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_baseRope_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_bottom = { "bottom", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, bottom), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_bottom_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_bottom_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_constraint1_MetaData[] = {
+		{ "Category", "Setting" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Stem.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_constraint1 = { "constraint1", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, constraint1), Z_Construct_UClass_UPhysicsConstraintComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_constraint1_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_constraint1_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_constraint2_MetaData[] = {
+		{ "Category", "Setting" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Stem.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_constraint2 = { "constraint2", nullptr, (EPropertyFlags)0x001000000008000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, constraint2), Z_Construct_UClass_UPhysicsConstraintComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_constraint2_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_constraint2_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AStem_Statics::NewProp_grabOffset_MetaData[] = {
 		{ "Category", "Setting" },
@@ -112,9 +135,11 @@ void EmptyLinkFunctionForGeneratedCodeStem() {}
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_AStem_Statics::NewProp_grabOffset = { "grabOffset", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AStem, grabOffset), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_AStem_Statics::NewProp_grabOffset_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AStem_Statics::NewProp_grabOffset_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AStem_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_boxComp,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_base,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_cable,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_baseRope,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_top,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_mid,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_bottom,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_constraint1,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_constraint2,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AStem_Statics::NewProp_grabOffset,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AStem_Statics::StaticCppClassTypeInfo = {
@@ -144,7 +169,7 @@ void EmptyLinkFunctionForGeneratedCodeStem() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AStem, 1930933644);
+	IMPLEMENT_CLASS(AStem, 1375113713);
 	template<> WOOGA_API UClass* StaticClass<AStem>()
 	{
 		return AStem::StaticClass();

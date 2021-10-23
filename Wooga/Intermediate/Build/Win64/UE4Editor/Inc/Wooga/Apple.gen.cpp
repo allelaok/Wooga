@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeApple() {}
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	NIAGARA_API UClass* Z_Construct_UClass_UNiagaraSystem_NoRegister();
 // End Cross Module References
 	void AApple::StaticRegisterNativesAApple()
 	{
@@ -50,6 +51,10 @@ void EmptyLinkFunctionForGeneratedCodeApple() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_grabOffset_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_grabOffset;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_explosion_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_explosion;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -97,11 +102,19 @@ void EmptyLinkFunctionForGeneratedCodeApple() {}
 	};
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_AApple_Statics::NewProp_grabOffset = { "grabOffset", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AApple, grabOffset), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_AApple_Statics::NewProp_grabOffset_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AApple_Statics::NewProp_grabOffset_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AApple_Statics::NewProp_explosion_MetaData[] = {
+		{ "Category", "PickUPSettings" },
+		{ "ModuleRelativePath", "Public/Apple.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AApple_Statics::NewProp_explosion = { "explosion", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AApple, explosion), Z_Construct_UClass_UNiagaraSystem_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AApple_Statics::NewProp_explosion_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AApple_Statics::NewProp_explosion_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AApple_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AApple_Statics::NewProp_boxComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AApple_Statics::NewProp_meshComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AApple_Statics::NewProp_outLine,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AApple_Statics::NewProp_grabOffset,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AApple_Statics::NewProp_explosion,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AApple_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AApple>::IsAbstract,
@@ -130,7 +143,7 @@ void EmptyLinkFunctionForGeneratedCodeApple() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AApple, 204438480);
+	IMPLEMENT_CLASS(AApple, 2406219610);
 	template<> WOOGA_API UClass* StaticClass<AApple>()
 	{
 		return AApple::StaticClass();
