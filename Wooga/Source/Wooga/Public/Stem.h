@@ -41,6 +41,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
 		class UPhysicsConstraintComponent* constraint2;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UStaticMeshComponent* topLoc;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UStaticMeshComponent* midLoc;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
+		class UStaticMeshComponent* bottomLoc;
+
 
 	// 소켓에 넣을떄 Offset 값을 조정
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)

@@ -441,13 +441,15 @@ void UGrabActorComponent::RGripApple(AActor* grabActor)
 			appleR->boxComp->SetSimulatePhysics(false);
 			appleR->boxComp->SetEnableGravity(true);
 
-			stemR->mid->SetSimulatePhysics(true);
-			stemR->mid->SetEnableGravity(true);
-			stemL->mid->SetSimulatePhysics(true);
-			stemL->mid->SetEnableGravity(true);
+			stemR->midLoc->SetSimulatePhysics(true);
+			stemR->midLoc->SetEnableGravity(true);
+			stemL->midLoc->SetSimulatePhysics(true);
+			stemL->midLoc->SetEnableGravity(true);
 
-			stemR->bottom->SetSimulatePhysics(true);
-			stemR->bottom->SetEnableGravity(true);
+			stemR->bottomLoc->SetSimulatePhysics(true);
+			stemR->bottomLoc->SetEnableGravity(true);
+			stemL->bottomLoc->SetSimulatePhysics(true);
+			stemL->bottomLoc->SetEnableGravity(true);
 
 
 			appleR->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
@@ -480,13 +482,15 @@ void UGrabActorComponent::LGripApple(AActor* grabActor)
 			appleL->boxComp->SetSimulatePhysics(false);
 			appleL->boxComp->SetEnableGravity(true);
 
-			stemR->mid->SetSimulatePhysics(true);
-			stemR->mid->SetEnableGravity(true);
-			stemL->mid->SetSimulatePhysics(true);
-			stemL->mid->SetEnableGravity(true);
+			stemR->midLoc->SetSimulatePhysics(true);
+			stemR->midLoc->SetEnableGravity(true);
+			stemL->midLoc->SetSimulatePhysics(true);
+			stemL->midLoc->SetEnableGravity(true);
 
-			stemR->bottom->SetSimulatePhysics(true);
-			stemR->bottom->SetEnableGravity(true);
+			stemR->bottomLoc->SetSimulatePhysics(true);
+			stemR->bottomLoc->SetEnableGravity(true);
+			stemL->bottomLoc->SetSimulatePhysics(true);
+			stemL->bottomLoc->SetEnableGravity(true);
 
 
 			appleL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));

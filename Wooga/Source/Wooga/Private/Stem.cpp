@@ -3,6 +3,7 @@
 #include "Stem.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/BoxComponent.h"
+#include "Components/SceneComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Apple.h"
 #include "PhysicsEngine/PhysicsConstraintComponent.h"
@@ -19,21 +20,36 @@ AStem::AStem()
 	boxComp->SetSimulatePhysics(false);
 	boxComp->SetEnableGravity(false);
 
+	topLoc = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TopLoc"));
+	topLoc->SetupAttachment(boxComp);
+
 	top = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Top"));
+	top->SetupAttachment(topLoc);
 	top->SetSimulatePhysics(false);
 	top->SetEnableGravity(false);
 
+	midLoc = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MidLoc"));
+	midLoc->SetupAttachment(boxComp);
+
 	mid = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mid"));
+	mid->SetupAttachment(midLoc);
 	mid->SetSimulatePhysics(false);
 	mid->SetEnableGravity(false);
 
+	bottomLoc = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BottomLoc"));
+	bottomLoc->SetupAttachment(boxComp);
+
 	bottom = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Bottom"));
+	bottom->SetupAttachment(bottomLoc);
 	bottom->SetSimulatePhysics(false);
 	bottom->SetEnableGravity(false);
 
 	constraint1 = CreateDefaultSubobject<UPhysicsConstraintComponent>(TEXT("Constraint1"));
+	constraint1->SetupAttachment(boxComp);
 
 	constraint2 = CreateDefaultSubobject<UPhysicsConstraintComponent>(TEXT("Constraint2"));
+	constraint2->SetupAttachment(boxComp);
+
 }
 
 // Called when the game starts or when spawned
