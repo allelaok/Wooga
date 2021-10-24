@@ -25,8 +25,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-
-
+	UFUNCTION()
+		void OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UBoxComponent* boxComp;
@@ -43,4 +43,23 @@ public:
 
  	UPROPERTY(EditAnywhere, Category = PickUPSettings)
  	UNiagaraSystem* explosion;
+
+	// sound
+	const UObject* WorldContextObject;
+
+	UPROPERTY(EditAnywhere, Category = "Sound")
+		USoundBase* SoundBase;
+
+	UPROPERTY()
+		FVector location;
+	UPROPERTY()
+		FRotator rotation;
+
+	float VolumeMultiplier = 1.f;
+	float PitchMultiplier = 1.f;
+	float StartTime = 0.f;
+	class USoundAttenuation* AttenuationSettings;
+	USoundConcurrency* ConcurrencySettings;
+	bool bAutoDestroy = false;
+	int32 overlabCount = 0;
 };

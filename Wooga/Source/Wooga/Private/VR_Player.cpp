@@ -42,13 +42,16 @@ AVR_Player::AVR_Player()
 	// Camera Location
 	cameraRoot->SetRelativeLocation(FVector(0, 0, 30.0f));
 
-	headComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Component"));
-	headComp->SetupAttachment(cameraRoot);
-
 	// Main Camera 积己
 	playerCam = CreateDefaultSubobject<UCameraComponent>(TEXT("MainCamera"));
 	// Camera Location 俊 嘿烙
 	playerCam->SetupAttachment(cameraRoot);
+
+	headComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Head Component"));
+	headComp->SetupAttachment(cameraRoot);
+
+	mouthComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Mouth Component"));
+	mouthComp->SetupAttachment(cameraRoot);
 
 	// LeftController 积己
 	leftController = CreateDefaultSubobject<UMotionControllerComponent>(TEXT("LeftMotionController"));
@@ -146,6 +149,13 @@ void AVR_Player::BeginPlay()
 void AVR_Player::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	UHeadMountedDisplayFunctionLibrary::GetOrientationAndPosition(headRotate, headLocation);
+	headRotateYaw = headRotate.Yaw;
+	headComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
+	mouthComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
+
+
 
 	if (isClose == true)
 	{

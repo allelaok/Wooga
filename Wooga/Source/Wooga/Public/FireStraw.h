@@ -47,4 +47,29 @@ public:
 		float fireCurrentTime = 0;
 
 		bool isClear;
+
+		// sound
+		const UObject* WorldContextObject;
+
+		UPROPERTY(EditAnywhere, Category = "Sound")
+			USoundBase* SoundBase;
+
+		UPROPERTY(EditAnywhere, Category = "Sound")
+			USoundBase* SoundBase2;
+
+		UPROPERTY(EditAnywhere, Category = "Sound")
+			USoundBase* SoundBase3;
+
+		UPROPERTY()
+			FVector location;
+		UPROPERTY()
+			FRotator rotation;
+
+		float VolumeMultiplier = 1.f;
+		float PitchMultiplier = 1.f;
+		float StartTime = 0.f;
+		class USoundAttenuation* AttenuationSettings;
+		USoundConcurrency* ConcurrencySettings;
+		bool bAutoDestroy = false;
+		int32 overlabCount = 0;
 };

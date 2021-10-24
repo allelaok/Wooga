@@ -57,4 +57,10 @@ public:
 
 	UPROPERTY()
 		class AVR_Player* player;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+	class UMaterial* offMaterial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UMaterial* onMaterial;
 };

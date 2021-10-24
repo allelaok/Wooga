@@ -39,6 +39,10 @@ ALastHouse::ALastHouse()
 
 	tree7 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("tree7"));
 	tree7->SetupAttachment(sceneComponent);
+
+	offMaterial = CreateDefaultSubobject<UMaterial>(TEXT("Off Material"));
+
+	onMaterial = CreateDefaultSubobject<UMaterial>(TEXT("On Material"));
 }
 
 // Called when the game starts or when spawned
@@ -56,6 +60,8 @@ void ALastHouse::BeginPlay()
 	tree5->OnComponentBeginOverlap.AddDynamic(this, &ALastHouse::OnCollisionEnter);
 	tree6->OnComponentBeginOverlap.AddDynamic(this, &ALastHouse::OnCollisionEnter);
 	tree7->OnComponentBeginOverlap.AddDynamic(this, &ALastHouse::OnCollisionEnter);
+
+	tree1->SetMaterial(0, offMaterial);
 }
 
 // Called every frame
@@ -76,6 +82,8 @@ void ALastHouse::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, cla
 			player->grabComp->RightReleaseAction();
 
 			stick->SetActorLocationAndRotation(tree1->GetComponentLocation(), tree1->GetComponentRotation());
+
+			tree1->SetMaterial(0, onMaterial);
 		}
 
 		if (player->grabComp->bisStickL == true)
@@ -84,6 +92,8 @@ void ALastHouse::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, cla
 
 			FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
 			stick->AttachToComponent(tree1, attachRules);
+
+			tree1->SetMaterial(0, onMaterial);
 		}
 	}
 }

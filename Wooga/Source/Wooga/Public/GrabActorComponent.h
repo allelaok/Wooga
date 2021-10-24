@@ -87,4 +87,5 @@ public:
 	bool bisLeftGrab = false;
 	bool bisStickR = false;
 	bool bisStickL = false;
+	bool bisGrabApple = false;
 };

@@ -39,14 +39,16 @@ void AFirePosition::Tick(float DeltaTime)
 	{
 		if (bisFire == false)
 		{
+			// Sound
+
+			location = this->GetActorLocation();
+			rotation = this->GetActorRotation();
+
+			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+
 			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), emberFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 			bisFire = true;
 		}
 	}
-}
-
-void AFirePosition::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-
 }
 

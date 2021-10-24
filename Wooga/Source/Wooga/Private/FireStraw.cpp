@@ -49,17 +49,16 @@ void AFireStraw::Tick(float DeltaTime)
 		{
 			if (smogCurrentTime >= 5.f)
 			{
-				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), smogFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
-				bisSmog = true;
-			}
-		}
+				// Sound
 
-		if (bisFire == false)
-		{
-			if (fireCurrentTime >= 10.f)
-			{
+				location = this->GetActorLocation();
+				rotation = this->GetActorRotation();
+
+				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase2, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+				UAudioComponent* MySound2 = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase3, location, rotation, VolumeMultiplier * 2, PitchMultiplier * 2, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+				
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), fireFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
-				bisFire = true;
+				bisSmog = true;
 				isClear = true;
 			}
 		}
@@ -76,19 +75,29 @@ void AFireStraw::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, cla
 	{
 		if (firePosition->bisFire == true)
 		{
+			location = this->GetActorLocation();
+			rotation = this->GetActorRotation();
+
+			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), smogFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 			bisReadyFire = true;
+			firePosition->Destroy();
 		}
 	}
 	if (bisReadyFire == true)
 	{
 		if (player)
 		{
-			if (player->headComp)
+			if (player->mouthComp)
 			{
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Fireeeeeeeeeeeeeeee!!")));
 				bisOverlab = true;
 			}
 		}
+	}
+	else
+	{
+		return;
 	}
 }
 

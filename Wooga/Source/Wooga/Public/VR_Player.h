@@ -38,6 +38,10 @@ public:
 			class UCameraComponent* playerCam;
 		UPROPERTY(EditAnywhere, Category = PickUPSettings)
 			class UBoxComponent* headComp;
+
+		UPROPERTY(EditAnywhere, Category = PickUPSettings)
+			class UBoxComponent* mouthComp;
+
 		// LeftController
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = PlayerSettings)
 			class UMotionControllerComponent* leftController;
@@ -85,12 +89,18 @@ public:
 
 public:
 	void ResetHMD();
+	
 
 	FRotator hmdRotation;
 	FVector hmdLocation;
 
 	FRotator hmdRotation2;
 	FVector hmdLocation2;
+
+	FRotator headRotate;
+	FVector headLocation;
+
+	float headRotateYaw;
 
 	float change;
 };
