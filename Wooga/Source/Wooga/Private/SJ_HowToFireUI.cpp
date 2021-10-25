@@ -24,9 +24,4 @@ void USJ_HowToFireUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	{
 		PlayAnimation(CloseUI);
 	}
-
-	if (howToFireImg->GetVisibility() == ESlateVisibility::Visible)
-	{
-
-	}
 }

@@ -53,5 +53,5 @@ public:
 	class UNiagaraSystem* destroyFX;
 
 	UPROPERTY(EditAnywhere, Category = Point)
-	TSubclassOf<class ASJ_KnoweldgePoint> knowledgePoint;
+	TSubclassOf<class AFireEvent> knowledgePoint;
 };

@@ -9,6 +9,7 @@
 #include "NiagaraComponent.h"
 #include "NiagaraSystem.h"
 #include "SJ_KnoweldgePoint.h"
+#include "FireEvent.h"
 
 // Sets default values
 ASJ_Hologram::ASJ_Hologram()
@@ -29,14 +30,13 @@ ASJ_Hologram::ASJ_Hologram()
 void ASJ_Hologram::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
-	float playerX = player->GetActorLocation().X;
-	float playerY = player->GetActorLocation().Y;
-	float playerZ = player->GetActorLocation().Z;
+	FVector playerLoc = player->GetActorLocation();
+	FVector me = GetActorLocation();
 
-	FVector p = FVector(playerX + 300, playerY, playerZ);
+	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 300;
 
 	SetActorLocation(p);
 
@@ -112,7 +112,7 @@ void ASJ_Hologram::PlayHologram()
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-		GetWorld()->SpawnActor<ASJ_KnoweldgePoint>(knowledgePoint,  GetActorLocation(), GetActorRotation(), Param);
+		GetWorld()->SpawnActor<AFireEvent>(knowledgePoint,  GetActorLocation(), GetActorRotation(), Param);
 	}
 }
 

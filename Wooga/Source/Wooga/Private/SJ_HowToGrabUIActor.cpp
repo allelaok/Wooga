@@ -43,6 +43,8 @@ ASJ_HowToGrabUIActor::ASJ_HowToGrabUIActor()
 void ASJ_HowToGrabUIActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SetState(EBlinkState::OnOpacity);
 	
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 

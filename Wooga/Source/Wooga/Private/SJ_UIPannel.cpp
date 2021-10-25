@@ -30,11 +30,10 @@ void ASJ_UIPannel::BeginPlay()
 	
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 	
-	float playerX = player->GetActorLocation().X;
-	float playerY = player->GetActorLocation().Y;
-	float playerZ = player->GetActorLocation().Z;
+	FVector playerLoc = player->GetActorLocation();
+	FVector me = GetActorLocation();
 
-	FVector p = FVector(playerX + 300, playerY, playerZ);
+	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 300;
 
 	SetActorLocation(p);
 

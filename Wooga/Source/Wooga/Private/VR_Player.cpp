@@ -18,6 +18,7 @@
 #include <Kismet/GameplayStatics.h>
 #include <DrawDebugHelpers.h>
 #include <Components/WidgetComponent.h>
+#include "FIreEvent.h"
 
 // Sets default values
 AVR_Player::AVR_Player()
@@ -199,8 +200,8 @@ void AVR_Player::ResetHMD()
 
 void AVR_Player::OverlapKnowledgePoint(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	FString name = OtherActor->GetName();
-	if (name.Contains("KnoweldgePoint"))
+	auto fireEvent = Cast<AFireEvent>(OtherActor);
+	if (fireEvent)
 	{
 		knowledgePoint = 1;
 		isPlayAnim = true;
