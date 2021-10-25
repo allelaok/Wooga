@@ -16,22 +16,7 @@ public:
 	ASJ_GuidLine();
 
 	UPROPERTY(EditDefaultsOnly, Category = Guide)
-	class USceneComponent* root;
-
-	UPROPERTY(EditDefaultsOnly, Category = Guide)
-	class UStaticMeshComponent* line1;
-
-	UPROPERTY(EditDefaultsOnly, Category = Guide)
-		class UStaticMeshComponent* line2;
-
-	UPROPERTY(EditDefaultsOnly, Category = Guide)
-		class UStaticMeshComponent* line3;
-
-	UPROPERTY(EditDefaultsOnly, Category = Guide)
-		class UStaticMeshComponent* line4;
-
-	UPROPERTY(EditDefaultsOnly, Category = Guide)
-		class UStaticMeshComponent* line5;
+		class USceneComponent* rootComp;
 
 protected:
 	// Called when the game starts or when spawned

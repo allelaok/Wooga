@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Wooga",
+			"Path": "C:\\Users\\TFG5076XG\\Desktop\\Wooga_Git\\Wooga\\Wooga\\Source\\Wooga.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "WoogaEditor",
+			"Path": "C:\\Users\\TFG5076XG\\Desktop\\Wooga_Git\\Wooga\\Wooga\\Source\\WoogaEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

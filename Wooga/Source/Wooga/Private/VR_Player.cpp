@@ -161,7 +161,7 @@ void AVR_Player::Tick(float DeltaTime)
 	headComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
 	// mouthComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
 
-	/*if (isClose == true)
+	if (isClose == true)
 	{
 		change += DeltaTime; 
 
@@ -170,7 +170,7 @@ void AVR_Player::Tick(float DeltaTime)
 			isClose = false;
 			change = 0;
 		}
-	}*/
+	}
 }
 
 // Called to bind functionality to input

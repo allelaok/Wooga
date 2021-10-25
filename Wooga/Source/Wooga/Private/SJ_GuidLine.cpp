@@ -10,23 +10,8 @@ ASJ_GuidLine::ASJ_GuidLine()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	root = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
-	SetRootComponent(root);
-
-	line1 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Line1"));
-	line1->SetupAttachment(root);
-
-	line2 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Line2"));
-	line2->SetupAttachment(root);
-
-	line3 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Line3"));
-	line3->SetupAttachment(root);
-
-	line4 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Line4"));
-	line4->SetupAttachment(root);
-
-	line5 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Line5"));
-	line5->SetupAttachment(root);
+	rootComp = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
+	SetRootComponent(rootComp);
 }
 
 // Called when the game starts or when spawned
