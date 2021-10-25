@@ -73,7 +73,6 @@ public:
 
 	FVector p;
 
-	void DestroyUI();
 	FTimerHandle destroyTimer;
 
 	UPROPERTY(EditAnywhere, Category = Haptic)

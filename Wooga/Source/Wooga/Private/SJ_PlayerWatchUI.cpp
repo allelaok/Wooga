@@ -17,15 +17,11 @@ void USJ_PlayerWatchUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
-	// hungryGaze->Percent = 0.1;
-
-	//if (player->knoweldgePoint == 1)
-	//{
-		UE_LOG(LogTemp, Warning, TEXT("WWAWAWAWAWAW"));
+	if (player->knowledgePoint == 1 && player->isPlayAnim == true)
+	{
+		player->isPlayAnim = false;
 		PlayAnimation(FireDiscoveryClear);
-
-		hungryGaze->Percent = 0.7;
-	//}
+	}
 }
 
 void USJ_PlayerWatchUI::FireDiscovery()

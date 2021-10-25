@@ -51,4 +51,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "FX")
 	class UNiagaraSystem* destroyFX;
+
+	UPROPERTY(EditAnywhere, Category = Point)
+	TSubclassOf<class ASJ_KnoweldgePoint> knowledgePoint;
 };

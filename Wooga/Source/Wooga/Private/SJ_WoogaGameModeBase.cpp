@@ -196,10 +196,16 @@ void ASJ_WoogaGameModeBase::OpenGrabUI()
 #pragma region CollectStateFunction
 void ASJ_WoogaGameModeBase::HowToCollectActorUI()
 {
+	if (player->isClose == true)
+	{
+		SetState(EFlowState::CollectAndEat);
+	}
 }
 
 void ASJ_WoogaGameModeBase::CollectAndEat()
 {
+	// 채집하여 먹으면 홀로그램 생성하고 다음 상태로 넘어가기
+
 }
 
 void ASJ_WoogaGameModeBase::CompleteCollect()
