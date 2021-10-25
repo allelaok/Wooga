@@ -1,0 +1,7 @@
+C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Github\Wooga\Wooga\Source\Wooga\Public\HandActorComponent.h
+C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\HandActorComponent.generated.h
+C:\Github\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
+C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
+C:\Github\Wooga\Wooga\Source\Wooga\Public\VRHandAnimInstance.h
+C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VRHandAnimInstance.generated.h

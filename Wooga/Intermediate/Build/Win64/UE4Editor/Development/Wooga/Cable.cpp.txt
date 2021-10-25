@@ -1,0 +1,3 @@
+C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Github\Wooga\Wooga\Source\Wooga\Public\Cable.h
+C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\Cable.generated.h

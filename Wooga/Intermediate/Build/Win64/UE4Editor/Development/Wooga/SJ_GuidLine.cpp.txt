@@ -1,0 +1,3 @@
+C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Github\Wooga\Wooga\Source\Wooga\Public\SJ_GuidLine.h
+C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_GuidLine.generated.h

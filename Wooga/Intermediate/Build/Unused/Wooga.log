@@ -1,0 +1,81 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Github\Wooga).
+  Creating makefile for WoogaEditor (no existing makefile)
+  Parsing headers for WoogaEditor
+    Running UnrealHeaderTool "C:\Github\Wooga\Wooga\Wooga.uproject" "C:\Github\Wooga\Wooga\Intermediate\Build\Win64\WoogaEditor\Development\WoogaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\Default.DESKTOP-6F3BTUF\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+  Reflection code generated for WoogaEditor in 2.5661192 seconds
+  Building WoogaEditor...
+  Using Visual Studio 2019 14.30.30704 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30704) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 68 actions with 16 processes...
+    [1/68] Default.rc2
+    [2/68] SharedPCH.Engine.ShadowErrors.cpp
+    Detected compiler newer than Visual Studio 2019, please update min version checking in WindowsPlatformCompilerSetup.h
+    [3/68] SJ_GuidLine.cpp
+    [4/68] Stem.cpp
+    [5/68] Cable.gen.cpp
+    [6/68] SJ_HowToGrabUIActor.gen.cpp
+    [7/68] SJ_InformUICreate.gen.cpp
+    [8/68] SJ_KnoweldgePoint.gen.cpp
+    [9/68] VR_Player.gen.cpp
+    [10/68] FireEvent.gen.cpp
+    [11/68] FireRock.gen.cpp
+    [12/68] SJ_Hologram.gen.cpp
+    [13/68] SJ_GuidLine.gen.cpp
+    [14/68] VRHandAnimInstance.gen.cpp
+    [15/68] VRGameModeBase.gen.cpp
+    [16/68] SJ_HologramDestroy.gen.cpp
+    [17/68] Wooga.init.gen.cpp
+    [18/68] Wooga.gen.cpp
+    [19/68] HandActorComponent.gen.cpp
+    [20/68] FireStraw.gen.cpp
+    [21/68] Stem.gen.cpp
+    [22/68] LastHouse.gen.cpp
+    [23/68] Stick.gen.cpp
+    [24/68] SJ_InformUIPannel.gen.cpp
+    [25/68] SJ_WoogaGameModeBase.gen.cpp
+    [26/68] VRHandAnimInstance.cpp
+    [27/68] VRGameModeBase.cpp
+    [28/68] MoveActorComponent.gen.cpp
+    [29/68] SJ_WoogaGameModeBase.cpp
+    [30/68] SJ_UIPannel.gen.cpp
+    [31/68] FireStraw.cpp
+    [32/68] GrabActorComponent.gen.cpp
+    [33/68] AppleTree.cpp
+    [34/68] MoveActorComponent.cpp
+    [35/68] SJ_PlayerWatchUI.gen.cpp
+    [36/68] SJ_UIPannel.cpp
+    [37/68] LastHouse.cpp
+    [38/68] SJ_HowToCollectUI.gen.cpp
+    [39/68] Apple.cpp
+    [40/68] HandActorComponent.cpp
+    [41/68] Cable.cpp
+    [42/68] SJ_HowToFireUIonActor.cpp
+    [43/68] SJ_InformUICreate.cpp
+    [44/68] SJ_HowToCollectUI.cpp
+    [45/68] SJ_HowToGrabUIActor.cpp
+    [46/68] SJ_HowToFireUI.cpp
+    [47/68] FirePosition.gen.cpp
+    [48/68] FirePosition.cpp
+    [49/68] SJ_HowToFireUIonActor.gen.cpp
+    [50/68] AppleTree.gen.cpp
+    [51/68] FireRock.cpp
+    [52/68] Wooga.cpp
+    [53/68] Stick.cpp
+    [54/68] SJ_HowToFireUI.gen.cpp
+    [55/68] Apple.gen.cpp
+    [56/68] FireEvent.cpp
+    [57/68] GrabActorComponent.cpp
+    [58/68] SJ_HowToGrabUI.gen.cpp
+    [59/68] SJ_Hologram.cpp
+    [60/68] SJ_HowToGrabUI.cpp
+    [61/68] SJ_KnoweldgePoint.cpp
+    [62/68] SJ_PlayerWatchUI.cpp
+    [63/68] VR_Player.cpp
+    [64/68] SJ_HologramDestroy.cpp
+    [65/68] SJ_InformUIPannel.cpp
+    [66/68] UE4Editor-Wooga.lib
+       C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.lib 라이브러리 및 C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.exp 개체를 생성하고 있습니다.
+    [67/68] UE4Editor-Wooga.dll
+       C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.suppressed.lib 라이브러리 및 C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.suppressed.exp 개체를 생성하고 있습니다.
+    [68/68] WoogaEditor.target
+  Total time in Parallel executor: 31.01 seconds
+  Total execution time: 35.15 seconds
