@@ -37,6 +37,10 @@ public:
 	FTimerHandle howToGrabOpenTIme;
 	void OpenGrabUI();
 
+	// UI Sound
+	UPROPERTY(EditAnywhere, Category = Sound)
+	class USoundBase* uiSound;
+
 	// 잡는 방법 알려주는 UI
 	class ASJ_HowToGrabUIActor* howToGrab;
 
@@ -45,6 +49,14 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_UIPannel> howToFireUIPannel;
+
+	// 불지피는 방법 알려주는 UI
+	class ASJ_HowToFireUIActor* howToFire;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_HowToFireUIActor> howToFireUIActor;
+
+	class ASJ_Hologram* hologram;
 
 	UPROPERTY(EditAnywhere, Category = Hologram)
 	TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
@@ -55,8 +67,6 @@ public:
 	class ASJ_UIPannel* useUI;
 
 	class AVR_Player* player;
-
-	class ASJ_Hologram* hologram;
 
 	class ASJ_GuidLine* guideLine;
 

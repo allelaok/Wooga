@@ -25,7 +25,9 @@ ASJ_HowToFireUIActor::ASJ_HowToFireUIActor()
 void ASJ_HowToFireUIActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	FVector f = FVector(11060.0f, 11860.0f, 1260.0);
+	SetActorLocation(f);
 }
 
 // Called every frame
@@ -34,4 +36,18 @@ void ASJ_HowToFireUIActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+void ASJ_HowToFireUIActor::Activate()
+{
+	SetActorHiddenInGame(false);
+	SetActorTickEnabled(false);
+}
+
+void ASJ_HowToFireUIActor::Deactivate()
+{
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(true);
+}
+
+
 

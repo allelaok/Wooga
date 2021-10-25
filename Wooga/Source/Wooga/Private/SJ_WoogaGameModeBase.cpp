@@ -11,6 +11,8 @@
 #include "GrabActorComponent.h"
 #include "SJ_GuidLine.h"
 #include "SJ_HowToGrabUIActor.h"
+#include "SJ_HowToFireUIActor.h"
+#include <Components/WidgetComponent.h>
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -115,13 +117,14 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 	// 부싯돌을 두개 다 잡으면 불을 지필 수 있는 상태로 넘어간다.
 	if (player->grabComp->fireRockR && player->grabComp->fireRockL)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Fire"));
-
-		// 불을 지필 수 있는 방법을 알려주는 UI
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-		player->uiPannel = GetWorld()->SpawnActor<ASJ_UIPannel>(howToFireUIPannel, Param);
+		 howToFire = GetWorld()->SpawnActor<ASJ_HowToFireUIActor>(howToFireUIActor, Param);
+
+		 UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
+		//howToFire = Cast<ASJ_HowToFireUIActor>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_HowToFireUIActor::StaticClass()));
+		//howToFire->Activate();
 
 		SetState(EFlowState::Firing);
 	}
@@ -150,6 +153,10 @@ void ASJ_WoogaGameModeBase::Firing()
 			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 			hologram = GetWorld()->SpawnActor<ASJ_Hologram>(fireDisCoveryHologram, Param);
+
+			// UI Sound
+			UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
+
 			SetState(EFlowState::CompleteFireDiscovery);
 		}
 	}
@@ -161,10 +168,10 @@ void ASJ_WoogaGameModeBase::CompleteFireCourse()
 
 	if (currentTime >= destroyTime)
 	{
-		// hologram->Destroy();
-
 		// 시계 햅틱 기능
 		GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
+
+		player->playerWatch->SetHiddenInGame(false);
 
 		SetState(EFlowState::InformWatch);
 	}
@@ -175,7 +182,7 @@ void ASJ_WoogaGameModeBase::InformWatch()
 	// UI를 끄면 이동 방법을 알려주는 UI 생성 및 이동 가이드라인 생성
 	temporaryTime += GetWorld()->DeltaTimeSeconds;
 
-	if (temporaryTime >= 2.0f)
+	if (temporaryTime >= 5.0f)
 	{
 		guideLine = Cast<ASJ_GuidLine>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_GuidLine::StaticClass()));
 

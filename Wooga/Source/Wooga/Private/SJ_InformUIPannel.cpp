@@ -55,11 +55,15 @@ void ASJ_InformUIPannel::Tick(float DeltaTime)
 
 		if (RunningTime <= 1.0f)
 		{
+			
 			FRotator changeRot = FRotator(FMath::Lerp(startRot.X, endRot.X, RunningTime), FMath::Lerp(startRot.Y, endRot.Y, RunningTime), FMath::Lerp(startRot.Z, endRot.Z, RunningTime));
 
 			informMark->SetRelativeRotation(changeRot);
 
-			FVector changePos = FVector(FMath::Lerp(startPos.X, endPos.X, RunningTime), FMath::Lerp(startPos.Y, endPos.Y, RunningTime), FMath::Lerp(startPos.Z, endPos.Z, RunningTime));
+			//startPos = GetActorLocation();
+			//endPos = GetActorLocation() + GetActorUpVector();
+			FVector changePos = FMath::Lerp(startPos, endPos, RunningTime);
+			//FVector(FMath::Lerp(startPos.X, endPos.X, RunningTime), FMath::Lerp(startPos.Y, endPos.Y, RunningTime), FMath::Lerp(startPos.Z, endPos.Z, RunningTime));
 
 			informMark->SetRelativeLocation(changePos);
 		}

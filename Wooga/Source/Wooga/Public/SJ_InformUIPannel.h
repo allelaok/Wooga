@@ -46,8 +46,8 @@ public:
 	FVector startRot = FVector(0.0f, -90.0f, 0.0f);
 	FVector endRot = FVector(180.0f, -90.0f, 0.0f);
 
-	FVector startPos = FVector(0.0f, 0.0f, 80.0f);
-	FVector endPos = FVector(0.0f, 0.0f, 140.0f);
+	FVector startPos = FVector(0.0f, 0.0f,0.0f);
+	FVector endPos = FVector(0.0f, 0.0f, 100.0f);
 
 	float RunningTime;
 

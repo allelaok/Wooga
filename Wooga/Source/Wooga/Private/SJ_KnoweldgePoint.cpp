@@ -34,7 +34,7 @@ void ASJ_KnoweldgePoint::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FVector me = GetActorLocation();
-	FVector target = player->GetActorLocation();
+	FVector target = player->playerWatch->GetComponentLocation();
 	FVector dir = target - me;
 	dir.Normalize();
 
@@ -43,5 +43,11 @@ void ASJ_KnoweldgePoint::Tick(float DeltaTime)
 	FVector p = me + dir * speed * DeltaTime;
 
 	SetActorLocation(p);
+
+	FVector startScale = GetActorScale3D();
+	FVector endScale = FVector(0.1f, 0.1f, 0.1f);
+
+	FVector setScale = FMath::Lerp(startScale, endScale, DeltaTime);
+	SetActorScale3D(setScale);
 }
 

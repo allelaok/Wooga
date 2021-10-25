@@ -34,4 +34,6 @@ public:
 
 	class AVR_Player* player;
 
+	void Activate();
+	void Deactivate();
 };
