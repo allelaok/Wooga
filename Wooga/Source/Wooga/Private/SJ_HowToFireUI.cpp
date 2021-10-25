@@ -4,6 +4,7 @@
 #include "SJ_HowToFireUI.h"
 #include "VR_Player.h"
 #include <Kismet/GameplayStatics.h>
+#include <Components/Image.h>
 
 
 void USJ_HowToFireUI::NativeConstruct()
@@ -22,5 +23,10 @@ void USJ_HowToFireUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	if (player->isClose == true)
 	{
 		PlayAnimation(CloseUI);
+	}
+
+	if (howToFireImg->GetVisibility() == ESlateVisibility::Visible)
+	{
+
 	}
 }

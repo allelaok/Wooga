@@ -69,4 +69,6 @@ public:
 	class AVR_Player* player;
 
 	void FireDiscovery();
+
+	bool isplay;
 };

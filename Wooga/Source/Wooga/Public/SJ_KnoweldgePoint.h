@@ -4,16 +4,22 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "FireEvent.generated.h"
+#include "SJ_KnoweldgePoint.generated.h"
 
 UCLASS()
-class WOOGA_API AFireEvent : public AActor
+class WOOGA_API ASJ_KnoweldgePoint : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AFireEvent();
+	ASJ_KnoweldgePoint();
+
+	UPROPERTY(VisibleAnywhere, Category = Hologram)
+		class USceneComponent* rootComp;
+
+	UPROPERTY(EditAnywhere, Category = Hologram)
+		class UStaticMeshComponent* meshComp;
 
 protected:
 	// Called when the game starts or when spawned
@@ -23,12 +29,5 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-public:
-	UPROPERTY(EditAnywhere, Category = Settings)
-		class UStaticMeshComponent* planeComp;
-
-	UPROPERTY(EditAnywhere, Category = Settings)
-		class USkeletalMeshComponent* skelComp;
-
-		class AVR_Player* player;
+	class AVR_Player* player;
 };

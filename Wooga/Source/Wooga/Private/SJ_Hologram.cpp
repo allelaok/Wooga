@@ -8,6 +8,7 @@
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
 #include "NiagaraSystem.h"
+#include "SJ_KnoweldgePoint.h"
 
 // Sets default values
 ASJ_Hologram::ASJ_Hologram()
@@ -107,6 +108,11 @@ void ASJ_Hologram::PlayHologram()
 	if (playTime >= playChangeTime)
 	{
 		SetState(EHologramState::TurnOffHologram);
+
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		GetWorld()->SpawnActor<ASJ_KnoweldgePoint>(knowledgePoint,  GetActorLocation(), GetActorRotation(), Param);
 	}
 }
 

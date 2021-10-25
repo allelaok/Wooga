@@ -153,7 +153,7 @@ void AVR_Player::Tick(float DeltaTime)
 	UHeadMountedDisplayFunctionLibrary::GetOrientationAndPosition(headRotate, headLocation);
 	headRotateYaw = headRotate.Yaw;
 	headComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
-	mouthComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
+	// mouthComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
 
 
 
