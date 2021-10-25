@@ -43,6 +43,9 @@ public:
 	bool bisFire = false;
 
 	UPROPERTY(EditAnywhere, Category = "Fire")
+		class UParticleSystem* smokeFactory;
+
+	UPROPERTY(EditAnywhere, Category = "Fire")
 		class UParticleSystem* emberFactory;
 
 	// sound

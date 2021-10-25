@@ -131,6 +131,11 @@ void ASJ_WoogaGameModeBase::Firing()
 {
 	AFireStraw* fireStraw = Cast<AFireStraw>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireStraw::StaticClass()));
 
+	if (fireStraw->isClear == false)
+	{
+		return;
+	}
+
 	// 불을 켜면 홀로그램이 생성되고 첫번째 교육 이수 상태로 넘어간다.
 	if (fireStraw->isClear == true)
 	{

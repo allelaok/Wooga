@@ -61,5 +61,6 @@ public:
 	class USoundAttenuation* AttenuationSettings;
 	USoundConcurrency* ConcurrencySettings;
 	bool bAutoDestroy = false;
+	bool bisgrab = false;
 	int32 overlabCount = 0;
 };
