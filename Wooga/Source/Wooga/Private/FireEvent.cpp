@@ -34,11 +34,11 @@ void AFireEvent::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FVector me = skelComp->GetComponentLocation();
-	FVector target = player->GetActorLocation();
+	FVector target = player->playerWatch->GetComponentLocation();
 	FVector dir = target - me;
 	dir.Normalize();
 
-	float speed = 200.0f;
+	float speed = 100.0f;
 
 	FVector p = me + dir * speed * DeltaTime;
 
