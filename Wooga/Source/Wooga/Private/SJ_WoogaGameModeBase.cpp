@@ -176,7 +176,6 @@ void ASJ_WoogaGameModeBase::InformWatch()
 
 		guideLine->SetActorHiddenInGame(false);
 	}
-
 }
 void ASJ_WoogaGameModeBase::GoToCollectState()
 {
