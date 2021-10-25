@@ -1,15 +1,17 @@
-AndroidPlatformFactory.RegisterBuildPlatforms: UnrealBuildTool.AndroidPlatformSDK has no valid SDK
+AndroidPlatformFactory.RegisterBuildPlatforms: UnrealBuildTool.AndroidPlatformSDK using manually installed SDK -23
 IOSPlatformFactory.RegisterBuildPlatforms: UnrealBuildTool.IOSPlatformSDK has no valid SDK
 LinuxPlatformFactory.RegisterBuildPlatforms: UnrealBuildTool.LinuxPlatformSDK has no valid SDK
 WindowsPlatformFactory.RegisterBuildPlatforms: UnrealBuildTool.WindowsPlatformSDK using manually installed SDK
 ProjectFileGenerator.GenerateProjectFiles: Discovering modules, targets and source code for project...
-WindowsPlatform.FindVisualStudioInstallations: Found Visual Studio installation: C:\Program Files\Microsoft Visual Studio\2022\Community (Product=Microsoft.VisualStudio.Product.Community, Version=17.0.31815.197)
-WindowsPlatform.FindVisualStudioToolChains: Found Visual Studio toolchain: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30704 (Version=14.30.30704)
-DynamicCompilation.RequiresCompilation: Compiling C:\Github\Wooga\Wooga\Intermediate\Build\BuildRules\WoogaModuleRules.dll: Assembly does not exist
+WindowsPlatform.FindVisualStudioInstallations: Found Visual Studio installation: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community (Product=Microsoft.VisualStudio.Product.Community, Version=16.11.31702.278)
+WindowsPlatform.FindVisualStudioToolChains: Found Visual Studio toolchain: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133 (Version=14.29.30133)
 WindowsPlatform.EnumerateSdkRootDirs: Found Windows 10 SDK root at C:\Program Files (x86)\Windows Kits\10 (1)
 WindowsPlatform.EnumerateSdkRootDirs: Found Windows 10 SDK root at C:\Program Files (x86)\Windows Kits\10 (2)
+WindowsPlatform.UpdateCachedWindowsSdks: Found Windows 10 SDK version 10.0.16299.0 at C:\Program Files (x86)\Windows Kits\10
+WindowsPlatform.UpdateCachedWindowsSdks: Found Universal CRT version 10.0.16299.0 at C:\Program Files (x86)\Windows Kits\10
 WindowsPlatform.UpdateCachedWindowsSdks: Found Windows 10 SDK version 10.0.19041.0 at C:\Program Files (x86)\Windows Kits\10
 WindowsPlatform.UpdateCachedWindowsSdks: Found Universal CRT version 10.0.19041.0 at C:\Program Files (x86)\Windows Kits\10
+DynamicCompilation.RequiresCompilation: Compiling C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\BuildRules\WoogaModuleRules.dll: Assembly does not exist
 Log.PushStatus: Binding IntelliSense data...
 ProgressWriter.Write: @progress 'Binding IntelliSense data...' 0%
 UEBuildTarget.AddPlugin: Enabling plugin 'Paper2D' (referenced via default plugins)
@@ -130,10 +132,10 @@ UEBuildTarget.AddPlugin: Enabling plugin 'WebMMedia' (referenced via default plu
 UEBuildTarget.AddPlugin: Enabling plugin 'WindowsMoviePlayer' (referenced via default plugins)
 UEBuildTarget.AddPlugin: Enabling plugin 'XGEController' (referenced via default plugins)
 LuminSDKVersionHelper.HasAnySDK: *** Unable to determine MLSDK location ***
-VCToolChain..ctor: Compiler: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30704\bin\HostX64\x64\cl.exe
-VCToolChain..ctor: Linker: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30704\bin\HostX64\x64\link.exe
-VCToolChain..ctor: Library Manager: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30704\bin\HostX64\x64\lib.exe
-VCToolChain..ctor: Resource Compiler: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe
+VCToolChain..ctor: Compiler: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\cl.exe
+VCToolChain..ctor: Linker: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\link.exe
+VCToolChain..ctor: Library Manager: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\lib.exe
+VCToolChain..ctor: Resource Compiler: C:\Program Files (x86)\Windows Kits\10\bin\10.0.16299.0\x64\rc.exe
 ProgressWriter.Write: @progress 'Binding IntelliSense data...' 50%
 UEBuildTarget.AddPlugin: Enabling plugin 'NiagaraExtras' (referenced via Wooga.uproject)
 UEBuildTarget.AddPlugin: Enabling plugin 'Paper2D' (referenced via default plugins)
@@ -253,10 +255,10 @@ UEBuildTarget.AddPlugin: Enabling plugin 'WebMMoviePlayer' (referenced via defau
 UEBuildTarget.AddPlugin: Enabling plugin 'WebMMedia' (referenced via default plugins -> WebMMoviePlayer.uplugin)
 UEBuildTarget.AddPlugin: Enabling plugin 'WindowsMoviePlayer' (referenced via default plugins)
 UEBuildTarget.AddPlugin: Enabling plugin 'XGEController' (referenced via default plugins)
-VCToolChain..ctor: Compiler: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30704\bin\HostX64\x64\cl.exe
-VCToolChain..ctor: Linker: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30704\bin\HostX64\x64\link.exe
-VCToolChain..ctor: Library Manager: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30704\bin\HostX64\x64\lib.exe
-VCToolChain..ctor: Resource Compiler: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\rc.exe
+VCToolChain..ctor: Compiler: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\cl.exe
+VCToolChain..ctor: Linker: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\link.exe
+VCToolChain..ctor: Library Manager: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\lib.exe
+VCToolChain..ctor: Resource Compiler: C:\Program Files (x86)\Windows Kits\10\bin\10.0.16299.0\x64\rc.exe
 ProgressWriter.Write: @progress 'Binding IntelliSense data...' 100%
 Log.PushStatus: Writing project files...
 ProgressWriter.Write: @progress 'Writing project files...' 0%
@@ -266,37 +268,38 @@ ProgressWriter.Write: @progress 'Writing project files...' 100%
 Timeline.Print: Timeline:
 Timeline.Print: 
 Timeline.Print: [ 0.000]
-Timeline.Print: [ 0.000](+0.022) <unknown>
-Timeline.Print: [ 0.022](+0.043) XmlConfig.ReadConfigFiles()
-Timeline.Print: [ 0.066](+0.000) SingleInstanceMutex.Acquire()
-Timeline.Print: [ 0.066](+0.043) UEBuildPlatform.RegisterPlatforms()
-Timeline.Print:   0.066          [ 0.000](+0.022) Initializing InstalledPlatformInfo
-Timeline.Print:   0.089          [ 0.022](+0.000) Querying types
-Timeline.Print:   0.090          [ 0.023](+0.000) MacPlatformFactory
-Timeline.Print:   0.091          [ 0.024](+0.000) TVOSPlatformFactory
-Timeline.Print:   0.091          [ 0.024](+0.011) AndroidPlatformFactory
-Timeline.Print:   0.103          [ 0.036](+0.000) HoloLensPlatformFactory
-Timeline.Print:   0.103          [ 0.036](+0.002) IOSPlatformFactory
-Timeline.Print:   0.105          [ 0.038](+0.003) LinuxPlatformFactory
-Timeline.Print:   0.108          [ 0.042](+0.000) LuminPlatformFactory
-Timeline.Print:   0.108          [ 0.042](+0.000) WindowsPlatformFactory
-Timeline.Print: [ 0.109](+0.203) <unknown>
-Timeline.Print: [ 0.313](+0.001) Finding engine modules
-Timeline.Print: [ 0.315](+0.002) Finding plugin modules
-Timeline.Print: [ 0.317](+0.023) <unknown>
-Timeline.Print: [ 0.340](+0.000) Finding program modules
-Timeline.Print: [ 0.340](+0.000) Finding program targets
-Timeline.Print: [ 0.344](+0.076) Compiling rules assembly (WoogaModuleRules.dll)
-Timeline.Print: [ 0.420](+0.630) <unknown>
-Timeline.Print: [ 1.051](+0.000) RulesCompiler.CreateTargetRulesAssembly()
-Timeline.Print: [ 1.051](+0.000) RulesAssembly.CreateTargetRules()
-Timeline.Print: [ 1.057](+0.003) UEBuildTarget constructor
-Timeline.Print: [ 1.060](+0.766) UEBuildTarget.PreBuildSetup()
-Timeline.Print: [ 1.827](+0.342) <unknown>
-Timeline.Print: [ 2.170](+0.000) RulesCompiler.CreateTargetRulesAssembly()
-Timeline.Print: [ 2.170](+0.000) RulesAssembly.CreateTargetRules()
-Timeline.Print: [ 2.172](+0.000) UEBuildTarget constructor
-Timeline.Print: [ 2.172](+0.099) UEBuildTarget.PreBuildSetup()
-Timeline.Print: [ 2.272](+1.655) <unknown>
-Timeline.Print: [ 3.927](+0.000) FileMetadataPrefetch.Stop()
-Timeline.Print: [ 3.929]
+Timeline.Print: [ 0.000](+0.043) <unknown>
+Timeline.Print: [ 0.043](+0.094) XmlConfig.ReadConfigFiles()
+Timeline.Print: [ 0.137](+0.000) SingleInstanceMutex.Acquire()
+Timeline.Print: [ 0.137](+0.061) UEBuildPlatform.RegisterPlatforms()
+Timeline.Print:   0.138          [ 0.000](+0.025) Initializing InstalledPlatformInfo
+Timeline.Print:   0.163          [ 0.026](+0.000) Querying types
+Timeline.Print:   0.165          [ 0.027](+0.001) MacPlatformFactory
+Timeline.Print:   0.166          [ 0.029](+0.000) TVOSPlatformFactory
+Timeline.Print:   0.166          [ 0.029](+0.019) AndroidPlatformFactory
+Timeline.Print:   0.186          [ 0.048](+0.000) HoloLensPlatformFactory
+Timeline.Print:   0.186          [ 0.049](+0.005) IOSPlatformFactory
+Timeline.Print:   0.191          [ 0.054](+0.005) LinuxPlatformFactory
+Timeline.Print:   0.197          [ 0.060](+0.000) LuminPlatformFactory
+Timeline.Print:   0.197          [ 0.060](+0.000) WindowsPlatformFactory
+Timeline.Print: [ 0.198](+0.602) <unknown>
+Timeline.Print: [ 0.800](+0.003) Finding engine modules
+Timeline.Print: [ 0.804](+0.003) Finding plugin modules
+Timeline.Print: [ 0.808](+0.042) <unknown>
+Timeline.Print: [ 0.850](+0.000) Finding program modules
+Timeline.Print: [ 0.851](+0.000) Finding program targets
+Timeline.Print: [ 0.851](+0.077) <unknown>
+Timeline.Print: [ 0.928](+0.137) Compiling rules assembly (WoogaModuleRules.dll)
+Timeline.Print: [ 1.065](+1.430) <unknown>
+Timeline.Print: [ 2.496](+0.000) RulesCompiler.CreateTargetRulesAssembly()
+Timeline.Print: [ 2.496](+0.002) RulesAssembly.CreateTargetRules()
+Timeline.Print: [ 2.505](+0.003) UEBuildTarget constructor
+Timeline.Print: [ 2.509](+1.149) UEBuildTarget.PreBuildSetup()
+Timeline.Print: [ 3.658](+0.744) <unknown>
+Timeline.Print: [ 4.403](+0.000) RulesCompiler.CreateTargetRulesAssembly()
+Timeline.Print: [ 4.403](+0.001) RulesAssembly.CreateTargetRules()
+Timeline.Print: [ 4.406](+0.000) UEBuildTarget constructor
+Timeline.Print: [ 4.406](+0.133) UEBuildTarget.PreBuildSetup()
+Timeline.Print: [ 4.539](+3.407) <unknown>
+Timeline.Print: [ 7.947](+0.000) FileMetadataPrefetch.Stop()
+Timeline.Print: [ 7.951]

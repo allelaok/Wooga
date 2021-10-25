@@ -1,6 +1,6 @@
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\SJ_InformUIPannel.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_InformUIPannel.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\SJ_InformUIPannel.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_InformUIPannel.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/WidgetComponent.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Blueprint/UserWidget.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/SlateWrapperTypes.h
@@ -106,14 +106,14 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Compone
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\BoxComponent.generated.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\SJ_WoogaGameModeBase.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\Wooga.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\SJ_WoogaGameModeBase.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\Wooga.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_WoogaGameModeBase.generated.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\SJ_InformUICreate.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_InformUICreate.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_WoogaGameModeBase.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\SJ_InformUICreate.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_InformUICreate.generated.h

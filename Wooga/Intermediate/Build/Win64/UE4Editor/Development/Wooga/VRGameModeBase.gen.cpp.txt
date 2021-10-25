@@ -1,9 +1,9 @@
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:\Github\Wooga\Wooga\Source\Wooga/Public/VRGameModeBase.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga/Public/VRGameModeBase.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VRGameModeBase.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VRGameModeBase.generated.h

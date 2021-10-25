@@ -1,6 +1,6 @@
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\SJ_HologramDestroy.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_HologramDestroy.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\SJ_HologramDestroy.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_HologramDestroy.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Plugins\FX\Niagara\Source\Niagara\Public\NiagaraComponent.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Plugins\FX\Niagara\Source\Niagara\Public\NiagaraCommon.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/TextureRenderTarget2D.h
@@ -109,8 +109,8 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/WidgetComponent.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Blueprint/UserWidget.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/SlateWrapperTypes.h

@@ -1,9 +1,9 @@
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\SJ_Hologram.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\Wooga.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_Hologram.generated.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\SJ_Hologram.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\Wooga.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_Hologram.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
@@ -114,5 +114,5 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Particl
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Emitter.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ParticleSystemComponent.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Plugins\FX\Niagara\Intermediate\Build\Win64\UE4Editor\Inc\Niagara\NiagaraComponent.generated.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\SJ_KnoweldgePoint.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_KnoweldgePoint.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\SJ_KnoweldgePoint.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\SJ_KnoweldgePoint.generated.h

@@ -1,10 +1,10 @@
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\Apple.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\Apple.generated.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
-C:\Github\Wooga\Wooga\Source\Wooga\Public\GrabActorComponent.h
-C:\Github\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\GrabActorComponent.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\Definitions.Wooga.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\Apple.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\Apple.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\VR_Player.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\VR_Player.generated.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Source\Wooga\Public\GrabActorComponent.h
+C:\Users\TFG5076XG\Desktop\Wooga_Git\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\GrabActorComponent.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/BoxComponent.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h

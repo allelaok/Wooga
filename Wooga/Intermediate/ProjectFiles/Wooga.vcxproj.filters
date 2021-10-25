@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Wooga.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{CF022196-4645-4937-AD02-5708B60B0A29}</UniqueIdentifier>
+      <UniqueIdentifier>{9E9D8CEE-0E41-4168-986B-4610C78B5BC6}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Wooga.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{76B36F26-FE50-4895-A8B9-F8E1E864A56E}</UniqueIdentifier>
+      <UniqueIdentifier>{88F47B9C-6966-441E-861B-E6A7F75D2062}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -36,7 +36,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Config\SteamVRBindings">
-      <UniqueIdentifier>{7AD8CF04-7971-492C-9927-CC054A818AD5}</UniqueIdentifier>
+      <UniqueIdentifier>{33E85923-FCE8-4C79-8C68-C3BD42DE6A4D}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\SteamVRBindings\gamepad.json">
       <Filter>Config\SteamVRBindings</Filter>
@@ -117,13 +117,13 @@
       <Filter>Config\SteamVRBindings</Filter>
     </None>
     <Filter Include="Source\Wooga">
-      <UniqueIdentifier>{3F6D1BB8-0EE3-44D7-9D2A-C4101294D384}</UniqueIdentifier>
+      <UniqueIdentifier>{27F449F2-972A-40C5-BE7B-354F64FC6BD4}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Wooga\Wooga.Build.cs">
       <Filter>Source\Wooga</Filter>
     </None>
     <Filter Include="Source\Wooga\Private">
-      <UniqueIdentifier>{23022738-FC82-4307-A294-3BECCDE0C315}</UniqueIdentifier>
+      <UniqueIdentifier>{6436E8D4-5D51-4D6D-88E4-A589B069C168}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Wooga\Private\Apple.cpp">
       <Filter>Source\Wooga\Private</Filter>
@@ -219,7 +219,7 @@
       <Filter>Source\Wooga\Private</Filter>
     </ClCompile>
     <Filter Include="Source\Wooga\Public">
-      <UniqueIdentifier>{E7256922-8E10-4498-9539-77A66CA40CE0}</UniqueIdentifier>
+      <UniqueIdentifier>{6DFDA9F8-1FF4-456D-8DF5-5D13541B52DF}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\Wooga\Public\Apple.h">
       <Filter>Source\Wooga\Public</Filter>
