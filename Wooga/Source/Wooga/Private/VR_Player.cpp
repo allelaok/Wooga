@@ -17,6 +17,7 @@
 #include "SJ_UIPannel.h"
 #include <Kismet/GameplayStatics.h>
 #include <DrawDebugHelpers.h>
+#include <Components/WidgetComponent.h>
 
 // Sets default values
 AVR_Player::AVR_Player()
@@ -77,6 +78,9 @@ AVR_Player::AVR_Player()
 	// 왼손의 Scale 값
 	leftHand->SetRelativeScale3D(FVector(1.0f, -1.0f, 1.0f));
 
+	playerWatch = CreateDefaultSubobject<UWidgetComponent>(TEXT("PlayerWatch"));
+	playerWatch->SetupAttachment(leftHand);
+	playerWatch->SetRelativeScale3D(FVector(1.0f, 1.0f, 1.0f));
 
 
 	// 왼손으로 물체를 잡을때의 위치 값
@@ -143,6 +147,8 @@ void AVR_Player::BeginPlay()
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 
 	isClose = false;
+
+	playerWatch->OnComponentBeginOverlap.AddDynamic(this, &AVR_Player::OverlapKnowledgePoint);
 }
 
 // Called every frame
@@ -191,6 +197,17 @@ void AVR_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 void AVR_Player::ResetHMD()
 {
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+}
+
+void AVR_Player::OverlapKnowledgePoint(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	FString name = OtherActor->GetName();
+	if (name.Contains("KnoweldgePoint"))
+	{
+		knowledgePoint = 1;
+		isPlayAnim = true;
+		OtherActor->Destroy();
+	}
 }
 
 void AVR_Player::TurnOff()

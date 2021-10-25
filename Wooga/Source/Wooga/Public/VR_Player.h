@@ -67,6 +67,8 @@ public:
 		UPROPERTY(EditAnywhere, Category = PlayerSettings)
 			class UTextRenderComponent* rightLog;
 
+		UPROPERTY(EditAnywhere, Category = Watch)
+			class UWidgetComponent* playerWatch;
 
 		// 액터 컴포넌트들 추가하기
 		UPROPERTY(VisibleAnywhere, Category = PlayerSettings)
@@ -103,4 +105,15 @@ public:
 	float headRotateYaw;
 
 	float change;
+
+	UPROPERTY(VisibleAnywhere, Category = knowledge)
+		float knowledgePoint;
+
+	FTimerHandle testTimer;
+
+	UFUNCTION()
+		void OverlapKnowledgePoint(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UPROPERTY()
+		bool isPlayAnim;
 };
