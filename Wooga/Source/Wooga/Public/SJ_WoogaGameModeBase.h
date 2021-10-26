@@ -28,6 +28,7 @@ public:
 	// 불의 발견 교육
 	void GrabActorUI();
 	void HowToFireUI();
+	void HowToFireUINext();
 	void Firing();
 	void CompleteFireCourse();
 	void InformWatch();
@@ -47,20 +48,28 @@ public:
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_HowToGrabUIActor> howToGrabActor;
 
-	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_UIPannel> howToFireUIPannel;
-
 	// 불지피는 방법 알려주는 UI
 	class ASJ_HowToFireUIActor* howToFire;
 
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_HowToFireUIActor> howToFireUIActor;
 
+	// 불지피는 방법 다음 UI
+	class ASJ_HowToFireNextUIActor* howToFireNext;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_HowToFireNextUIActor> howToFireNextUIActor;
+
+	float nextDelayTime;
+	float injae;
+
+	// 불의 발견 홀로그램
 	class ASJ_Hologram* hologram;
 
 	UPROPERTY(EditAnywhere, Category = Hologram)
 	TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
 
+	// 다음 장소로 이동하기 위한 가이드 라인
 	UPROPERTY(EditAnywhere, Category = GuideLine)
 	TSubclassOf<class ASJ_GuidLine> goToCollectGuideLine;
 

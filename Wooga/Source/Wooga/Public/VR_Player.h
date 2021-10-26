@@ -103,6 +103,7 @@ public:
 	FVector headLocation;
 
 	float headRotateYaw;
+	float headRotatePitch;
 
 	float change;
 

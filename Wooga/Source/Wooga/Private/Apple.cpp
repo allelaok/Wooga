@@ -54,27 +54,38 @@ void AApple::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class A
 {
 	auto player = Cast<AVR_Player>(OtherActor);
 
-	if (player)
+	/*if (player)
 	{
 		if (player->grabComp->bisGrabApple == true)
 		{
 			bisgrab = true;
-			
+
 		}
 	}
-	return;
-	if (player->mouthComp)
+	return;*/
+
+	if (player)
 	{
-		// Sound
+		if (player->grabComp->bisGrabApple == true)
+		{
+			if (OtherComp == player->mouthComp)
+			{
+				// Sound
 
-		location = this->GetActorLocation();
-		rotation = this->GetActorRotation();
+				location = this->GetActorLocation();
+				rotation = this->GetActorRotation();
 
-		UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
 
-		player->grabComp->LeftReleaseAction();
-		player->grabComp->RightReleaseAction();
-		this->Destroy();
+				player->grabComp->LeftReleaseAction();
+				player->grabComp->RightReleaseAction();
+				this->Destroy();
+			}
+		}
+	}
+	else
+	{
+		return;
 	}
 }
 

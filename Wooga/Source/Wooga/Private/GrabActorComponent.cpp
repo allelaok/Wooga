@@ -151,6 +151,8 @@ void UGrabActorComponent::RightReleaseAction()
 
 			// 오른손 피는 애니메이션
 			player->handComp->targetGripValueRight = 0.0f;
+
+			bisGrabFR = true;
 		}
 
 
@@ -253,6 +255,7 @@ void UGrabActorComponent::LeftReleaseAction()
 
 			fireRockL = nullptr;
 			bisLeftGrab = false;
+			bisGrabFR = false;
 
 			// 왼손 피는 애니메이션
 			player->handComp->targetGripValueLeft = 0.0f;
@@ -354,6 +357,7 @@ void UGrabActorComponent::RGripFireRock(AActor* grabActor)
 			// 오브젝트를 잡았을때 위치 잡기
 			fireRockR->boxComp->SetRelativeLocation((fireRockR->grabOffset));
 
+			bisGrabFR = true;
 		}
 	}
 	//}
@@ -386,6 +390,8 @@ void UGrabActorComponent::LGripFireRock(AActor* grabActor)
 
 			// 오브젝트를 잡았을때 위치 잡기
 			fireRockL->boxComp->SetRelativeLocation((fireRockL->grabOffset));
+
+			bisGrabFR = true;
 		}
 	}
 	//}
