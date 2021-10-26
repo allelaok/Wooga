@@ -259,6 +259,7 @@ void ASJ_WoogaGameModeBase::CollectAndEat()
 
 void ASJ_WoogaGameModeBase::CompleteCollect()
 {
+	// 홀로그램 재생이 끝나면 플레이어 워치로 들어가고 
 }
 
 void ASJ_WoogaGameModeBase::GoToFistAxCourse()
