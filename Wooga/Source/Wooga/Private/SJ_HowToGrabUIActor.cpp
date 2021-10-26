@@ -51,7 +51,7 @@ void ASJ_HowToGrabUIActor::BeginPlay()
 	FVector playerLoc = player->GetActorLocation();
 	FVector me = GetActorLocation();
 
-	FVector p =player->GetActorLocation() + player->GetActorForwardVector() * 300;
+	FVector p =player->GetActorLocation() + player->GetActorForwardVector() * 200;
 
 	SetActorLocation(p);
 
@@ -93,7 +93,7 @@ void ASJ_HowToGrabUIActor::SetState(EBlinkState state)
 void ASJ_HowToGrabUIActor::OnOpacity()
 {
 	createTime += GetWorld()->DeltaTimeSeconds;
-	startParam = FMath::Lerp(-1.0f, 1.0f, createTime * 0.5f);
+	startParam = FMath::Lerp(-1.0f, 1.0f, createTime * 0.7f);
 
 	body->SetScalarParameterValueOnMaterials(TEXT("Opa"), startParam);
 	grib->SetScalarParameterValueOnMaterials(TEXT("Opa"), startParam);
@@ -118,7 +118,7 @@ void ASJ_HowToGrabUIActor::PlayOpacity()
 void ASJ_HowToGrabUIActor::OffOpacity()
 {
 	destroyTime += GetWorld()->DeltaTimeSeconds;
-	destroyParam = FMath::Lerp(1.0f, -1.0f, destroyTime * 0.5f);
+	destroyParam = FMath::Lerp(1.0f, -1.0f, destroyTime * 0.7f);
 
 	body->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
 	grib->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
