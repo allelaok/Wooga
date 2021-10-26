@@ -201,6 +201,7 @@ void UGrabActorComponent::RightReleaseAction()
 
 			appleR = nullptr;
 			bisLeftGrab = false;
+			bisGrabApple = true;
 
 			// 오른손 피는 애니메이션
 			player->handComp->targetGripValueRight = 0.0f;

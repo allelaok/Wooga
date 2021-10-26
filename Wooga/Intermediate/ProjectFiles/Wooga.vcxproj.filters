@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Wooga.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F71A74EC-DCEC-4BFF-A8D4-C33B5065352A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Wooga.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\WoogaEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{31C162A3-9C36-48FA-AB8F-E8D16FA059CA}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultScalability.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\steamvr_ue_editor_app.json">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Config\SteamVRBindings">
+      <UniqueIdentifier>{84A99BD4-A79E-4880-9BDD-F39A0D9FD121}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\SteamVRBindings\gamepad.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\holographic_controller.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\hpmotioncontroller.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\indexhmd.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\knuckles.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\oculus_touch.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\rift.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\steamvr_manifest.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_controller.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_cosmos_controller.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_pro.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_camera.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_chest.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_handed.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_keyboard.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_left_elbow.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_left_foot.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_left_knee.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_left_shoulder.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_right_elbow.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_right_foot.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_right_knee.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_right_shoulder.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_waist.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <Filter Include="Source\Wooga">
+      <UniqueIdentifier>{519CA9C1-D803-4A5C-92CE-0DB2A5B0E02B}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Wooga\Wooga.Build.cs">
+      <Filter>Source\Wooga</Filter>
+    </None>
+    <Filter Include="Source\Wooga\Private">
+      <UniqueIdentifier>{EF246B2C-A4A5-4721-8F17-29B61FA17B12}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Wooga\Private\Apple.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\AppleTree.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\Cable.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\FireEvent.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\FirePosition.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\FireRock.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\FireRock2.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\FireStraw.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\GrabActorComponent.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\HandActorComponent.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\LastHouse.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\MoveActorComponent.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_GuidLine.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_Hologram.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HologramDestroy.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HowToCollectUI.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HowToFireNextUI.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HowToFireNextUIActor.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HowToFireUI.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HowToFireUIActor.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HowToFireUIonActor.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HowToGrabUI.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_HowToGrabUIActor.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_InformUICreate.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_InformUIPannel.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_KnoweldgePoint.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_PlayerWatchUI.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_SpawnPoint.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_UIPannel.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\SJ_WoogaGameModeBase.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\Stem.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\Stick.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\VRGameModeBase.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\VRHandAnimInstance.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\VR_Player.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\Wooga.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\Wooga\Public">
+      <UniqueIdentifier>{231F1912-CC01-46E5-86B9-3EED7CDD3C40}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\Wooga\Public\Apple.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\AppleTree.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\Cable.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\FireEvent.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\FirePosition.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\FireRock.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\FireRock2.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\FireStraw.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\GrabActorComponent.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\HandActorComponent.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\LastHouse.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\MoveActorComponent.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_GuidLine.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_Hologram.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HologramDestroy.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HowToCollectUI.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HowToFireNextUI.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HowToFireNextUIActor.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HowToFireUI.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HowToFireUIActor.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HowToFireUIonActor.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HowToGrabUI.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_HowToGrabUIActor.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_InformUICreate.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_InformUIPannel.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_KnoweldgePoint.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_PlayerWatchUI.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_SpawnPoint.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_UIPannel.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\SJ_WoogaGameModeBase.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\Stem.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\Stick.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\VRGameModeBase.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\VRHandAnimInstance.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\VR_Player.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\Wooga.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
