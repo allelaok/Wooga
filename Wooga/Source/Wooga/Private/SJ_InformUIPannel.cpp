@@ -8,6 +8,7 @@
 #include "VR_Player.h"
 #include "SJ_WoogaGameModeBase.h"
 #include "SJ_InformUICreate.h"
+#include "Particles/ParticleSystemComponent.h"
 
 
 // Sets default values
@@ -28,6 +29,8 @@ ASJ_InformUIPannel::ASJ_InformUIPannel()
 	informMark = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("InformMark"));
 	informMark->SetupAttachment(rootComp);
 
+	informFX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("InformFX"));
+	informFX->SetupAttachment(rootComp);
 }
 
 // Called when the game starts or when spawned
@@ -51,21 +54,21 @@ void ASJ_InformUIPannel::Tick(float DeltaTime)
 	// 플레이어가 범위내 들어오면UI 가 켜지는 기능
 	if (isTrigger == true)
 	{
-		RunningTime += DeltaTime;
+		RunningTime += DeltaTime;	
 
 		if (RunningTime <= 1.0f)
 		{
-			
+
 			FRotator changeRot = FRotator(FMath::Lerp(startRot.X, endRot.X, RunningTime), FMath::Lerp(startRot.Y, endRot.Y, RunningTime), FMath::Lerp(startRot.Z, endRot.Z, RunningTime));
 
 			informMark->SetRelativeRotation(changeRot);
 
 			//startPos = GetActorLocation();
-			//endPos = GetActorLocation() + GetActorUpVector();
+			//endPos = GetActorLocation() + GetActorUpVector() * 100;
 			FVector changePos = FMath::Lerp(startPos, endPos, RunningTime);
-			//FVector(FMath::Lerp(startPos.X, endPos.X, RunningTime), FMath::Lerp(startPos.Y, endPos.Y, RunningTime), FMath::Lerp(startPos.Z, endPos.Z, RunningTime));
 
 			informMark->SetRelativeLocation(changePos);
+
 		}
 	}
 }
@@ -81,9 +84,9 @@ void ASJ_InformUIPannel::RangeIn(class UPrimitiveComponent* OverlappedComp, clas
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-		GetWorld()->SpawnActor<ASJ_InformUICreate>(informUICreate, GetActorLocation(), GetActorRotation(), Param);
+		GetWorld()->SpawnActor<ASJ_InformUICreate>(informUICreate, range->GetComponentLocation(), GetActorRotation(), Param);
 
-		informUI->SetAutoActivate(true);
+		informFX->SetHiddenInGame(true);
 
 		if (gameModeBase->GetState() == EFlowState::GoToCollectCourse)
 		{
