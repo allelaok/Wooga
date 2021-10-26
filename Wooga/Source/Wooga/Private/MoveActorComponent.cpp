@@ -41,7 +41,7 @@ void UMoveActorComponent::SetupPlayerInputComponent(UInputComponent* PlayerInput
 {
 	//PlayerInputComponent->BindAxis("RightThumbstick_X", this, &UMoveActorComponent::MoveHorizontal);
 	PlayerInputComponent->BindAxis("RightThumbstick_Y", this, &UMoveActorComponent::MoveVertical);
-	//PlayerInputComponent->BindAxis("LeftThumbstick_X", this, &UMoveActorComponent::RotateHorizontal);
+	PlayerInputComponent->BindAxis("LeftThumbstick_X", this, &UMoveActorComponent::RotateHorizontal);
 	/*PlayerInputComponent->BindAction("LeftGrip", IE_Pressed, this, &UMoveActorComponent::LeftGripOn);
 	PlayerInputComponent->BindAction("LeftGrip", IE_Released, this, &UMoveActorComponent::LeftGripOff);
 	PlayerInputComponent->BindAction("RightGrip", IE_Pressed, this, &UMoveActorComponent::RightGripOn);

@@ -88,4 +88,6 @@ public:
 	bool bisStickR = false;
 	bool bisStickL = false;
 	bool bisGrabApple = false;
+	bool bisGrabFR = false;
+
 };
