@@ -51,6 +51,7 @@ AVR_Player::AVR_Player()
 
 	headComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Head Component"));
 	headComp->SetupAttachment(cameraRoot);
+	//headComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	mouthComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Mouth Component"));
 	mouthComp->SetupAttachment(cameraRoot);
@@ -152,6 +153,8 @@ void AVR_Player::BeginPlay()
 	playerWatch->SetHiddenInGame(true);
 
 	playerWatch->OnComponentBeginOverlap.AddDynamic(this, &AVR_Player::OverlapKnowledgePoint);
+
+	
 }
 
 // Called every frame
