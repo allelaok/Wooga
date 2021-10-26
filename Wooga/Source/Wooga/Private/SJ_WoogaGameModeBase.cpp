@@ -208,6 +208,9 @@ void ASJ_WoogaGameModeBase::CompleteFireCourse()
 
 		player->playerWatch->SetHiddenInGame(false);
 
+		// 임무 완료 사운드
+		UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
+
 		SetState(EFlowState::InformWatch);
 	}
 }

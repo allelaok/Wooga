@@ -61,6 +61,7 @@ public:
 	TSubclassOf<class ASJ_HowToFireNextUIActor> howToFireNextUIActor;
 
 	float nextDelayTime;
+	float injae;
 
 	// 불의 발견 홀로그램
 	class ASJ_Hologram* hologram;
