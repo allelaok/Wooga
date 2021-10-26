@@ -26,8 +26,7 @@ public:
 
 	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
 
-	class AFireRock* fireRockR;
-	class AFireRock* fireRockL;
+	
 
 public:
 	void ShowGrabLine();
@@ -42,6 +41,9 @@ public:
 	// 잡는 액터들
 	void RGripFireRock(AActor* grabActor);
 	void LGripFireRock(AActor* grabActor);
+
+	void RGripFireRock2(AActor* grabActor);
+	void LGripFireRock2(AActor* grabActor);
 
 	void RGripFirePosition(AActor* grabActor);
 	void LGripFirePosition(AActor* grabActor);
@@ -61,6 +63,12 @@ public:
 	class AVR_Player* player;
 	
 	// 잡을 액터
+	class AFireRock* fireRockR;
+	class AFireRock* fireRockL;
+
+	class AFireRock2* fireRock2L;
+	class AFireRock2* fireRock2R;
+	
 	class AFirePosition* firePositionR;
 	class AFirePosition* firePositionL;
 

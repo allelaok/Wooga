@@ -2,6 +2,7 @@
 
 
 #include "FireRock.h"
+#include "FireRock2.h"
 #include "VR_Player.h"
 #include "DrawDebugHelpers.h"
 #include "Components/BoxComponent.h"
@@ -37,6 +38,7 @@ void AFireRock::BeginPlay()
 
 	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AFireRock::OnCollisionEnter);
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
+	fireRock2 = Cast<AFireRock2>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireRock2::StaticClass()));
 
 	outLine->SetVisibility(false);
 }
@@ -46,8 +48,7 @@ void AFireRock::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	
-
+	currentTime += DeltaTime;
 	if (bisOverlab == false)
 	{
 		myPos = FMath::Lerp(myPos, returnKnockbackPos, 5.f * GetWorld()->DeltaTimeSeconds);
@@ -62,32 +63,32 @@ void AFireRock::Tick(float DeltaTime)
 
 void AFireRock::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	OtherComp = this->boxComp;
 
-	if (this)
+	if (currentTime >= 0.2f)
 	{
-		if (bisOverlab == true)
+		if (fireRock2)
 		{
-			myPos = player->leftHand->GetRelativeLocation();
-			knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
-			myPos = knockbackPos;
-			player->leftHand->SetRelativeLocation(myPos);
-			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), explosionFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
+			if (fireRock2->boxComp)
+			{
+				myPos = player->leftHand->GetRelativeLocation();
+				knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
+				myPos = knockbackPos;
+				player->leftHand->SetRelativeLocation(myPos);
+				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), explosionFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 
-			bisOverlab = false;
+				bisOverlab = false;
 
-			// Sound
-			
-			location = this->GetActorLocation();
-			rotation = this->GetActorRotation();
+				// Sound
 
-			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
-			overlabCount++;
+				location = this->GetActorLocation();
+				rotation = this->GetActorRotation();
+
+				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+				overlabCount++;
+
+				currentTime = 0.0f;
+			}
 		}
-	}
-	else
-	{
-		return;
 	}
 }
 
