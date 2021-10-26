@@ -1,11 +1,7 @@
 ﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\TFG5076XG\Documents\GitHub\Wooga).
-  Deleted hot-reload file: C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Binaries\Win64\UE4Editor-Wooga-0001.dll
-  Deleted hot-reload file: C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Binaries\Win64\UE4Editor-Wooga-0003.dll
-  Deleted hot-reload file: C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0001.lib
-  Deleted hot-reload file: C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0003.lib
   Building WoogaEditor...
   Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
-  Distributing 4 actions to XGE
+  Distributing 3 actions to XGE
   --------------------Build System Warning---------------------------------------
   License is invalid:
       License information is invalid. Please try reloading your license file using the Coordinator Monitor application on the Coordinator machine, or reinstall IncrediBuild.
@@ -13,12 +9,11 @@
   
   -------------------------------------------------------------------------------
   --------------------Project: Default-------------------------------------------
-  Module.Wooga.cpp (0:11.18 at +0:00)
-  UE4Editor-Wooga.dll (0:00.67 at +0:11)
-     C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.suppressed.lib 라이브러리 및 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.suppressed.exp 개체를 생성하고 있습니다.
-  UE4Editor-Wooga.lib (0:00.10 at +0:11)
-     C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.lib 라이브러리 및 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga.exp 개체를 생성하고 있습니다.
-  WoogaEditor.target (0:00.17 at +0:12)
+  UE4Editor-Wooga-0005.lib (0:00.12 at +0:00)
+     C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0005.lib 라이브러리 및 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0005.exp 개체를 생성하고 있습니다.
+  UE4Editor-Wooga-0005.dll (0:00.60 at +0:00)
+     C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0005.suppressed.lib 라이브러리 및 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Development\Wooga\UE4Editor-Wooga-0005.suppressed.exp 개체를 생성하고 있습니다.
+  WoogaEditor.target (0:00.18 at +0:00)
   ---------------------- Done ----------------------
   
       Rebuild All: 1 succeeded, 0 failed, 0 skipped
@@ -26,5 +21,5 @@
   1 build system warning(s):
      - License is invalid
   
-  Total time in XGE executor: 12.29 seconds
-  Total execution time: 12.85 seconds
+  Total time in XGE executor: 1.09 seconds
+  Total execution time: 1.66 seconds

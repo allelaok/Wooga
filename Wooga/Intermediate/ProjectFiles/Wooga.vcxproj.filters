@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Wooga.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{F71A74EC-DCEC-4BFF-A8D4-C33B5065352A}</UniqueIdentifier>
+      <UniqueIdentifier>{E974402A-2C52-4725-865D-FB69D2FCFB58}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Wooga.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{31C162A3-9C36-48FA-AB8F-E8D16FA059CA}</UniqueIdentifier>
+      <UniqueIdentifier>{7C7CB49E-2816-401E-BA0C-715A00118D07}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -36,7 +36,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Config\SteamVRBindings">
-      <UniqueIdentifier>{84A99BD4-A79E-4880-9BDD-F39A0D9FD121}</UniqueIdentifier>
+      <UniqueIdentifier>{F517EF5A-594D-474D-9760-4F4127A33637}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\SteamVRBindings\gamepad.json">
       <Filter>Config\SteamVRBindings</Filter>
@@ -117,13 +117,13 @@
       <Filter>Config\SteamVRBindings</Filter>
     </None>
     <Filter Include="Source\Wooga">
-      <UniqueIdentifier>{519CA9C1-D803-4A5C-92CE-0DB2A5B0E02B}</UniqueIdentifier>
+      <UniqueIdentifier>{2893CF62-1711-4B63-8ABD-F8CDF23EBB75}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Wooga\Wooga.Build.cs">
       <Filter>Source\Wooga</Filter>
     </None>
     <Filter Include="Source\Wooga\Private">
-      <UniqueIdentifier>{EF246B2C-A4A5-4721-8F17-29B61FA17B12}</UniqueIdentifier>
+      <UniqueIdentifier>{1F4A700A-7C79-4E93-A5F2-C7B01929260D}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Wooga\Private\Apple.cpp">
       <Filter>Source\Wooga\Private</Filter>
@@ -149,7 +149,13 @@
     <ClCompile Include="..\..\Source\Wooga\Private\FireStraw.cpp">
       <Filter>Source\Wooga\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\FistAxe.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Wooga\Private\GrabActorComponent.cpp">
+      <Filter>Source\Wooga\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wooga\Private\HalfRock.cpp">
       <Filter>Source\Wooga\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Wooga\Private\HandActorComponent.cpp">
@@ -234,7 +240,7 @@
       <Filter>Source\Wooga\Private</Filter>
     </ClCompile>
     <Filter Include="Source\Wooga\Public">
-      <UniqueIdentifier>{231F1912-CC01-46E5-86B9-3EED7CDD3C40}</UniqueIdentifier>
+      <UniqueIdentifier>{927983FC-62EC-4537-AAEA-09075D76BFCA}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\Wooga\Public\Apple.h">
       <Filter>Source\Wooga\Public</Filter>
@@ -260,7 +266,13 @@
     <ClInclude Include="..\..\Source\Wooga\Public\FireStraw.h">
       <Filter>Source\Wooga\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\FistAxe.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Wooga\Public\GrabActorComponent.h">
+      <Filter>Source\Wooga\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Wooga\Public\HalfRock.h">
       <Filter>Source\Wooga\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Wooga\Public\HandActorComponent.h">

@@ -25,9 +25,15 @@ C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Edit
 C:/Users/TFG5076XG/Documents/GitHub/Wooga/Wooga/Intermediate/Build/Win64/UE4Editor/Inc/Wooga/FireStraw.gen.cpp
 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Source\Wooga/Public/FireStraw.h
 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\FireStraw.generated.h
+C:/Users/TFG5076XG/Documents/GitHub/Wooga/Wooga/Intermediate/Build/Win64/UE4Editor/Inc/Wooga/FistAxe.gen.cpp
+C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Source\Wooga/Public/FistAxe.h
+C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\FistAxe.generated.h
 C:/Users/TFG5076XG/Documents/GitHub/Wooga/Wooga/Intermediate/Build/Win64/UE4Editor/Inc/Wooga/GrabActorComponent.gen.cpp
 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Source\Wooga/Public/GrabActorComponent.h
 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\GrabActorComponent.generated.h
+C:/Users/TFG5076XG/Documents/GitHub/Wooga/Wooga/Intermediate/Build/Win64/UE4Editor/Inc/Wooga/HalfRock.gen.cpp
+C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Source\Wooga/Public/HalfRock.h
+C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\HalfRock.generated.h
 C:/Users/TFG5076XG/Documents/GitHub/Wooga/Wooga/Intermediate/Build/Win64/UE4Editor/Inc/Wooga/HandActorComponent.gen.cpp
 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Source\Wooga/Public/HandActorComponent.h
 C:\Users\TFG5076XG\Documents\GitHub\Wooga\Wooga\Intermediate\Build\Win64\UE4Editor\Inc\Wooga\HandActorComponent.generated.h
