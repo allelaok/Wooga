@@ -10,6 +10,7 @@ enum class EFlowState : uint8
 	// 불의  발견
 	HowToGrabActorUI,
 	HowToFireUI,
+	HowToFireUINext,
 	Firing,
 	CompleteFireDiscovery,
 	InformWatch,

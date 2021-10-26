@@ -13,6 +13,8 @@
 #include "SJ_HowToGrabUIActor.h"
 #include "SJ_HowToFireUIActor.h"
 #include <Components/WidgetComponent.h>
+#include "FirePosition.h"
+#include "SJ_HowToFireNextUIActor.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -43,6 +45,9 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 		break;
 	case EFlowState::HowToFireUI:
 		HowToFireUI();
+		break;
+	case EFlowState::HowToFireUINext:
+	HowToFireUINext();
 		break;
 	case EFlowState::Firing:
 		Firing();
@@ -120,13 +125,43 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-		 howToFire = GetWorld()->SpawnActor<ASJ_HowToFireUIActor>(howToFireUIActor, Param);
+		howToFire = GetWorld()->SpawnActor<ASJ_HowToFireUIActor>(howToFireUIActor, Param);
 
-		 UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
-		//howToFire = Cast<ASJ_HowToFireUIActor>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_HowToFireUIActor::StaticClass()));
-		//howToFire->Activate();
+		// 임무 완료 사운드
+		UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
 
-		SetState(EFlowState::Firing);
+		SetState(EFlowState::HowToFireUINext);
+	}
+}
+
+void ASJ_WoogaGameModeBase::HowToFireUINext()
+{
+	AFirePosition* firePos = Cast<AFirePosition>(UGameplayStatics::GetActorOfClass(GetWorld(), AFirePosition::StaticClass()));
+
+	if (firePos->bisFire == true)
+	{
+		// 이전 UI 꺼주기
+		player->TurnOff();
+
+		nextDelayTime += GetWorld()->DeltaTimeSeconds;
+
+		if (nextDelayTime >= 2.0f)
+		{
+			// 이전에 사용하던 UI 제거
+			howToFire->Destroy();
+
+			// 두번째 불지피는 UI 생성 
+			FActorSpawnParameters Param;
+			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+			 
+			 howToFireNext = GetWorld()->SpawnActor<ASJ_HowToFireNextUIActor>(howToFireNextUIActor, Param);
+
+			 // 임무 완료 사운드
+			 UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
+
+			SetState(EFlowState::Firing);
+			nextDelayTime = 0;
+		}
 	}
 }
 
@@ -202,7 +237,7 @@ void ASJ_WoogaGameModeBase::OpenGrabUI()
 
 	// 시작시 잡는 방법 알려주는 UI 생성 코드
 	howToGrab = GetWorld()->SpawnActor<ASJ_HowToGrabUIActor>(howToGrabActor, Param);
-} 
+}
 
 #pragma region CollectStateFunction
 void ASJ_WoogaGameModeBase::HowToCollectActorUI()
