@@ -62,7 +62,7 @@ void AFireRock::Tick(float DeltaTime)
 
 void AFireRock::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	OtherActor = this;
+	OtherComp = this->boxComp;
 
 	if (this)
 	{
@@ -84,6 +84,10 @@ void AFireRock::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, clas
 			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
 			overlabCount++;
 		}
+	}
+	else
+	{
+		return;
 	}
 }
 
