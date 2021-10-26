@@ -45,8 +45,7 @@ void AFirePosition::Tick(float DeltaTime)
 			rotation = this->GetActorRotation();
 
 			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
-			
-			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), smokeFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
+
 			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), emberFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 			bisFire = true;
 		}
