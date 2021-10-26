@@ -7,6 +7,7 @@
 #include "VR_Player.h"
 #include <Kismet/GameplayStatics.h>
 #include "Camera/CameraComponent.h"
+#include "SJ_WoogaGameModeBase.h"
 
 // Sets default values
 ASJ_HowToGrabUIActor::ASJ_HowToGrabUIActor()
@@ -47,6 +48,8 @@ void ASJ_HowToGrabUIActor::BeginPlay()
 	SetState(EBlinkState::OnOpacity);
 	
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
+
+	gameModeBase = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
 
 	FVector playerLoc = player->GetActorLocation();
 	FVector me = GetActorLocation();
@@ -109,7 +112,7 @@ void ASJ_HowToGrabUIActor::OnOpacity()
 
 void ASJ_HowToGrabUIActor::PlayOpacity()
 {
-	if (player->isClose == true)
+	if (player->isClose == true && gameModeBase->GetState() == EFlowState::HowToGrabActorUI)
 	{
 		SetState(EBlinkState::OffOpacity);
 	}

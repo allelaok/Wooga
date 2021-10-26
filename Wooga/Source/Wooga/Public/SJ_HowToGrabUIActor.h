@@ -48,6 +48,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	class ASJ_WoogaGameModeBase* gameModeBase;
+
 	class AVR_Player* player;
 
 	EBlinkState blink;

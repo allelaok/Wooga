@@ -25,6 +25,7 @@ public:
 	void SetState(EFlowState state);
 	EFlowState GetState();
 
+	void InGame();
 	// 불의 발견 교육
 	void GrabActorUI();
 	void HowToFireUI();

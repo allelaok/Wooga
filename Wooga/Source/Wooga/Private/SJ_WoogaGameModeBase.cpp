@@ -26,11 +26,9 @@ void ASJ_WoogaGameModeBase::BeginPlay()
 	Super::BeginPlay();
 
 	// 맨 처음 불의 발견 교육으로 시작
-	SetState(EFlowState::HowToGrabActorUI);
+	SetState(EFlowState::InGame);
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
-
-	GetWorldTimerManager().SetTimer(howToGrabOpenTIme, this, &ASJ_WoogaGameModeBase::OpenGrabUI, 3.0f);
 }
 
 #pragma region FlowStateFunction
@@ -40,6 +38,9 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 
 	switch (flowState)
 	{
+	case  EFlowState::InGame:
+		InGame();
+		break;
 	case EFlowState::HowToGrabActorUI:
 		GrabActorUI();
 		break;
@@ -85,6 +86,22 @@ void ASJ_WoogaGameModeBase::SetState(EFlowState state)
 EFlowState ASJ_WoogaGameModeBase::GetState()
 {
 	return EFlowState();
+}
+
+void ASJ_WoogaGameModeBase::InGame()
+{
+	nextDelayTime += GetWorld()->DeltaTimeSeconds;
+
+	if (nextDelayTime >= 10.0f)
+	{
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		// 시작시 잡는 방법 알려주는 UI 생성 코드
+		howToGrab = GetWorld()->SpawnActor<ASJ_HowToGrabUIActor>(howToGrabActor, Param);
+
+		SetState(EFlowState::HowToGrabActorUI);
+	}
 }
 
 #pragma endregion

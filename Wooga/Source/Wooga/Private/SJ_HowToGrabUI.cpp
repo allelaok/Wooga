@@ -4,12 +4,15 @@
 #include "SJ_HowToGrabUI.h"
 #include "VR_Player.h"
 #include <Kismet/GameplayStatics.h>
+#include "SJ_WoogaGameModeBase.h"
 
 void USJ_HowToGrabUI::NativeConstruct()
 {
 	Super::NativeConstruct();
 
 	PlayAnimation(OpenUI);
+
+	gameModeBase = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
 }
 
 void USJ_HowToGrabUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
@@ -18,7 +21,7 @@ void USJ_HowToGrabUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
-	if (player->isClose == true)
+	if (player->isClose == true && gameModeBase->GetState() == EFlowState::HowToGrabActorUI)
 	{
 		Close();
 	}

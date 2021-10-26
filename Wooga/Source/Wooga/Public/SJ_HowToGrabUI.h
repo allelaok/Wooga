@@ -20,6 +20,8 @@ protected:
 public:
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
+	class ASJ_WoogaGameModeBase* gameModeBase;
+
 	class AVR_Player* player;
 
 	UPROPERTY(EditDefaultsOnly, BluePrintReadWrite, Category = "Animation", meta = (BindWidgetAnim), Transient)
