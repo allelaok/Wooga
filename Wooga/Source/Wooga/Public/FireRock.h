@@ -32,13 +32,18 @@ public:
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UStaticMeshComponent* meshComp;
 
-		UPROPERTY(EditAnywhere, Category = Outline)
+	UPROPERTY(EditAnywhere, Category = Outline)
 		class UStaticMeshComponent* outLine;
 
-	
+	UPROPERTY()
+	float currentTime;
+
 	UPROPERTY()
 	class AFireRock* me;
 	
+	UPROPERTY()
+		class AFireRock2* fireRock2;
+
 	UPROPERTY()
 	class AVR_Player* player;
 
