@@ -7,6 +7,7 @@
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include <Kismet/GameplayStatics.h>
+#include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
 AFirePosition::AFirePosition()
@@ -19,6 +20,9 @@ AFirePosition::AFirePosition()
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
+
+	FX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("FX"));
+	FX->SetupAttachment(boxComp);
 }
 
 // Called when the game starts or when spawned
@@ -28,6 +32,7 @@ void AFirePosition::BeginPlay()
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 	fireRock = Cast<AFireRock>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireRock::StaticClass()));
 
+	FX->SetHiddenInGame(true);
 }
 
 // Called every frame
@@ -46,6 +51,7 @@ void AFirePosition::Tick(float DeltaTime)
 
 			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
 
+			FX->SetHiddenInGame(false);
 			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), emberFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 			bisFire = true;
 		}

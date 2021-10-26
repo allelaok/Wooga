@@ -32,6 +32,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = FX)
 	class UParticleSystemComponent* FX;
+
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		FVector grabOffset;
 
