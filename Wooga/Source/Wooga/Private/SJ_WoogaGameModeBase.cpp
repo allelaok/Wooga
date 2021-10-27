@@ -92,13 +92,15 @@ void ASJ_WoogaGameModeBase::InGame()
 {
 	nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
-	if (nextDelayTime >= 10.0f)
+	if (nextDelayTime >= 3.0f)
 	{
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 		// 시작시 잡는 방법 알려주는 UI 생성 코드
 		howToGrab = GetWorld()->SpawnActor<ASJ_HowToGrabUIActor>(howToGrabActor, Param);
+
+		nextDelayTime = 0;
 
 		SetState(EFlowState::HowToGrabActorUI);
 	}
