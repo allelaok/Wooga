@@ -9,6 +9,7 @@
 #include "FireRock.h"
 #include "FireRock2.h"
 #include "FirePosition.h"
+#include "FistAxe.h"
 #include "DrawDebugHelpers.h"
 #include "HandActorComponent.h"
 #include "Components/BoxComponent.h"
@@ -201,7 +202,7 @@ void UGrabActorComponent::RightReleaseAction()
 
 			appleR = nullptr;
 			bisLeftGrab = false;
-			bisGrabApple = true;
+			bisGrabApple = false;
 
 			// 오른손 피는 애니메이션
 			player->handComp->targetGripValueRight = 0.0f;
@@ -260,6 +261,7 @@ void UGrabActorComponent::LeftGrabAction()
 	LGripFirePosition(grabActor);
 	LGripApple(grabActor);
 	LGripStick(grabActor);
+	LGripFistAxe(grabActor);
 }
 
 void UGrabActorComponent::LeftReleaseAction()
@@ -326,6 +328,7 @@ void UGrabActorComponent::LeftReleaseAction()
 
 			appleL = nullptr;
 			bisLeftGrab = false;
+			bisGrabApple = false;
 
 			// 완손 피는 애니메이션
 			player->handComp->targetGripValueLeft = 0.0f;
@@ -350,11 +353,24 @@ void UGrabActorComponent::LeftReleaseAction()
 			stickL->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 			stickL->boxComp->SetSimulatePhysics(false);
-			stickL->boxComp->SetEnableGravity(false);
 
 			stickL = nullptr;
 			bisLeftGrab = false;
-			bisStickL = false;
+
+			// 완손 피는 애니메이션
+			player->handComp->targetGripValueLeft = 0.0f;
+		}
+
+		if (fistAxeL)
+		{
+			fistAxeL->fist->SetEnableGravity(true);
+			// 그 자리에서 떨어지게
+			fistAxeL->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
+			fistAxeL->fist->SetSimulatePhysics(true);
+
+			fistAxeL = nullptr;
+			bisLeftGrab = false;
 
 			// 완손 피는 애니메이션
 			player->handComp->targetGripValueLeft = 0.0f;
@@ -774,6 +790,38 @@ void UGrabActorComponent::LGripStick(AActor* grabActor)
 
 			// 오브젝트를 잡았을때 위치 잡기
 			stickL->boxComp->SetRelativeLocation((stickL->grabOffset));
+
+			// 오른손에 stick이 있냐?
+			bisStickL = true;
+		}
+	}
+}
+
+void UGrabActorComponent::LGripFistAxe(AActor* grabActor)
+{
+	FString fr = grabActor->GetName();
+
+	if (fr.Contains("FistAxe"))
+	{
+		fistAxeL = Cast<AFistAxe>(grabActor);
+
+		if (fistAxeL)
+		{
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+			//fireRock->SetActorHiddenInGame(false);
+			//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
+			FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+
+			fistAxeL->fist->SetSimulatePhysics(false);
+			fistAxeL->fist->SetEnableGravity(false);
+
+
+			fistAxeL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));
+			// 오른손 쥐는 애니메이션
+			player->handComp->targetGripValueLeft = 0.7f;
+
+			// 오브젝트를 잡았을때 위치 잡기
+			fistAxeL->fist->SetRelativeLocation((fistAxeL->grabOffset));
 
 			// 오른손에 stick이 있냐?
 			bisStickL = true;

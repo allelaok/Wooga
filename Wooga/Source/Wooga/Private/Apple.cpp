@@ -83,9 +83,5 @@ void AApple::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class A
 			}
 		}
 	}
-	else
-	{
-		return;
-	}
 }
 

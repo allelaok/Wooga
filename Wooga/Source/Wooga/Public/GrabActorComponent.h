@@ -38,6 +38,7 @@ public:
 	void LeftGrabAction();
 	void LeftReleaseAction();
 
+
 	// 잡는 액터들
 	void RGripFireRock(AActor* grabActor);
 	void LGripFireRock(AActor* grabActor);
@@ -57,7 +58,7 @@ public:
 	void RGripStick(AActor* grabActor);
 	void LGripStick(AActor* grabActor);
 
-
+	void LGripFistAxe(AActor* grabActor);
 	
 
 	class AVR_Player* player;
@@ -80,6 +81,8 @@ public:
 
 	class AStick* stickR;
 	class AStick* stickL;
+
+	class AFistAxe* fistAxeL;
 
 	FHitResult grabObject;
 
