@@ -57,10 +57,10 @@ public:
 		class UStaticMeshComponent* rock9;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
-		class UMaterial* offMaterial;
+		class UMaterialInstance* offMaterial;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
-		class UMaterial* onMaterial;
+		class UMaterialInstance* onMaterial;
 
 public:
 	// 소켓에 넣을떄 Offset 값을 조정
@@ -70,7 +70,29 @@ public:
 	UPROPERTY()
 		class ADetachRock* detachRock;
 
+	UPROPERTY()
+		class AHalfRock* hr;
+
+	UPROPERTY()
+		class AVR_Player* player;
+
+	UPROPERTY()
+		float currentTime;
+
+	// 넉벡 종료지점
+	UPROPERTY()
+		FVector knockbackPos;
+
+	UPROPERTY()
+		FVector returnKnockbackPos;
+
+	UPROPERTY()
+		FVector myPos;
+
 public:
+	UPROPERTY()
+		bool bisOverlab = false;
+
 	UPROPERTY()
 		bool bisD1 = false;
 

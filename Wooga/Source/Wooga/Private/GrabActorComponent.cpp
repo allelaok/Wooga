@@ -10,6 +10,7 @@
 #include "FireRock2.h"
 #include "FirePosition.h"
 #include "FistAxe.h"
+#include "HalfRock.h"
 #include "DrawDebugHelpers.h"
 #include "HandActorComponent.h"
 #include "Components/BoxComponent.h"
@@ -133,7 +134,7 @@ void UGrabActorComponent::RightGrabAction()
 	RGripFirePosition(grabActor);
 	RGripApple(grabActor);
 	RGripStick(grabActor);
-
+	RGripHalfRock(grabActor);
 }
 
 void UGrabActorComponent::RightReleaseAction()
@@ -208,18 +209,6 @@ void UGrabActorComponent::RightReleaseAction()
 			player->handComp->targetGripValueRight = 0.0f;
 		}
 
-		//if (stemR)
-		//{
-		//	stemR->boxComp->SetEnableGravity(true);
-		//	// 그 자리에서 떨어지게
-		//	stemR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
-
-		//	stemR->boxComp->SetSimulatePhysics(true);
-
-		//	stemR = nullptr;
-		//	bisLeftGrab = false;
-		//}
-
 		if (stickR)
 		{
 			stickR->boxComp->SetEnableGravity(true);
@@ -227,7 +216,7 @@ void UGrabActorComponent::RightReleaseAction()
 			stickR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 			stickR->boxComp->SetSimulatePhysics(false);
-			stickR->boxComp->SetEnableGravity(false);
+			
 
 			stickR = nullptr;
 			bisLeftGrab = false;
@@ -236,12 +225,25 @@ void UGrabActorComponent::RightReleaseAction()
 			// 오른손 피는 애니메이션
 			player->handComp->targetGripValueRight = 0.0f;
 		}
-		
+
+		if (halfRock)
+		{
+			halfRock->halfRock->SetEnableGravity(true);
+			// 그 자리에서 떨어지게
+			halfRock->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
+			halfRock->halfRock->SetSimulatePhysics(true);
+
+			halfRock = nullptr;
+			bisLeftGrab = false;
+			bisGrabHR = true;
+
+			// 오른손 피는 애니메이션
+			player->handComp->targetGripValueRight = 0.0f;
+		}
 	}
-	{
 		// 오른손 피는 애니메이션
 		player->handComp->targetGripValueRight = 0.0f;
-	}
 }
 
 void UGrabActorComponent::LeftGrabAction()
@@ -334,18 +336,6 @@ void UGrabActorComponent::LeftReleaseAction()
 			player->handComp->targetGripValueLeft = 0.0f;
 		}
 
-		//if (stemL)
-		//{
-		//	stemL->boxComp->SetEnableGravity(true);
-		//	// 그 자리에서 떨어지게
-		//	stemL->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
-
-		//	stemL->boxComp->SetSimulatePhysics(true);
-
-		//	stemL = nullptr;
-		//	bisLeftGrab = false;
-		//}
-
 		if (stickL)
 		{
 			stickL->boxComp->SetEnableGravity(true);
@@ -376,13 +366,10 @@ void UGrabActorComponent::LeftReleaseAction()
 			player->handComp->targetGripValueLeft = 0.0f;
 		}
 
-	
+
 	}
-	{
 		// 왼손 피는 애니메이션
 		player->handComp->targetGripValueLeft = 0.0f;
-	}
-
 }
 
 void UGrabActorComponent::RGripFireRock(AActor* grabActor)
@@ -825,6 +812,36 @@ void UGrabActorComponent::LGripFistAxe(AActor* grabActor)
 
 			// 오른손에 stick이 있냐?
 			bisStickL = true;
+		}
+	}
+}
+
+void UGrabActorComponent::RGripHalfRock(AActor* grabActor)
+{
+	FString fr = grabActor->GetName();
+	/*if (fireRock == nullptr)
+	{*/
+	if (fr.Contains("HalfRock"))
+	{
+		halfRock = Cast<AHalfRock>(grabActor);
+
+		if (halfRock)
+		{
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+			//fireRock->SetActorHiddenInGame(false);
+			//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
+			FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+
+			halfRock->halfRock->SetSimulatePhysics(false);
+			halfRock->halfRock->SetEnableGravity(false);
+
+
+			halfRock->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
+			// 오른손 쥐는 애니메이션
+			player->handComp->targetGripValueRight = 0.7f;
+
+			// 오브젝트를 잡았을때 위치 잡기
+			halfRock->halfRock->SetRelativeLocation((halfRock->grabOffset));
 		}
 	}
 }

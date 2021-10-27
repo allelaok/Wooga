@@ -59,6 +59,8 @@ public:
 	void LGripStick(AActor* grabActor);
 
 	void LGripFistAxe(AActor* grabActor);
+
+	void RGripHalfRock(AActor* grabActor);
 	
 
 	class AVR_Player* player;
@@ -84,6 +86,8 @@ public:
 
 	class AFistAxe* fistAxeL;
 
+	class AHalfRock* halfRock;
+
 	FHitResult grabObject;
 
 public:
@@ -100,5 +104,6 @@ public:
 	bool bisStickL = false;
 	bool bisGrabApple = false;
 	bool bisGrabFR = false;
+	bool bisGrabHR = false;
 
 };

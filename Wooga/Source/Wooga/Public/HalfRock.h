@@ -25,4 +25,16 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
 		class UStaticMeshComponent* halfRock;
+
+	UPROPERTY()
+		class AFistAxe* fistAxe;
+
+	UPROPERTY(EditAnywhere, Category = AAA)
+		FVector grabOffset;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UMaterial* offMaterial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UMaterial* onMaterial;
 };

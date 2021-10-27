@@ -49,14 +49,14 @@ void AFireRock::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	currentTime += DeltaTime;
-	if (bisOverlab == false)
+	if (bisOverlab == true)
 	{
 		myPos = FMath::Lerp(myPos, returnKnockbackPos, 5.f * GetWorld()->DeltaTimeSeconds);
 		player->leftHand->SetRelativeLocation(myPos);
 		// 물어보기
 		if (FVector::Dist(myPos, returnKnockbackPos) < 1.f)
 		{
-			bisOverlab = true;
+			bisOverlab = false;
 		}
 	}
 }
@@ -64,11 +64,11 @@ void AFireRock::Tick(float DeltaTime)
 void AFireRock::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 
-	if (currentTime >= 0.2f)
+	if (currentTime >= 0.3f)
 	{
 		if (fireRock2)
 		{
-			if (fireRock2->boxComp)
+			if (OtherComp == fireRock2->boxComp)
 			{
 				myPos = player->leftHand->GetRelativeLocation();
 				knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
@@ -76,7 +76,7 @@ void AFireRock::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, clas
 				player->leftHand->SetRelativeLocation(myPos);
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), explosionFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 
-				bisOverlab = false;
+				bisOverlab = true;
 
 				// Sound
 
