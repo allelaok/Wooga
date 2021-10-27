@@ -21,7 +21,7 @@ void USJ_HowToGrabUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
-	if (player->isClose == true && gameModeBase->GetState() == EFlowState::HowToGrabActorUI)
+	if (player->isClose == true)
 	{
 		Close();
 	}

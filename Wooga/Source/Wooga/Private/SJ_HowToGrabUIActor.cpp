@@ -12,7 +12,7 @@
 // Sets default values
 ASJ_HowToGrabUIActor::ASJ_HowToGrabUIActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	rootComp = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
@@ -46,7 +46,7 @@ void ASJ_HowToGrabUIActor::BeginPlay()
 	Super::BeginPlay();
 
 	SetState(EBlinkState::OnOpacity);
-	
+
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
 	gameModeBase = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
@@ -54,7 +54,7 @@ void ASJ_HowToGrabUIActor::BeginPlay()
 	FVector playerLoc = player->GetActorLocation();
 	FVector me = GetActorLocation();
 
-	FVector p =player->GetActorLocation() + player->GetActorForwardVector() * 200;
+	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 200;
 
 	SetActorLocation(p);
 
@@ -106,14 +106,16 @@ void ASJ_HowToGrabUIActor::OnOpacity()
 
 	if (createTime >= 2.0f)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayOpacity"));
 		SetState(EBlinkState::PlayOpacity);
 	}
 }
 
 void ASJ_HowToGrabUIActor::PlayOpacity()
 {
-	if (player->isClose == true && gameModeBase->GetState() == EFlowState::HowToGrabActorUI)
+	if (player->isClose == true)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("OffOpacity"));
 		SetState(EBlinkState::OffOpacity);
 	}
 }
