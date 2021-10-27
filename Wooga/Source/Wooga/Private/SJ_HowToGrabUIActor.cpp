@@ -15,29 +15,47 @@ ASJ_HowToGrabUIActor::ASJ_HowToGrabUIActor()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	rootComp = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
+	rootComp = CreateDefaultSubobject<USceneComponent>(TEXT("Root Comp"));
 	SetRootComponent(rootComp);
 
-	controllerRootComp = CreateDefaultSubobject<USceneComponent>(TEXT("ControllerRootComponent"));
-	controllerRootComp->SetupAttachment(rootComp);
+	controllerLRootComp = CreateDefaultSubobject<USceneComponent>(TEXT("ControllerLRootComponent"));
+	controllerLRootComp->SetupAttachment(rootComp);
 
-	body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
-	body->SetupAttachment(controllerRootComp);
+	bodyL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyL"));
+	bodyL->SetupAttachment(controllerLRootComp);
 
-	grib = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Grib"));
-	grib->SetupAttachment(controllerRootComp);
+	gribL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GribL"));
+	gribL->SetupAttachment(controllerLRootComp);
 
-	handle = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Handle"));
-	handle->SetupAttachment(controllerRootComp);
+	handleL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HandleL"));
+	handleL->SetupAttachment(controllerLRootComp);
 
-	trigger = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Trigger"));
-	trigger->SetupAttachment(controllerRootComp);
+	triggerL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TriggerL"));
+	triggerL->SetupAttachment(controllerLRootComp);
 
-	button = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Button"));
-	button->SetupAttachment(controllerRootComp);
+	buttonL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ButtonL"));
+	buttonL->SetupAttachment(controllerLRootComp);
 
-	pressUI = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComponent"));
-	pressUI->SetupAttachment(rootComp);
+	controllerRRootComp = CreateDefaultSubobject<USceneComponent>(TEXT("ControllerRRootComponent"));
+	controllerRRootComp->SetupAttachment(rootComp);
+
+	bodyR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyR"));
+	bodyR->SetupAttachment(controllerRRootComp);
+
+	gribR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GribR"));
+	gribR->SetupAttachment(controllerRRootComp);
+
+	handleR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HandleR"));
+	handleR->SetupAttachment(controllerRRootComp);
+
+	triggerR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TriggerR"));
+	triggerR->SetupAttachment(controllerRRootComp);
+
+	buttonR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ButtonR"));
+	buttonR->SetupAttachment(controllerRRootComp);
+
+	widgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("Widget Comp"));
+	widgetComp->SetupAttachment(rootComp);
 }
 
 // Called when the game starts or when spawned
@@ -98,12 +116,6 @@ void ASJ_HowToGrabUIActor::OnOpacity()
 	createTime += GetWorld()->DeltaTimeSeconds;
 	startParam = FMath::Lerp(-1.0f, 1.0f, createTime * 0.7f);
 
-	body->SetScalarParameterValueOnMaterials(TEXT("Opa"), startParam);
-	grib->SetScalarParameterValueOnMaterials(TEXT("Opa"), startParam);
-	handle->SetScalarParameterValueOnMaterials(TEXT("Opa"), startParam);
-	trigger->SetScalarParameterValueOnMaterials(TEXT("Opa"), startParam);
-	button->SetScalarParameterValueOnMaterials(TEXT("Opa"), startParam);
-
 	if (createTime >= 2.0f)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayOpacity"));
@@ -125,11 +137,7 @@ void ASJ_HowToGrabUIActor::OffOpacity()
 	destroyTime += GetWorld()->DeltaTimeSeconds;
 	destroyParam = FMath::Lerp(1.0f, -1.0f, destroyTime * 0.7f);
 
-	body->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
-	grib->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
-	handle->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
-	trigger->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
-	button->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
+	// body->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
 
 	if (destroyTime >= 2.0f)
 	{

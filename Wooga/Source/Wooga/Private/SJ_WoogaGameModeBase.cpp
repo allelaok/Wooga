@@ -15,6 +15,11 @@
 #include <Components/WidgetComponent.h>
 #include "FirePosition.h"
 #include "SJ_HowToFireNextUIActor.h"
+#include "SJ_Actor_HowToManipulate.h"
+#include "SJ_Actor_TitleUI.h"
+#include "FireRock2.h"
+#include "FireStraw.h"
+#include "SJ_Actor_BreatheFireUI.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -38,17 +43,22 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 
 	switch (flowState)
 	{
-	case  EFlowState::InGame:
+	case EFlowState::InGame:
 		InGame();
+		break;
+	case  EFlowState::ManipulateUI:
+		ManipulateUI();
 		break;
 	case EFlowState::HowToGrabActorUI:
 		GrabActorUI();
+		break;
+	case EFlowState::FireDiscoveryTitle:
 		break;
 	case EFlowState::HowToFireUI:
 		HowToFireUI();
 		break;
 	case EFlowState::HowToFireUINext:
-	HowToFireUINext();
+		HowToFireUINext();
 		break;
 	case EFlowState::Firing:
 		Firing();
@@ -90,61 +100,103 @@ EFlowState ASJ_WoogaGameModeBase::GetState()
 
 void ASJ_WoogaGameModeBase::InGame()
 {
+	// 시작 시 약간의 딜레이를 주고 시작
 	nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
-	if (nextDelayTime >= 3.0f)
+	if (nextDelayTime >= 5.0f)
 	{
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-		// 시작시 잡는 방법 알려주는 UI 생성 코드
-		howToGrab = GetWorld()->SpawnActor<ASJ_HowToGrabUIActor>(howToGrabActor, Param);
+		// 조작방법 UI 생성
+		manipulateUI = GetWorld()->SpawnActor<ASJ_Actor_HowToManipulate>(bpManipulateUI, Param);
 
 		nextDelayTime = 0;
+
+		SetState(EFlowState::ManipulateUI);
+	}
+}
+
+void ASJ_WoogaGameModeBase::ManipulateUI()
+{
+	if (player->isClose == true)
+	{
+		// 잡는방법 UI 생성 로직
+		GetWorldTimerManager().SetTimer(howToGrabUITimer, this, &ASJ_WoogaGameModeBase::SpawnHowToGrabUI, 3.0f);
 
 		SetState(EFlowState::HowToGrabActorUI);
 	}
 }
 
-#pragma endregion
-
-#pragma region DiscoveryStateFunction
 void ASJ_WoogaGameModeBase::GrabActorUI()
 {
-	// 잡는 방법을 알려주는 UI 가 꺼지면 부싯돌을 잡는 상태로 넘어간다.
+	// 잡는 방법을 알려주는 UI 가 꺼지면 교육 제목을 생성한다.
 	if (player->isClose == true)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("OpenHowToFireUI"));
-
-		// UI 를 끄면 근처 아웃 라인이 켜지게
-		TArray<AActor*> bpFireRocks;
-		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AFireRock::StaticClass(), bpFireRocks);
-
-		for (int i = 0; i < bpFireRocks.Num(); i++)
+		bIsDelay = true;
+		if (bIsDelay == true)
 		{
-			AFireRock* emptyFireRock = nullptr;
-			fireRocks.Add(emptyFireRock);
-		}
+			nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
-		for (int i = 0; i < bpFireRocks.Num(); i++)
-		{
-			auto fr = Cast<AFireRock>(bpFireRocks[i]);
-			fr->outLine->SetVisibility(true);
-		}
+			if (nextDelayTime >= 3.0f)
+			{
+				// 딜레이 변수 초기화
+				bIsDelay = false;
+				nextDelayTime = 0;
 
-		SetState(EFlowState::HowToFireUI);
+				SpawnTitle();
+				SetState(EFlowState::FireDiscoveryTitle);
+			}
+		}
 	}
 }
 
-void ASJ_WoogaGameModeBase::HowToFireUI()
+void ASJ_WoogaGameModeBase::FireDiscoveryTitle()
 {
-	// 부싯돌을 두개 다 잡으면 불을 지필 수 있는 상태로 넘어간다.
-	if (player->grabComp->fireRockR && player->grabComp->fireRockL)
+	nextDelayTime += GetWorld()->DeltaTimeSeconds;
+
+	if (nextDelayTime >= 9.0f)
 	{
+		// 부싯돌 캐싱
+		fireRockOne = Cast<AFireRock>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireRock::StaticClass()));
+		fireRockTwo = Cast<AFireRock2>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireRock2::StaticClass()));
+
+		// 부싯돌 아웃라인
+		fireRockOne->outLine->SetVisibility(true);
+		fireRockTwo->outLine->SetVisibility(true);
+
+		// 불씨 UI 생성
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 		howToFire = GetWorld()->SpawnActor<ASJ_HowToFireUIActor>(howToFireUIActor, Param);
+
+		SetState(EFlowState::HowToFireUI);
+	}
+}
+#pragma endregion
+
+#pragma region DiscoveryStateFunction
+
+
+void ASJ_WoogaGameModeBase::HowToFireUI()
+{
+	firePosition = Cast<AFirePosition>(UGameplayStatics::GetActorOfClass(GetWorld(), AFirePosition::StaticClass()));
+
+	fireStraw = Cast<AFireStraw>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireStraw::StaticClass()));
+
+	if (firePosition->bisFire == true)
+	{
+		// 지푸라기와 화로 아웃라인
+		firePosition->outLine->SetVisibility(true);
+
+		fireStraw->outLine->SetVisibility(true);
+		
+		//  불씨 바닥으로 옮기는 UI
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		howToFireNext = GetWorld()->SpawnActor<ASJ_HowToFireNextUIActor>(howToFireNextUIActor, Param);
 
 		// 임무 완료 사운드
 		UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
@@ -155,9 +207,23 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 
 void ASJ_WoogaGameModeBase::HowToFireUINext()
 {
-	AFirePosition* firePos = Cast<AFirePosition>(UGameplayStatics::GetActorOfClass(GetWorld(), AFirePosition::StaticClass()));
+	// firePosition = Cast<AFirePosition>(UGameplayStatics::GetActorOfClass(GetWorld(), AFirePosition::StaticClass()));
 
-	if (firePos->bisFire == true)
+	// fireStraw = Cast<AFireStraw>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireStraw::StaticClass()));
+
+	if (fireStraw->bisReadyFire == true)
+	{
+		// 임무 완료 사운드
+		UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
+
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		breatheFireUI = GetWorld()->SpawnActor<ASJ_Actor_BreatheFireUI>(bpBreatheFireUI, Param);
+		SetState(EFlowState::Firing);
+	}
+
+	if (firePosition->bisFire == true)
 	{
 		// 이전 UI 꺼주기
 		player->TurnOff();
@@ -169,15 +235,6 @@ void ASJ_WoogaGameModeBase::HowToFireUINext()
 			// 이전에 사용하던 UI 제거
 			howToFire->Destroy();
 
-			// 두번째 불지피는 UI 생성 
-			FActorSpawnParameters Param;
-			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-			 
-			 howToFireNext = GetWorld()->SpawnActor<ASJ_HowToFireNextUIActor>(howToFireNextUIActor, Param);
-
-			 // 임무 완료 사운드
-			 UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
-
 			SetState(EFlowState::Firing);
 			nextDelayTime = 0;
 		}
@@ -186,7 +243,7 @@ void ASJ_WoogaGameModeBase::HowToFireUINext()
 
 void ASJ_WoogaGameModeBase::Firing()
 {
-	AFireStraw* fireStraw = Cast<AFireStraw>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireStraw::StaticClass()));
+	// AFireStraw* fireStraw = Cast<AFireStraw>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireStraw::StaticClass()));
 
 	if (fireStraw->isClear == false)
 	{
@@ -250,9 +307,8 @@ void ASJ_WoogaGameModeBase::GoToCollectState()
 {
 
 }
-#pragma endregion
 
-void ASJ_WoogaGameModeBase::OpenGrabUI()
+void ASJ_WoogaGameModeBase::SpawnHowToGrabUI()
 {
 	FActorSpawnParameters Param;
 	Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
@@ -260,6 +316,18 @@ void ASJ_WoogaGameModeBase::OpenGrabUI()
 	// 시작시 잡는 방법 알려주는 UI 생성 코드
 	howToGrab = GetWorld()->SpawnActor<ASJ_HowToGrabUIActor>(howToGrabActor, Param);
 }
+
+void ASJ_WoogaGameModeBase::SpawnTitle()
+{
+	FActorSpawnParameters Param;
+	Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+	// 불의 발견 제목
+	FDTitle = GetWorld()->SpawnActor<ASJ_Actor_TitleUI>(bpFDTitle, Param);
+
+	// 웅장한 사운드 재생
+}
+#pragma endregion
 
 #pragma region CollectStateFunction
 void ASJ_WoogaGameModeBase::HowToCollectActorUI()

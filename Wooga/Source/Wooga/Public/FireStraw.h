@@ -31,6 +31,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UStaticMeshComponent* meshComp;
+
+	UPROPERTY(EditAnywhere, Category = OutLine)
+		class UStaticMeshComponent* outLine;
 	
 	UPROPERTY(EditAnywhere, Category = "Fire")
 		class UParticleSystem* smogFactory;

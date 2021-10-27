@@ -21,6 +21,9 @@ AFirePosition::AFirePosition()
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
 
+	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OutLine"));
+	outLine->SetupAttachment(boxComp);
+
 	FX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("FX"));
 	FX->SetupAttachment(boxComp);
 }
@@ -31,6 +34,8 @@ void AFirePosition::BeginPlay()
 	Super::BeginPlay();
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 	fireRock = Cast<AFireRock>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireRock::StaticClass()));
+
+	outLine->SetVisibility(false);
 
 	FX->SetHiddenInGame(true);
 }

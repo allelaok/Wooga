@@ -14,13 +14,14 @@ AFireStraw::AFireStraw()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-
-
 	boxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Component"));
 	boxComp->SetupAttachment(RootComponent);
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
+
+	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OutLine"));
+	outLine->SetupAttachment(boxComp);
 }
 
 // Called when the game starts or when spawned
@@ -29,6 +30,8 @@ void AFireStraw::BeginPlay()
 	Super::BeginPlay();
 	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AFireStraw::OnCollisionEnter);
 	//firePosition = Cast<AFirePosition>(UGameplayStatics::GetActorOfClass(GetWorld(), AFirePosition::StaticClass()));
+
+	outLine->SetVisibility(false);
 
 	isClear = false;
 }

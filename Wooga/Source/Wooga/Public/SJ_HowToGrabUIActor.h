@@ -15,30 +15,47 @@ public:
 	// Sets default values for this actor's properties
 	ASJ_HowToGrabUIActor();
 
-	// ∑Á∆Æ
-	UPROPERTY(VisibleDefaultsOnly, Category = Controller)
+	UPROPERTY(EditAnywhere, Category = UI)
 		class USceneComponent* rootComp;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = Controller)
-	class USceneComponent* controllerRootComp;
+		class USceneComponent* controllerLRootComp;
 
 	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* body;
+		class UStaticMeshComponent* bodyL;
 
 	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* grib;
+		class UStaticMeshComponent* gribL;
 
 	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* handle;
+		class UStaticMeshComponent* handleL;
 
 	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* trigger;
+		class UStaticMeshComponent* triggerL;
 
 	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* button;
+		class UStaticMeshComponent* buttonL;
+
+	UPROPERTY(VisibleDefaultsOnly, Category = Controller)
+		class USceneComponent* controllerRRootComp;
+
+	UPROPERTY(EditAnywhere, Category = Controller)
+		class UStaticMeshComponent* bodyR;
+
+	UPROPERTY(EditAnywhere, Category = Controller)
+		class UStaticMeshComponent* gribR;
+
+	UPROPERTY(EditAnywhere, Category = Controller)
+		class UStaticMeshComponent* handleR;
+
+	UPROPERTY(EditAnywhere, Category = Controller)
+		class UStaticMeshComponent* triggerR;
+
+	UPROPERTY(EditAnywhere, Category = Controller)
+		class UStaticMeshComponent* buttonR;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	class UWidgetComponent* pressUI;
+		class UWidgetComponent* widgetComp;
 
 protected:
 	// Called when the game starts or when spawned

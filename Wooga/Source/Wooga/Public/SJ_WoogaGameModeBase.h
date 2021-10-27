@@ -25,23 +25,27 @@ public:
 	void SetState(EFlowState state);
 	EFlowState GetState();
 
+	// 다음 상태로 넘어가는 딜레이 타임
+	UPROPERTY()
+	float nextDelayTime;
+	// 딜레이타임 카운트 여부
+	bool bIsDelay;
+
+	// 게임 시작
 	void InGame();
-	// 불의 발견 교육
+	void ManipulateUI();
 	void GrabActorUI();
-	void HowToFireUI();
-	void HowToFireUINext();
-	void Firing();
-	void CompleteFireCourse();
-	void InformWatch();
-	void GoToCollectState();
+	void FireDiscoveryTitle();
 
-	// 시작 시 잡는방법 알려주는 UI 타이머
-	FTimerHandle howToGrabOpenTIme;
-	void OpenGrabUI();
+	// 조작방법 UI 
+	class ASJ_Actor_HowToManipulate* manipulateUI;
 
-	// UI Sound
-	UPROPERTY(EditAnywhere, Category = Sound)
-	class USoundBase* uiSound;
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_Actor_HowToManipulate> bpManipulateUI;
+
+	// 두 UI 간에 딜레이를 위한 잡는방법UI 생성 타이머
+	FTimerHandle howToGrabUITimer;
+	void SpawnHowToGrabUI();
 
 	// 잡는 방법 알려주는 UI
 	class ASJ_HowToGrabUIActor* howToGrab;
@@ -49,11 +53,42 @@ public:
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_HowToGrabUIActor> howToGrabActor;
 
+	// 제목 생성 기능 및 타이머
+	FTimerHandle titleTimer;
+	void SpawnTitle();
+
+	// 불의 발견 제목 UI
+	class ASJ_Actor_TitleUI* FDTitle;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_Actor_TitleUI> bpFDTitle;
+
+	// 부싯돌
+	class AFireRock* fireRockOne;
+	class AFireRock2* fireRockTwo;
+
+	// 불의 발견 교육
+	void HowToFireUI();
+	void HowToFireUINext();
+	void Firing();
+	void CompleteFireCourse();
+	void InformWatch();
+	void GoToCollectState();
+
+	// UI Sound
+	UPROPERTY(EditAnywhere, Category = Sound)
+	class USoundBase* uiSound;
+
 	// 불지피는 방법 알려주는 UI
 	class ASJ_HowToFireUIActor* howToFire;
 
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_HowToFireUIActor> howToFireUIActor;
+
+	// 지푸라기
+	class AFirePosition* firePosition;
+	// 화로
+	class AFireStraw* fireStraw;
 
 	// 불지피는 방법 다음 UI
 	class ASJ_HowToFireNextUIActor* howToFireNext;
@@ -61,8 +96,10 @@ public:
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_HowToFireNextUIActor> howToFireNextUIActor;
 
-	float nextDelayTime;
-	float injae;
+	// 불에 숨을 불어 넣는 방법 UI
+	class ASJ_Actor_BreatheFireUI* breatheFireUI;
+	TSubclassOf<class ASJ_Actor_BreatheFireUI> bpBreatheFireUI;
+
 
 	// 불의 발견 홀로그램
 	class ASJ_Hologram* hologram;

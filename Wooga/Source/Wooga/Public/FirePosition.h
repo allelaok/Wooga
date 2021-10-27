@@ -30,6 +30,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UStaticMeshComponent* meshComp;
 
+	UPROPERTY(EditAnywhere, Category = OutLine)
+	class UStaticMeshComponent* outLine;
+
 	UPROPERTY(EditAnywhere, Category = FX)
 	class UParticleSystemComponent* FX;
 

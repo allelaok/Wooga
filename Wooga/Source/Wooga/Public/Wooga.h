@@ -8,8 +8,10 @@ UENUM(BlueprintType)
 enum class EFlowState : uint8
 {
 	InGame,
-	// 불의  발견
+	ManipulateUI,
 	HowToGrabActorUI,
+	// 불의  발견
+	FireDiscoveryTitle,
 	HowToFireUI,
 	HowToFireUINext,
 	Firing,
