@@ -98,6 +98,7 @@ public:
 
 	// 불에 숨을 불어 넣는 방법 UI
 	class ASJ_Actor_BreatheFireUI* breatheFireUI;
+	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_Actor_BreatheFireUI> bpBreatheFireUI;
 
 
