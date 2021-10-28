@@ -70,8 +70,14 @@ public:
 	UPROPERTY()
 		class ADetachRock* detachRock;
 
+	/*UPROPERTY()
+		class AHalfRock* hr;*/
+
 	UPROPERTY()
-		class AHalfRock* hr;
+		class AHalfRock* childRock;
+
+	UPROPERTY()
+		class UStaticMeshComponent* halfRockComp;
 
 	UPROPERTY()
 		class AVR_Player* player;
