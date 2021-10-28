@@ -18,44 +18,14 @@ ASJ_HowToGrabUIActor::ASJ_HowToGrabUIActor()
 	rootComp = CreateDefaultSubobject<USceneComponent>(TEXT("Root Comp"));
 	SetRootComponent(rootComp);
 
-	controllerLRootComp = CreateDefaultSubobject<USceneComponent>(TEXT("ControllerLRootComponent"));
-	controllerLRootComp->SetupAttachment(rootComp);
-
-	bodyL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyL"));
-	bodyL->SetupAttachment(controllerLRootComp);
-
-	gribL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GribL"));
-	gribL->SetupAttachment(controllerLRootComp);
-
-	handleL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HandleL"));
-	handleL->SetupAttachment(controllerLRootComp);
-
-	triggerL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TriggerL"));
-	triggerL->SetupAttachment(controllerLRootComp);
-
-	buttonL = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ButtonL"));
-	buttonL->SetupAttachment(controllerLRootComp);
-
-	controllerRRootComp = CreateDefaultSubobject<USceneComponent>(TEXT("ControllerRRootComponent"));
-	controllerRRootComp->SetupAttachment(rootComp);
-
-	bodyR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyR"));
-	bodyR->SetupAttachment(controllerRRootComp);
-
-	gribR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GribR"));
-	gribR->SetupAttachment(controllerRRootComp);
-
-	handleR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HandleR"));
-	handleR->SetupAttachment(controllerRRootComp);
-
-	triggerR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TriggerR"));
-	triggerR->SetupAttachment(controllerRRootComp);
-
-	buttonR = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ButtonR"));
-	buttonR->SetupAttachment(controllerRRootComp);
+	plane = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Plane"));
+	plane->SetupAttachment(rootComp);
 
 	widgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("Widget Comp"));
 	widgetComp->SetupAttachment(rootComp);
+
+	nextWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("NextWidget"));
+	nextWidget->SetupAttachment(rootComp);
 }
 
 // Called when the game starts or when spawned
@@ -63,16 +33,12 @@ void ASJ_HowToGrabUIActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetState(EBlinkState::OnOpacity);
-
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
-
-	gameModeBase = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
 
 	FVector playerLoc = player->GetActorLocation();
 	FVector me = GetActorLocation();
 
-	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 200;
+	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 200 + player->GetActorUpVector() * 50;
 
 	SetActorLocation(p);
 
@@ -87,61 +53,6 @@ void ASJ_HowToGrabUIActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	switch (blink)
-	{
-	case EBlinkState::OnOpacity:
-		OnOpacity();
-		break;
-	case EBlinkState::PlayOpacity:
-		PlayOpacity();
-		break;
-	case EBlinkState::OffOpacity:
-		OffOpacity();
-		break;
-	}
 }
 
-EBlinkState ASJ_HowToGrabUIActor::GetState()
-{
-	return EBlinkState();
-}
-
-void ASJ_HowToGrabUIActor::SetState(EBlinkState state)
-{
-	blink = state;
-}
-
-void ASJ_HowToGrabUIActor::OnOpacity()
-{
-	createTime += GetWorld()->DeltaTimeSeconds;
-	startParam = FMath::Lerp(-1.0f, 1.0f, createTime * 0.7f);
-
-	if (createTime >= 2.0f)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("PlayOpacity"));
-		SetState(EBlinkState::PlayOpacity);
-	}
-}
-
-void ASJ_HowToGrabUIActor::PlayOpacity()
-{
-	if (player->isClose == true)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("OffOpacity"));
-		SetState(EBlinkState::OffOpacity);
-	}
-}
-
-void ASJ_HowToGrabUIActor::OffOpacity()
-{
-	destroyTime += GetWorld()->DeltaTimeSeconds;
-	destroyParam = FMath::Lerp(1.0f, -1.0f, destroyTime * 0.7f);
-
-	// body->SetScalarParameterValueOnMaterials(TEXT("Opa"), destroyParam);
-
-	if (destroyTime >= 2.0f)
-	{
-		Destroy();
-	}
-}
 

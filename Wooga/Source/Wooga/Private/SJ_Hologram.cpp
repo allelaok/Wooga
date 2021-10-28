@@ -96,6 +96,7 @@ void ASJ_Hologram::TurnOnHologram()
 
 	if (createTime >= 2.0f)
 	{
+		UGameplayStatics::PlaySound2D(GetWorld(), FDHologramSound);
 		SetState(EHologramState::PlayHologram);
 	}
 }

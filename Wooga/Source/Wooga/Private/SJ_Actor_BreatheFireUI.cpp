@@ -4,6 +4,8 @@
 #include "SJ_Actor_BreatheFireUI.h"
 #include <Components/StaticMeshComponent.h>
 #include <Components/WidgetComponent.h>
+#include <Kismet/GameplayStatics.h>
+#include "FireStraw.h"
 
 // Sets default values
 ASJ_Actor_BreatheFireUI::ASJ_Actor_BreatheFireUI()
@@ -26,6 +28,14 @@ void ASJ_Actor_BreatheFireUI::BeginPlay()
 {
 	Super::BeginPlay();
 
+	fireStraw = Cast<AFireStraw>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireStraw::StaticClass()));
+
+	FVector tar = fireStraw->GetActorLocation();
+	FVector me = GetActorLocation();
+
+	FVector p = tar + fireStraw->GetActorUpVector() * 50;
+
+	SetActorLocation(p);
 }
 
 // Called every frame

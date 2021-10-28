@@ -18,44 +18,14 @@ public:
 	UPROPERTY(EditAnywhere, Category = UI)
 		class USceneComponent* rootComp;
 
-	UPROPERTY(VisibleDefaultsOnly, Category = Controller)
-		class USceneComponent* controllerLRootComp;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* bodyL;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* gribL;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* handleL;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* triggerL;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* buttonL;
-
-	UPROPERTY(VisibleDefaultsOnly, Category = Controller)
-		class USceneComponent* controllerRRootComp;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* bodyR;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* gribR;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* handleR;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* triggerR;
-
-	UPROPERTY(EditAnywhere, Category = Controller)
-		class UStaticMeshComponent* buttonR;
+	UPROPERTY(EditAnywhere, Category = UI)
+		class UStaticMeshComponent* plane;
 
 	UPROPERTY(EditAnywhere, Category = UI)
 		class UWidgetComponent* widgetComp;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+		class UWidgetComponent* nextWidget;
 
 protected:
 	// Called when the game starts or when spawned
@@ -69,17 +39,4 @@ public:
 
 	class AVR_Player* player;
 
-	EBlinkState blink;
-	EBlinkState GetState();
-	void SetState(EBlinkState state);
-
-	void OnOpacity();
-	void PlayOpacity();
-	void OffOpacity();
-
-	float createTime;
-	float startParam;
-
-	float destroyTime;
-	float destroyParam;
 };

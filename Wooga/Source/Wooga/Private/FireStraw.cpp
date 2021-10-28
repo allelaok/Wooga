@@ -21,7 +21,7 @@ AFireStraw::AFireStraw()
 	meshComp->SetupAttachment(boxComp);
 
 	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OutLine"));
-	outLine->SetupAttachment(boxComp);
+	outLine->SetupAttachment(meshComp);
 }
 
 // Called when the game starts or when spawned
