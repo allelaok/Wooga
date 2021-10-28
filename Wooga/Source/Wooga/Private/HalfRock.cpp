@@ -17,8 +17,8 @@ AHalfRock::AHalfRock()
 	halfRock = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("halfRock"));
 	SetRootComponent(halfRock);
 
-	fakeHandR = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FakeHandR"));
-	fakeHandR->SetupAttachment(halfRock);
+	/*fakeHandR = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FakeHandR"));
+	fakeHandR->SetupAttachment(halfRock);*/
 
 	offMaterial = CreateDefaultSubobject<UMaterial>(TEXT("Off Material"));
 
