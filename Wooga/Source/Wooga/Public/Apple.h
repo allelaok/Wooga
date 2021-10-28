@@ -34,6 +34,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UStaticMeshComponent* meshComp;
 
+	UPROPERTY(EditAnywhere, Category = PickUPSettings)
+		class UStaticMesh* mesh2;
+
 	UPROPERTY(EditAnywhere, Category = Outline)
 		class UStaticMeshComponent* outLine;
 
@@ -50,6 +53,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Sound")
 		USoundBase* SoundBase;
 
+	UPROPERTY(EditAnywhere, Category = "Sound")
+		USoundBase* SoundBase2;
+
 	UPROPERTY()
 		FVector location;
 	UPROPERTY()
@@ -62,5 +68,6 @@ public:
 	USoundConcurrency* ConcurrencySettings;
 	bool bAutoDestroy = false;
 	bool bisgrab = false;
+	bool bisEat = false;
 	int32 overlabCount = 0;
 };

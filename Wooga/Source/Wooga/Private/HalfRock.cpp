@@ -4,6 +4,7 @@
 #include "HalfRock.h"
 #include "FistAxe.h"
 #include "Components/BoxComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include <Kismet/GameplayStatics.h>
 
@@ -15,6 +16,9 @@ AHalfRock::AHalfRock()
 
 	halfRock = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("halfRock"));
 	SetRootComponent(halfRock);
+
+	fakeHandR = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FakeHandR"));
+	fakeHandR->SetupAttachment(halfRock);
 
 	offMaterial = CreateDefaultSubobject<UMaterial>(TEXT("Off Material"));
 

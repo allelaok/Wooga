@@ -27,6 +27,9 @@ AApple::AApple()
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
 
+	mesh2 = CreateDefaultSubobject<UStaticMesh>(TEXT("Mesh2"));
+	
+
 	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Outline"));
 	outLine->SetupAttachment(meshComp);
 	outLine->SetCollisionProfileName(TEXT("NoCollision"));
@@ -54,21 +57,13 @@ void AApple::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class A
 {
 	auto player = Cast<AVR_Player>(OtherActor);
 
-	/*if (player)
-	{
-		if (player->grabComp->bisGrabApple == true)
-		{
-			bisgrab = true;
-
-		}
-	}
-	return;*/
-
 	if (player)
 	{
 		if (player->grabComp->bisGrabApple == true)
 		{
 			if (OtherComp == player->mouthComp)
+			{
+			if(bisEat == false)
 			{
 				// Sound
 
@@ -77,10 +72,26 @@ void AApple::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class A
 
 				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
 
+				/*player->grabComp->LeftReleaseAction();
+				player->grabComp->RightReleaseAction();
+				this->Destroy();*/
+
+				meshComp->SetStaticMesh(mesh2);
+				bisEat = true;
+			}
+
+			else if (bisEat == true)
+			{
+				location = this->GetActorLocation();
+				rotation = this->GetActorRotation();
+
+				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase2, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+
 				player->grabComp->LeftReleaseAction();
 				player->grabComp->RightReleaseAction();
 				this->Destroy();
 			}
+		}
 		}
 	}
 }

@@ -657,68 +657,6 @@ void UGrabActorComponent::LGripApple(AActor* grabActor)
 	}
 }
 
-void UGrabActorComponent::RGripStem(AActor* grabActor)
-{
-	//FString fr = grabActor->GetName();
-	///*if (fireRock == nullptr)
-	//{*/
-	//if (fr.Contains("Stem"))
-	//{
-	//	stemR = Cast<AStem>(grabActor);
-
-	//	if (stemR)
-	//	{
-	//		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
-	//		//fireRock->SetActorHiddenInGame(false);
-	//		//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
-	//		FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
-
-	//		stemR->boxComp->SetSimulatePhysics(false);
-	//		stemR->boxComp->SetEnableGravity(true);
-
-
-	//		stemR->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
-	//		// 오른손 쥐는 애니메이션
-	//		player->handComp->targetGripValueRight = 0.7f;
-
-	//		// 오브젝트를 잡았을때 위치 잡기
-	//		stemR->boxComp->SetRelativeLocation((stemR->grabOffset));
-
-	//	}
-	//}
-}
-
-void UGrabActorComponent::LGripStem(AActor* grabActor)
-{
-	//FString fr = grabActor->GetName();
-	///*if (fireRock == nullptr)
-	//{*/
-	//if (fr.Contains("Stem"))
-	//{
-	//	stemL = Cast<AStem>(grabActor);
-
-	//	if (stemL)
-	//	{
-	//		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
-	//		//fireRock->SetActorHiddenInGame(false);
-	//		//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
-	//		FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
-
-	//		stemL->boxComp->SetSimulatePhysics(false);
-	//		stemL->boxComp->SetEnableGravity(true);
-
-
-	//		stemL->AttachToComponent(player->leftHandLoc, attachRules, TEXT("LGrabPoint"));
-	//		// 오른손 쥐는 애니메이션
-	//		player->handComp->targetGripValueLeft = 0.7f;
-
-	//		// 오브젝트를 잡았을때 위치 잡기
-	//		stemL->boxComp->SetRelativeLocation((stemL->grabOffset));
-
-	//	}
-	//}
-}
-
 void UGrabActorComponent::RGripStick(AActor* grabActor)
 {
 	FString fr = grabActor->GetName();
@@ -813,6 +751,8 @@ void UGrabActorComponent::LGripFistAxe(AActor* grabActor)
 
 			// 오른손에 stick이 있냐?
 			bisStickL = true;
+			bisGrabFistAxeL = true;
+
 		}
 	}
 }

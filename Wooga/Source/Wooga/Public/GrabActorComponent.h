@@ -52,9 +52,6 @@ public:
 	void RGripApple(AActor* grabActor);
 	void LGripApple(AActor* grabActor);
 
-	void RGripStem(AActor* grabActor);
-	void LGripStem(AActor* grabActor);
-
 	void RGripStick(AActor* grabActor);
 	void LGripStick(AActor* grabActor);
 
@@ -85,6 +82,8 @@ public:
 	class AStick* stickL;
 
 	class AFistAxe* fistAxeL;
+	class AFistAxe* fistAxeR;
+
 
 	class AHalfRock* halfRock;
 
@@ -104,6 +103,8 @@ public:
 	bool bisStickL = false;
 	bool bisGrabApple = false;
 	bool bisGrabFR = false;
+	bool bisGrabFistAxeL = false;
+	bool bisGrabFistAxeR = false;
 	bool bisGrabHR = false;
 
 };

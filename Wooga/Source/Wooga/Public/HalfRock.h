@@ -26,6 +26,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
 		class UStaticMeshComponent* halfRock;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UStaticMeshCoUSmponent* fakeHandR;
+
 	UPROPERTY()
 		class AFistAxe* fistAxe;
 
