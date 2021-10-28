@@ -37,8 +37,8 @@ void AHalfRock::Tick(float DeltaTime)
 
 	if (fistAxe->bisD1 == true)
 	{
-	halfRock->SetSimulatePhysics(true);
-	halfRock->SetEnableGravity(true);
+	//halfRock->SetSimulatePhysics(true);
+	//halfRock->SetEnableGravity(true);
 	
 	}
 }

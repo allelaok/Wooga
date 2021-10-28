@@ -167,6 +167,7 @@ void AVR_Player::Tick(float DeltaTime)
 	headRotatePitch = headRotate.Pitch;
 
 	headComp->SetRelativeRotation(FRotator(headRotatePitch, headRotateYaw, 0.f));
+	mouthComp->SetRelativeRotation(FRotator(headRotatePitch, headRotateYaw, 0.f));
 	// mouthComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
 
 	if (isClose == true)
