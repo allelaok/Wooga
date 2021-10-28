@@ -22,7 +22,7 @@ AFirePosition::AFirePosition()
 	meshComp->SetupAttachment(boxComp);
 
 	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OutLine"));
-	outLine->SetupAttachment(boxComp);
+	outLine->SetupAttachment(meshComp);
 
 	FX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("FX"));
 	FX->SetupAttachment(boxComp);

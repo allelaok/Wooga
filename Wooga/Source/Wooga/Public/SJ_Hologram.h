@@ -44,7 +44,7 @@ public:
 	
 	float playTime;
 	UPROPERTY(EditAnywhere, Category = Time)
-	float playChangeTime = 5.0f;
+	float playChangeTime = 12.0f;
 
 	float destroyTime;
 	float destroyParam;
@@ -54,4 +54,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = Point)
 	TSubclassOf<class AFireEvent> knowledgePoint;
+
+
+	UPROPERTY(EditAnywhere, Category = Sound)
+		class USoundBase* FDHologramSound;
 };

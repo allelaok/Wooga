@@ -122,8 +122,6 @@ public:
 	UPROPERTY()
 		float destroyTime = 3.0f;
 	UPROPERTY()
-		float changeStateDelayTime;
-	UPROPERTY()
 	float temporaryTime;
 
 	TArray<class AFireRock*> fireRocks;
