@@ -57,6 +57,15 @@ public:
 		class UStaticMeshComponent* rock9;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class USkeletalMeshComponent* handHologramL;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class USkeletalMeshComponent* handHologramR;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class USkeletalMeshComponent* fakeHand;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
 		class UMaterialInstance* offMaterial;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)

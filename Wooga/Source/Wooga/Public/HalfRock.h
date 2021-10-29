@@ -26,11 +26,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
 		class UStaticMeshComponent* halfRock;
 
-	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
-		class UStaticMeshCoUSmponent* fakeHandR;*/
-
 	UPROPERTY()
 		class AFistAxe* fistAxe;
+
+	UPROPERTY()
+		class AVR_Player* player;
 
 	UPROPERTY(EditAnywhere, Category = AAA)
 		FVector grabOffset;

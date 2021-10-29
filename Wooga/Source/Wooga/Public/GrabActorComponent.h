@@ -56,6 +56,8 @@ public:
 	void LGripStick(AActor* grabActor);
 
 	void LGripFistAxe(AActor* grabActor);
+	void RGripFistAxe(AActor* grabActor);
+
 
 	void RGripHalfRock(AActor* grabActor);
 	

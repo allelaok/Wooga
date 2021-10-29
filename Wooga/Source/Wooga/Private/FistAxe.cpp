@@ -6,6 +6,7 @@
 #include "HalfRock.h"
 #include "VR_Player.h"
 #include "Components/ChildActorComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include <Kismet/GameplayStatics.h>
 
 // Sets default values
@@ -44,6 +45,15 @@ AFistAxe::AFistAxe()
 	rock9 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock9"));
 	rock9->SetupAttachment(fist);
 
+	handHologramL = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("HandHologramL"));
+	handHologramL->SetupAttachment(fist);
+
+	handHologramR = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("HandHologramR"));
+	handHologramR->SetupAttachment(fist);
+
+	fakeHand = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FakeHand"));
+	fakeHand->SetupAttachment(fist);
+
 	offMaterial = CreateDefaultSubobject<UMaterialInstance>(TEXT("Off Material"));
 
 	onMaterial = CreateDefaultSubobject<UMaterialInstance>(TEXT("On Material"));
@@ -65,11 +75,11 @@ void AFistAxe::BeginPlay()
 
 	detachRock = Cast<ADetachRock>(UGameplayStatics::GetActorOfClass(GetWorld(), ADetachRock::StaticClass()));
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
-
-
-
-
 	//rock2->SetMaterial(0, onMaterial);
+
+	handHologramL->SetHiddenInGame(false);
+	handHologramR->SetHiddenInGame(true);
+	fakeHand->SetHiddenInGame(true);
 }
 
 // Called every frame
@@ -114,7 +124,6 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 			halfRockComp->SetSimulatePhysics(true);
 			halfRockComp->SetEnableGravity(true);
 			currentTime = 0.f;
-
 		}
 
 		if (bisD1 == true)

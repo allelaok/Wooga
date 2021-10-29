@@ -134,6 +134,7 @@ void UGrabActorComponent::RightGrabAction()
 	RGripFirePosition(grabActor);
 	RGripApple(grabActor);
 	RGripStick(grabActor);
+	RGripFistAxe(grabActor);
 	RGripHalfRock(grabActor);
 }
 
@@ -749,9 +750,29 @@ void UGrabActorComponent::LGripFistAxe(AActor* grabActor)
 			// 오브젝트를 잡았을때 위치 잡기
 			fistAxeL->fist->SetRelativeLocation((fistAxeL->grabOffset));
 
-			// 오른손에 stick이 있냐?
-			bisStickL = true;
+			fistAxeL->handHologramL->SetHiddenInGame(true);
+			fistAxeL->handHologramR->SetHiddenInGame(false);
+
 			bisGrabFistAxeL = true;
+
+		}
+	}
+}
+
+void UGrabActorComponent::RGripFistAxe(AActor* grabActor)
+{
+	FString fr = grabActor->GetName();
+
+	if (fr.Contains("FistAxe"))
+	{
+		fistAxeR = Cast<AFistAxe>(grabActor);
+
+		if (fistAxeR)
+		{
+		fistAxeR->handHologramR->SetHiddenInGame(true);
+		fistAxeR->fakeHand->SetHiddenInGame(false);
+			
+			bisGrabFistAxeR = true;
 
 		}
 	}
@@ -760,7 +781,7 @@ void UGrabActorComponent::LGripFistAxe(AActor* grabActor)
 void UGrabActorComponent::RGripHalfRock(AActor* grabActor)
 {
 	FString fr = grabActor->GetName();
-	/*if (fireRock == nullptr)
+	/*if (fireRock == nullptr)0
 	{*/
 	if (fr.Contains("HalfRock"))
 	{
@@ -786,6 +807,10 @@ void UGrabActorComponent::RGripHalfRock(AActor* grabActor)
 
 				// 오브젝트를 잡았을때 위치 잡기
 				halfRock->halfRock->SetRelativeLocation((halfRock->grabOffset));
+			}
+			else
+			{
+				return;
 			}
 		}
 	}

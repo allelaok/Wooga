@@ -3,6 +3,8 @@
 
 #include "HalfRock.h"
 #include "FistAxe.h"
+#include "VR_Player.h"
+#include "GrabActorComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -17,9 +19,6 @@ AHalfRock::AHalfRock()
 	halfRock = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("halfRock"));
 	SetRootComponent(halfRock);
 
-	/*fakeHandR = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FakeHandR"));
-	fakeHandR->SetupAttachment(halfRock);*/
-
 	offMaterial = CreateDefaultSubobject<UMaterial>(TEXT("Off Material"));
 
 	onMaterial = CreateDefaultSubobject<UMaterial>(TEXT("On Material"));
@@ -31,7 +30,7 @@ void AHalfRock::BeginPlay()
 	Super::BeginPlay();
 	
 	fistAxe = Cast<AFistAxe>(UGameplayStatics::GetActorOfClass(GetWorld(), AFistAxe::StaticClass()));
-
+	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 }
 
 // Called every frame
@@ -39,11 +38,9 @@ void AHalfRock::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (fistAxe->bisD1 == true)
+	if (player->grabComp->bisGrabFistAxeL)
 	{
-	//halfRock->SetSimulatePhysics(true);
-	//halfRock->SetEnableGravity(true);
-	
+		// 오른손 잡으면 true 처리
 	}
 }
 
