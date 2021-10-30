@@ -83,6 +83,7 @@ public:
 	class AStick* stickR;
 	class AStick* stickL;
 
+	class AFistAxe* fistAxe;
 	class AFistAxe* fistAxeL;
 	class AFistAxe* fistAxeR;
 

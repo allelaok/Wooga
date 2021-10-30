@@ -35,6 +35,8 @@ void UGrabActorComponent::BeginPlay()
 
 	stemR = Cast<AStem>(UGameplayStatics::GetActorOfClass(GetWorld(), AStem::StaticClass()));
 	stemL = Cast<AStem>(UGameplayStatics::GetActorOfClass(GetWorld(), AStem::StaticClass()));
+	fistAxe = Cast<AFistAxe>(UGameplayStatics::GetActorOfClass(GetWorld(), AFistAxe::StaticClass()));
+
 
 }
 
@@ -71,9 +73,9 @@ void UGrabActorComponent::HideGrabLine()
 
 void UGrabActorComponent::RightDrawGrabLine()
 {
-	DrawDebugSphere(GetWorld(), player->rightHand->GetComponentLocation(), grabRange, 30, FColor::Green, false, -1, 0, 1);
+	DrawDebugSphere(GetWorld(), player->rightHand->GetComponentLocation()+ FVector(15.f, 10.f, 0.f), grabRange, 30, FColor::Green, false, -1, 0, 1);
 	FHitResult hitInfo;
-	FVector startPos = player->rightHand->GetComponentLocation();
+	FVector startPos = player->rightHand->GetComponentLocation()+FVector(15.f, 10.f, 0.f);
 
 	FCollisionObjectQueryParams objParams;
 	objParams.AddObjectTypesToQuery(ECC_WorldDynamic);
@@ -96,9 +98,9 @@ void UGrabActorComponent::RightDrawGrabLine()
 
 void UGrabActorComponent::LeftDrawGrabLine()
 {
-	DrawDebugSphere(GetWorld(), player->leftHand->GetComponentLocation(), grabRange, 30, FColor::Green, false, -1, 0, 1);
+	DrawDebugSphere(GetWorld(), player->leftHand->GetComponentLocation()+ FVector(15.f, 10.f, 0.f), grabRange, 30, FColor::Green, false, -1, 0, 1);
 	FHitResult hitInfo;
-	FVector startPos = player->leftHand->GetComponentLocation();
+	FVector startPos = player->leftHand->GetComponentLocation()+FVector(15.f, -10.f, 0.f);
 
 	FCollisionObjectQueryParams objParams;
 	objParams.AddObjectTypesToQuery(ECC_WorldDynamic);
@@ -228,20 +230,33 @@ void UGrabActorComponent::RightReleaseAction()
 		player->handComp->targetGripValueRight = 0.0f;
 	}
 
+	if (fistAxeR)
+	{
+		player->rightHand->SetHiddenInGame(false);
+		fistAxe->fakeHand->SetHiddenInGame(true);
+
+		// 완손 피는 애니메이션
+		player->handComp->targetGripValueLeft = 0.0f;
+	}
+
 	if (halfRock)
 	{
-		halfRock->halfRock->SetEnableGravity(true);
-		// 그 자리에서 떨어지게
-		halfRock->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+		if (fistAxe->bisD1 == true)
+		{
+			halfRock->halfRock->SetEnableGravity(true);
+			// 그 자리에서 떨어지게
+			halfRock->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
-		halfRock->halfRock->SetSimulatePhysics(true);
+			halfRock->halfRock->SetSimulatePhysics(true);
 
-		halfRock = nullptr;
-		bisLeftGrab = false;
-		bisGrabHR = true;
+			halfRock = nullptr;
+			bisLeftGrab = false;
+			bisGrabHR = true;
 
-		// 오른손 피는 애니메이션
-		player->handComp->targetGripValueRight = 0.0f;
+
+			// 오른손 피는 애니메이션
+			player->handComp->targetGripValueRight = 0.0f;
+		}
 	}
 	//}
 		// 오른손 피는 애니메이션
@@ -361,8 +376,12 @@ void UGrabActorComponent::LeftReleaseAction()
 
 		fistAxeL->fist->SetSimulatePhysics(true);
 
+		fistAxeL->fakeHand->SetHiddenInGame(true);
+		player->rightHand->SetHiddenInGame(false);
+
 		fistAxeL = nullptr;
 		bisLeftGrab = false;
+		bisGrabFistAxeL = false;
 
 		// 완손 피는 애니메이션
 		player->handComp->targetGripValueLeft = 0.0f;
@@ -769,9 +788,9 @@ void UGrabActorComponent::RGripFistAxe(AActor* grabActor)
 
 		if (fistAxeR)
 		{
-		fistAxeR->handHologramR->SetHiddenInGame(true);
-		fistAxeR->fakeHand->SetHiddenInGame(false);
-			
+			fistAxeR->handHologramR->SetHiddenInGame(true);
+			fistAxeR->fakeHand->SetHiddenInGame(false);
+			player->rightHand->SetHiddenInGame(true);
 			bisGrabFistAxeR = true;
 
 		}
@@ -783,34 +802,34 @@ void UGrabActorComponent::RGripHalfRock(AActor* grabActor)
 	FString fr = grabActor->GetName();
 	/*if (fireRock == nullptr)0
 	{*/
-	if (fr.Contains("HalfRock"))
+
+	if (bisGrabFistAxeL == true)
 	{
-		halfRock = Cast<AHalfRock>(grabActor);
-
-		if (halfRock)
+		if (fr.Contains("HalfRock"))
 		{
-			if (fistAxeL->bisD1 == true)
+			halfRock = Cast<AHalfRock>(grabActor);
+
+			if (halfRock)
 			{
-				//UE_LOG(LogTemp, Warning, TEXT("3333333333333333333333333333333333333333333333"));
-						//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
-						//fireRock->SetActorHiddenInGame(false);
-						//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
-				FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
+				if (fistAxeL->bisD1 == true)
+				{
+					//UE_LOG(LogTemp, Warning, TEXT("3333333333333333333333333333333333333333333333"));
+							//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("TRIGGER IN!!")));
+							//fireRock->SetActorHiddenInGame(false);
+							//FAttachmentTransformRules attachRules = FAttachmentTransformRules::KeepWorldTransform;
+					FAttachmentTransformRules attachRules = FAttachmentTransformRules::SnapToTargetNotIncludingScale;
 
-				halfRock->halfRock->SetSimulatePhysics(false);
-				halfRock->halfRock->SetEnableGravity(false);
+					halfRock->halfRock->SetSimulatePhysics(false);
+					halfRock->halfRock->SetEnableGravity(false);
 
 
-				halfRock->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
-				// 오른손 쥐는 애니메이션
-				player->handComp->targetGripValueRight = 0.7f;
+					halfRock->AttachToComponent(player->rightHandLoc, attachRules, TEXT("RGrabPoint"));
+					// 오른손 쥐는 애니메이션
+					player->handComp->targetGripValueRight = 0.7f;
 
-				// 오브젝트를 잡았을때 위치 잡기
-				halfRock->halfRock->SetRelativeLocation((halfRock->grabOffset));
-			}
-			else
-			{
-				return;
+					// 오브젝트를 잡았을때 위치 잡기
+					halfRock->halfRock->SetRelativeLocation((halfRock->grabOffset));
+				}
 			}
 		}
 	}
