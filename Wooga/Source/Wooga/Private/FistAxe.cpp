@@ -73,7 +73,6 @@ void AFistAxe::BeginPlay()
 	rock7->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
 	rock8->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
 
-	detachRock = Cast<ADetachRock>(UGameplayStatics::GetActorOfClass(GetWorld(), ADetachRock::StaticClass()));
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 	//rock2->SetMaterial(0, onMaterial);
 
@@ -104,8 +103,10 @@ void AFistAxe::Tick(float DeltaTime)
 
 void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+
 	if (currentTime >= 1.f)
 	{
+	detachRock = Cast<ADetachRock>(OtherActor);
 		if (OtherActor == detachRock)
 		{
 			// Nuckback
@@ -116,8 +117,10 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 			rock2->SetMaterial(0, onMaterial);
 			bisOverlab = true;
 
-			childRock = Cast< AHalfRock>(halfRock->GetChildActor());
+			childRock = Cast<AHalfRock>(halfRock->GetChildActor());
 			childRock->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+			fakeHand->SetHiddenInGame(true);
+			player->rightHand->SetHiddenInGame(false);
 			bisD1 = true;
 
 			halfRockComp = Cast<UStaticMeshComponent>(childRock->GetDefaultSubobjectByName(TEXT("halfRock")));
