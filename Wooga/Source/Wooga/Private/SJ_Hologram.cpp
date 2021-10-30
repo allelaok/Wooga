@@ -38,7 +38,9 @@ void ASJ_Hologram::BeginPlay()
 
 	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 300;
 
-	SetActorLocation(p);
+	FVector p1 = FVector(10850, 11780, 1280);
+
+	SetActorLocation(p1);
 
 	FVector dir = player->GetActorLocation() - GetActorLocation();
 	dir.Normalize();
@@ -114,6 +116,8 @@ void ASJ_Hologram::PlayHologram()
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 		GetWorld()->SpawnActor<AFireEvent>(knowledgePoint,  GetActorLocation(), GetActorRotation(), Param);
+
+		playTime = 0;
 	}
 }
 

@@ -40,6 +40,7 @@ private:
 	void RightGripOff();
 
 	class AVR_Player* player;
+	class ASJ_WoogaGameModeBase* gameMode;
 
 	FRotator hmdRotation;
 	FVector hmdLocation;

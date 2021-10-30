@@ -7,6 +7,7 @@
 #include "VRHandAnimInstance.h"
 #include "HandActorComponent.h"
 #include <Camera/CameraComponent.h>
+#include "SJ_WoogaGameModeBase.h"
 
 // Sets default values for this component's properties
 UMoveActorComponent::UMoveActorComponent()
@@ -26,6 +27,9 @@ void UMoveActorComponent::BeginPlay()
 
 	player = Cast<AVR_Player>(GetOwner());
 
+	// 게임모드 캐싱
+	gameMode = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
+
 }
 
 
@@ -40,8 +44,15 @@ void UMoveActorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 void UMoveActorComponent::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	//PlayerInputComponent->BindAxis("RightThumbstick_X", this, &UMoveActorComponent::MoveHorizontal);
-	PlayerInputComponent->BindAxis("RightThumbstick_Y", this, &UMoveActorComponent::MoveVertical);
-	PlayerInputComponent->BindAxis("LeftThumbstick_X", this, &UMoveActorComponent::RotateHorizontal);
+
+	// 이동방법과 잡는방법 알려주는 상태에선 이동 기능 꺼주기
+	
+	if (gameMode->flowState != EFlowState::ManipulateUI || gameMode->flowState != EFlowState::HowToGrabActorUI)
+	{
+		PlayerInputComponent->BindAxis("RightThumbstick_Y", this, &UMoveActorComponent::MoveVertical);
+		PlayerInputComponent->BindAxis("LeftThumbstick_X", this, &UMoveActorComponent::RotateHorizontal);
+	}
+	
 	/*PlayerInputComponent->BindAction("LeftGrip", IE_Pressed, this, &UMoveActorComponent::LeftGripOn);
 	PlayerInputComponent->BindAction("LeftGrip", IE_Released, this, &UMoveActorComponent::LeftGripOff);
 	PlayerInputComponent->BindAction("RightGrip", IE_Pressed, this, &UMoveActorComponent::RightGripOn);

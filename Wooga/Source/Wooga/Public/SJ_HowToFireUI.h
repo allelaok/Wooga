@@ -28,6 +28,5 @@ public:
 	UPROPERTY(EditDefaultsOnly, BluePrintReadWrite, Category = "Animation", meta = (BindWidgetAnim), Transient)
 		class UWidgetAnimation* CloseUI;
 
-		void CloseUIPlay();
 	
 };

@@ -120,15 +120,19 @@ void ASJ_WoogaGameModeBase::InGame()
 
 void ASJ_WoogaGameModeBase::ManipulateUI()
 {
+	// 만약 UI를 끄면,
 	if (player->isClose == true)
 	{
 		bIsDelay = true;
 	}
 
+	// 시간이 흐른다
 	if (bIsDelay == true)
 	{
 		nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
+		// 3초 뒤에 상태를 변경 해준다.
+		// 이후에도 같은 방법을 사용한다.
 		if (nextDelayTime >= 3.0f)
 		{
 			FActorSpawnParameters Param;
@@ -141,6 +145,7 @@ void ASJ_WoogaGameModeBase::ManipulateUI()
 			bIsDelay = false;
 			nextDelayTime = 0;
 
+			// 사용된 UI 제거
 			manipulateUI->Destroy();
 
 			SetState(EFlowState::HowToGrabActorUI);
@@ -166,6 +171,7 @@ void ASJ_WoogaGameModeBase::GrabActorUI()
 			bIsDelay = false;
 			nextDelayTime = 0;
 
+			// 사용된 UI 제거
 			howToGrab->Destroy();
 
 			SpawnTitle();
@@ -180,7 +186,6 @@ void ASJ_WoogaGameModeBase::FireDiscoveryTitle()
 
 	if (nextDelayTime >= 9.0f)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("HowToFire"));
 		// 부싯돌 캐싱
 		fireRockOne = Cast<AFireRock>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireRock::StaticClass()));
 		fireRockTwo = Cast<AFireRock2>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireRock2::StaticClass()));
@@ -195,8 +200,10 @@ void ASJ_WoogaGameModeBase::FireDiscoveryTitle()
 
 		howToFire = GetWorld()->SpawnActor<ASJ_HowToFireUIActor>(howToFireUIActor, Param);
 
+		// 사용된 UI 제거
 		FDTitle->Destroy();
 
+		// 딜레이변수 초기화
 		nextDelayTime = 0;
 
 		SetState(EFlowState::HowToFireUI);
@@ -209,6 +216,7 @@ void ASJ_WoogaGameModeBase::FireDiscoveryTitle()
 
 void ASJ_WoogaGameModeBase::HowToFireUI()
 {
+	// 지푸라기와 화로 캐싱
 	firePosition = Cast<AFirePosition>(UGameplayStatics::GetActorOfClass(GetWorld(), AFirePosition::StaticClass()));
 
 	fireStraw = Cast<AFireStraw>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireStraw::StaticClass()));
@@ -232,6 +240,7 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 
 			howToFireNext = GetWorld()->SpawnActor<ASJ_HowToFireNextUIActor>(howToFireNextUIActor, Param);
 
+			// 사용된 UI 제거
 			howToFire->Destroy();
 
 			// 임무 완료 사운드
@@ -268,8 +277,10 @@ void ASJ_WoogaGameModeBase::HowToFireUINext()
 
 			breatheFireUI = GetWorld()->SpawnActor<ASJ_Actor_BreatheFireUI>(bpBreatheFireUI, Param);
 
+			// 사용된 UI 제거
 			howToFireNext->Destroy();
 
+			// 딜레이 변수 초기화
 			nextDelayTime = 0;
 			SetState(EFlowState::Firing);
 		}
@@ -280,11 +291,6 @@ void ASJ_WoogaGameModeBase::Firing()
 {
 	// AFireStraw* fireStraw = Cast<AFireStraw>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireStraw::StaticClass()));
 
-	if (fireStraw->isClear == false)
-	{
-		return;
-	}
-
 	// 불을 켜면 홀로그램이 생성되고 첫번째 교육 이수 상태로 넘어간다.
 	if (fireStraw->isClear == true)
 	{
@@ -294,7 +300,7 @@ void ASJ_WoogaGameModeBase::Firing()
 			// UI 꺼주기
 			player->TurnOff();
 
-			UE_LOG(LogTemp, Warning, TEXT("CompleteFireCourse"));
+			// 홀로그램 생성
 			FActorSpawnParameters Param;
 			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
@@ -303,7 +309,11 @@ void ASJ_WoogaGameModeBase::Firing()
 			// UI Sound
 			UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
 
+			// 딜레이 변수 초기화
 			nextDelayTime = 0;
+
+			// 사용된 UI 제거
+			breatheFireUI->Destroy();
 
 			SetState(EFlowState::CompleteFireDiscovery);
 		}
@@ -314,11 +324,12 @@ void ASJ_WoogaGameModeBase::CompleteFireCourse()
 	// 홀로그램이 꺼지면 시계로 들어가는 기능
 	currentTime += GetWorld()->DeltaTimeSeconds;
 
-	if (currentTime >= 12.0f)
+	if (currentTime >= 15.0f)
 	{
 		// 시계 햅틱 기능
 		GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
 
+		// 플레이어 워치 켜주기
 		player->playerWatch->SetHiddenInGame(false);
 
 		// 임무 완료 사운드
@@ -331,13 +342,28 @@ void ASJ_WoogaGameModeBase::InformWatch()
 {
 	// 시계 위에 UI 생성 및 A 버튼으로 끄는 기능
 	// UI를 끄면 이동 방법을 알려주는 UI 생성 및 이동 가이드라인 생성
-	temporaryTime += GetWorld()->DeltaTimeSeconds;
-
-	if (temporaryTime >= 5.0f)
+	if (player->isClose == true)
 	{
+		bIsDelay = true;
+	}
+
+	if (bIsDelay == true)
+	{
+		nextDelayTime += GetWorld()->DeltaTimeSeconds;
+	}
+
+	if (nextDelayTime >= 3.0f)
+	{
+		// 가이드 라인 표시
 		guideLine = Cast<ASJ_GuidLine>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_GuidLine::StaticClass()));
 
 		guideLine->SetActorHiddenInGame(false);
+
+		// 딜레이 변수 초기화
+		bIsDelay = false;
+		nextDelayTime = 0;
+
+		SetState(EFlowState::GoToCollectCourse);
 	}
 }
 void ASJ_WoogaGameModeBase::GoToCollectState()
@@ -354,7 +380,7 @@ void ASJ_WoogaGameModeBase::SpawnTitle()
 {
 	FActorSpawnParameters Param;
 	Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-
+ 
 	// 불의 발견 제목
 	FDTitle = GetWorld()->SpawnActor<ASJ_Actor_TitleUI>(bpFDTitle, Param);
 
