@@ -109,5 +109,6 @@ public:
 	bool bisGrabFistAxeL = false;
 	bool bisGrabFistAxeR = false;
 	bool bisGrabHR = false;
+	bool bisfistAxeR = false;
 
 };

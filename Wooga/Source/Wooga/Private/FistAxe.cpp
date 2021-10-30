@@ -45,6 +45,24 @@ AFistAxe::AFistAxe()
 	rock9 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock9"));
 	rock9->SetupAttachment(fist);
 
+	rock10 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock10"));
+	rock10->SetupAttachment(fist);
+
+	rock11 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock11"));
+	rock11->SetupAttachment(fist);
+
+	rock12 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock12"));
+	rock12->SetupAttachment(fist);
+
+	rock13 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock13"));
+	rock13->SetupAttachment(fist);
+
+	rock14 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock14"));
+	rock14->SetupAttachment(fist);
+
+	rock15 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock15"));
+	rock15->SetupAttachment(fist);
+
 	handHologramL = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("HandHologramL"));
 	handHologramL->SetupAttachment(fist);
 
@@ -72,6 +90,13 @@ void AFistAxe::BeginPlay()
 	rock6->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
 	rock7->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
 	rock8->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
+	rock9->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
+	rock10->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
+	rock11->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
+	rock12->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
+	rock13->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
+	rock14->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
+	rock15->OnComponentBeginOverlap.AddDynamic(this, &AFistAxe::OnCollisionEnter);
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 	//rock2->SetMaterial(0, onMaterial);
@@ -121,6 +146,7 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 			childRock->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 			fakeHand->SetHiddenInGame(true);
 			player->rightHand->SetHiddenInGame(false);
+			handHologramR->SetHiddenInGame(true);
 			bisD1 = true;
 
 			halfRockComp = Cast<UStaticMeshComponent>(childRock->GetDefaultSubobjectByName(TEXT("halfRock")));
@@ -142,8 +168,10 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 				rock2->SetSimulatePhysics(true);
 				rock2->SetEnableGravity(true);
+
 				rock2->SetMaterial(0, offMaterial);
 				rock3->SetMaterial(0, onMaterial);
+
 				rock2->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock2->DetachFromParent(true);
 				currentTime = 0.f;
@@ -166,8 +194,10 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 				rock3->SetSimulatePhysics(true);
 				rock3->SetEnableGravity(true);
+
 				rock3->SetMaterial(0, offMaterial);
 				rock4->SetMaterial(0, onMaterial);
+
 				rock3->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock3->DetachFromParent(true);
 				currentTime = 0.f;
@@ -190,8 +220,10 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 				rock4->SetSimulatePhysics(true);
 				rock4->SetEnableGravity(true);
+
 				rock4->SetMaterial(0, offMaterial);
 				rock5->SetMaterial(0, onMaterial);
+
 				rock4->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock4->DetachFromParent(true);
 				currentTime = 0.f;
@@ -214,8 +246,10 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 				rock5->SetSimulatePhysics(true);
 				rock5->SetEnableGravity(true);
+
 				rock5->SetMaterial(0, offMaterial);
 				rock6->SetMaterial(0, onMaterial);
+
 				rock5->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock5->DetachFromParent(true);
 				currentTime = 0.f;
@@ -238,8 +272,10 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 				rock6->SetSimulatePhysics(true);
 				rock6->SetEnableGravity(true);
+
 				rock6->SetMaterial(0, offMaterial);
 				rock7->SetMaterial(0, onMaterial);
+				
 				rock6->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock6->DetachFromParent(true);
 				currentTime = 0.f;
@@ -262,8 +298,10 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 				rock7->SetSimulatePhysics(true);
 				rock7->SetEnableGravity(true);
+
 				rock7->SetMaterial(0, offMaterial);
 				rock8->SetMaterial(0, onMaterial);
+
 				rock7->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock7->DetachFromParent(true);
 				currentTime = 0.f;
@@ -286,8 +324,10 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 				rock8->SetSimulatePhysics(true);
 				rock8->SetEnableGravity(true);
+
 				rock8->SetMaterial(0, offMaterial);
 				rock9->SetMaterial(0, onMaterial);
+
 				rock8->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock8->DetachFromParent(true);
 				currentTime = 0.f;
@@ -310,12 +350,163 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 				rock9->SetSimulatePhysics(true);
 				rock9->SetEnableGravity(true);
+
 				rock9->SetMaterial(0, offMaterial);
+				rock10->SetMaterial(0, onMaterial);
+
 				rock9->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock9->DetachFromParent(true);
 				currentTime = 0.f;
 
 				bisD9 = true;
+			}
+		}
+
+		if (bisD9 == true)
+		{
+			if (OverlappedComp == rock10 && OtherComp == halfRockComp)
+			{
+				// Nuckback
+				myPos = player->leftHand->GetRelativeLocation();
+				knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
+				myPos = knockbackPos;
+				player->leftHand->SetRelativeLocation(myPos);
+				bisOverlab = true;
+
+				rock10->SetSimulatePhysics(true);
+				rock10->SetEnableGravity(true);
+
+				rock10->SetMaterial(0, offMaterial);
+				rock11->SetMaterial(0, onMaterial);
+
+				rock10->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+				rock10->DetachFromParent(true);
+				currentTime = 0.f;
+
+				bisD10 = true;
+			}
+		}
+
+		if (bisD10 == true)
+		{
+			if (OverlappedComp == rock11 && OtherComp == halfRockComp)
+			{
+				// Nuckback
+				myPos = player->leftHand->GetRelativeLocation();
+				knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
+				myPos = knockbackPos;
+				player->leftHand->SetRelativeLocation(myPos);
+				bisOverlab = true;
+
+				rock11->SetSimulatePhysics(true);
+				rock11->SetEnableGravity(true);
+
+				rock11->SetMaterial(0, offMaterial);
+				rock12->SetMaterial(0, onMaterial);
+
+				rock11->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+				rock11->DetachFromParent(true);
+				currentTime = 0.f;
+
+				bisD11 = true;
+			}
+		}
+
+		if (bisD11 == true)
+		{
+			if (OverlappedComp == rock12 && OtherComp == halfRockComp)
+			{
+				// Nuckback
+				myPos = player->leftHand->GetRelativeLocation();
+				knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
+				myPos = knockbackPos;
+				player->leftHand->SetRelativeLocation(myPos);
+				bisOverlab = true;
+
+				rock12->SetSimulatePhysics(true);
+				rock12->SetEnableGravity(true);
+
+				rock12->SetMaterial(0, offMaterial);
+				rock13->SetMaterial(0, onMaterial);
+
+				rock12->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+				rock12->DetachFromParent(true);
+				currentTime = 0.f;
+
+				bisD12 = true;
+			}
+		}
+
+		if (bisD12 == true)
+		{
+			if (OverlappedComp == rock13 && OtherComp == halfRockComp)
+			{
+				// Nuckback
+				myPos = player->leftHand->GetRelativeLocation();
+				knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
+				myPos = knockbackPos;
+				player->leftHand->SetRelativeLocation(myPos);
+				bisOverlab = true;
+
+				rock13->SetSimulatePhysics(true);
+				rock13->SetEnableGravity(true);
+
+				rock13->SetMaterial(0, offMaterial);
+				rock14->SetMaterial(0, onMaterial);
+
+				rock13->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+				rock13->DetachFromParent(true);
+				currentTime = 0.f;
+
+				bisD13 = true;
+			}
+		}
+
+		if (bisD13 == true)
+		{
+			if (OverlappedComp == rock14 && OtherComp == halfRockComp)
+			{
+				// Nuckback
+				myPos = player->leftHand->GetRelativeLocation();
+				knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
+				myPos = knockbackPos;
+				player->leftHand->SetRelativeLocation(myPos);
+				bisOverlab = true;
+
+				rock14->SetSimulatePhysics(true);
+				rock14->SetEnableGravity(true);
+
+				rock14->SetMaterial(0, offMaterial);
+				rock15->SetMaterial(0, onMaterial);
+
+				rock14->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+				rock14->DetachFromParent(true);
+				currentTime = 0.f;
+
+				bisD14 = true;
+			}
+		}
+
+		if (bisD14 == true)
+		{
+			if (OverlappedComp == rock15 && OtherComp == halfRockComp)
+			{
+				// Nuckback
+				myPos = player->leftHand->GetRelativeLocation();
+				knockbackPos = player->leftHand->GetRelativeLocation() + FVector(1.f, 0.f, 1.f) * -3.f;
+				myPos = knockbackPos;
+				player->leftHand->SetRelativeLocation(myPos);
+				bisOverlab = true;
+
+				rock15->SetSimulatePhysics(true);
+				rock15->SetEnableGravity(true);
+
+				rock14->SetMaterial(0, offMaterial);
+				rock15->SetMaterial(0, onMaterial);
+				
+				rock15->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+				rock15->DetachFromParent(true);
+				currentTime = 0.f;
 			}
 		}
 	}

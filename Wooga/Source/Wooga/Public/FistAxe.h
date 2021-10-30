@@ -57,6 +57,24 @@ public:
 		class UStaticMeshComponent* rock9;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UStaticMeshComponent* rock10;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UStaticMeshComponent* rock11;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UStaticMeshComponent* rock12;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UStaticMeshComponent* rock13;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UStaticMeshComponent* rock14;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UStaticMeshComponent* rock15;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
 		class USkeletalMeshComponent* handHologramL;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
@@ -134,4 +152,22 @@ public:
 
 	UPROPERTY()
 		bool bisD9 = false;
+
+	UPROPERTY()
+		bool bisD10 = false;
+
+	UPROPERTY()
+		bool bisD11 = false;
+
+	UPROPERTY()
+		bool bisD12 = false;
+
+	UPROPERTY()
+		bool bisD13 = false;
+
+	UPROPERTY()
+		bool bisD14 = false;
+
+	UPROPERTY()
+		bool bisD15 = false;
 };
