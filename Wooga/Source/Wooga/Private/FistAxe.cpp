@@ -63,6 +63,9 @@ AFistAxe::AFistAxe()
 	rock15 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Rock15"));
 	rock15->SetupAttachment(fist);
 
+	faGrabPoint = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FAGrabPoint"));
+	faGrabPoint->SetupAttachment(fist);
+
 	handHologramL = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("HandHologramL"));
 	handHologramL->SetupAttachment(fist);
 
