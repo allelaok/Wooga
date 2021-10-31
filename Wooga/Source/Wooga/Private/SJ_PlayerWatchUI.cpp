@@ -22,6 +22,11 @@ void USJ_PlayerWatchUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 		player->isPlayAnim = false;
 		PlayAnimation(FireDiscoveryClear);
 	}
+	else if (player->knowledgePoint == 2 && player->isPlayAnim == true)
+	{
+		player->isPlayAnim = false;
+		PlayAnimation(CollectClear);
+	}
 }
 
 void USJ_PlayerWatchUI::FireDiscovery()

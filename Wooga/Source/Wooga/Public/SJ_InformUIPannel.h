@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Wooga.h"
 #include "GameFramework/Actor.h"
 #include "SJ_InformUIPannel.generated.h"
 
@@ -57,4 +57,7 @@ public:
 	bool isTrigger;
 
 	class AVR_Player* player;
+	class ASJ_Actor_TitleUI* titleUI;
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_Actor_TitleUI> bpCollectTitleUI;
 };

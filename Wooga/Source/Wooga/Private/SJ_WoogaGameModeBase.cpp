@@ -2,7 +2,6 @@
 
 
 #include "SJ_WoogaGameModeBase.h"
-#include "SJ_UIPannel.h"
 #include "VR_Player.h"
 #include <Kismet/GameplayStatics.h>
 #include "FireRock.h"
@@ -18,8 +17,11 @@
 #include "SJ_Actor_HowToManipulate.h"
 #include "SJ_Actor_TitleUI.h"
 #include "FireRock2.h"
-#include "FireStraw.h"
 #include "SJ_Actor_BreatheFireUI.h"
+#include "SJ_Actor_WatchInformUI.h"
+#include "Apple.h"
+#include "SJ_Actor_EatAppleUI.h"
+#include "SJ_Actor_CollectAndHungryUI.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -72,6 +74,8 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 		break;
 	case EFlowState::GoToCollectCourse:
 		GoToCollectState();
+		break;
+	case EFlowState::CollectTitle:
 		break;
 	case EFlowState::HowToCollectActorUI:
 		HowToCollectActorUI();
@@ -250,7 +254,6 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 
 			SetState(EFlowState::HowToFireUINext);
 		}
-		
 	}
 }
 
@@ -322,9 +325,9 @@ void ASJ_WoogaGameModeBase::Firing()
 void ASJ_WoogaGameModeBase::CompleteFireCourse()
 {
 	// 홀로그램이 꺼지면 시계로 들어가는 기능
-	currentTime += GetWorld()->DeltaTimeSeconds;
+	nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
-	if (currentTime >= 15.0f)
+	if (nextDelayTime >= 20.0f)
 	{
 		// 시계 햅틱 기능
 		GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
@@ -334,6 +337,18 @@ void ASJ_WoogaGameModeBase::CompleteFireCourse()
 
 		// 임무 완료 사운드
 		UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
+
+		// 딜레이 변수 초기화
+		nextDelayTime = 0;
+
+		// 지식 안내 UI 생성
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		watchInformUI = GetWorld()->SpawnActor<ASJ_Actor_WatchInformUI>(bpWatchInformUI, Param);
+
+		// 사용된 홀로그램 제거
+		hologram->Destroy();
 
 		SetState(EFlowState::InformWatch);
 	}
@@ -355,7 +370,7 @@ void ASJ_WoogaGameModeBase::InformWatch()
 	if (nextDelayTime >= 3.0f)
 	{
 		// 가이드 라인 표시
-		guideLine = Cast<ASJ_GuidLine>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_GuidLine::StaticClass()));
+		// guideLine = Cast<ASJ_GuidLine>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_GuidLine::StaticClass()));
 
 		guideLine->SetActorHiddenInGame(false);
 
@@ -366,21 +381,17 @@ void ASJ_WoogaGameModeBase::InformWatch()
 		SetState(EFlowState::GoToCollectCourse);
 	}
 }
+
 void ASJ_WoogaGameModeBase::GoToCollectState()
 {
-
-}
-
-void ASJ_WoogaGameModeBase::SpawnHowToGrabUI()
-{
-
+	// InformUIPannel 에서 관리
 }
 
 void ASJ_WoogaGameModeBase::SpawnTitle()
 {
 	FActorSpawnParameters Param;
 	Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
- 
+
 	// 불의 발견 제목
 	FDTitle = GetWorld()->SpawnActor<ASJ_Actor_TitleUI>(bpFDTitle, Param);
 
@@ -389,10 +400,41 @@ void ASJ_WoogaGameModeBase::SpawnTitle()
 #pragma endregion
 
 #pragma region CollectStateFunction
+void ASJ_WoogaGameModeBase::CollectTitle()
+{
+	// 이때 이동을 막자
+	nextDelayTime += GetWorld()->DeltaTimeSeconds;
+
+	if (nextDelayTime >= 9.0f)
+	{
+		// 배고픔과 채집 안내 UI
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		collectAndHungry = GetWorld()->SpawnActor<ASJ_Actor_CollectAndHungryUI>(bpCollectAndHungry, Param);
+
+		// 딜레이변수 초기화
+		nextDelayTime = 0;
+
+		SetState(EFlowState::HowToFireUI);
+	}
+}
 void ASJ_WoogaGameModeBase::HowToCollectActorUI()
 {
+	// UI를 끄면 다음 상태로 넘어가기
 	if (player->isClose == true)
 	{
+		// 사과 캐싱하고 아웃라인 켜주기
+		apple = Cast<AApple>(UGameplayStatics::GetActorOfClass(GetWorld(), AApple::StaticClass()));
+
+		apple->outLine->SetVisibility(true);
+
+		// 사과 채집과 먹기 UI
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		eatAppleUI = GetWorld()->SpawnActor<ASJ_Actor_EatAppleUI>(bpEatAppleUI, Param);
+
 		SetState(EFlowState::CollectAndEat);
 	}
 }
@@ -400,12 +442,34 @@ void ASJ_WoogaGameModeBase::HowToCollectActorUI()
 void ASJ_WoogaGameModeBase::CollectAndEat()
 {
 	// 채집하여 먹으면 홀로그램 생성하고 다음 상태로 넘어가기
+	if (apple->bisEatComplete == true)
+	{
+		nextDelayTime += GetWorld()->DeltaTimeSeconds;
+		if (nextDelayTime >= 3.0f)
+		{
+			// 채집 홀로그램 생성
+			FActorSpawnParameters Param;
+			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
+			hologram = GetWorld()->SpawnActor<ASJ_Hologram>(bpCollectHologram, Param);
+
+			// 사용된 UI 삭제
+			eatAppleUI->Destroy();
+			// 딜레이 변수 초기화
+			nextDelayTime = 0;
+			SetState(EFlowState::CompleteCollect);
+		}
+	}
 }
-
 void ASJ_WoogaGameModeBase::CompleteCollect()
 {
 	// 홀로그램 재생이 끝나면 플레이어 워치로 들어가고 
+
+	if (nextDelayTime >= 20.0f)
+	{
+		// 아웃라인 생성
+		SetState(EFlowState::GoToFistAxCourse);
+	}
 }
 
 void ASJ_WoogaGameModeBase::GoToFistAxCourse()

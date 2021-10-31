@@ -4,6 +4,8 @@
 #include "SJ_Actor_WatchInformUI.h"
 #include <Components/StaticMeshComponent.h>
 #include <Components/WidgetComponent.h>
+#include "VR_Player.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 ASJ_Actor_WatchInformUI::ASJ_Actor_WatchInformUI()
@@ -25,10 +27,17 @@ ASJ_Actor_WatchInformUI::ASJ_Actor_WatchInformUI()
 void ASJ_Actor_WatchInformUI::BeginPlay()
 {
 	Super::BeginPlay();
+
+	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 	
 	FVector p1 = FVector(10850, 11780, 1280);
 
 	SetActorLocation(p1);
+
+	FVector dir = player->GetActorLocation() - GetActorLocation();
+	dir.Normalize();
+
+	SetActorRotation(dir.Rotation());
 }
 
 // Called every frame

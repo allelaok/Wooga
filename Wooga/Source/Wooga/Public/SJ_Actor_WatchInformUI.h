@@ -18,7 +18,7 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Controller)
 		class USceneComponent* rootComp;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, Category = UI)
 		class UStaticMeshComponent* plane;
 
 	UPROPERTY(EditAnywhere, Category = UI)

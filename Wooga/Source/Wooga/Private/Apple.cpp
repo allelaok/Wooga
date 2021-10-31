@@ -89,6 +89,9 @@ void AApple::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class A
 
 				player->grabComp->LeftReleaseAction();
 				player->grabComp->RightReleaseAction();
+
+				// 사과를 완전히 다 먹었는지 확인하는 변수
+				bisEatComplete = true;
 				this->Destroy();
 			}
 		}

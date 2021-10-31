@@ -4,6 +4,7 @@
 #include "SJ_Hologram.h"
 #include <Components/StaticMeshComponent.h>
 #include "VR_Player.h"
+#include "SJ_WoogaGameModeBase.h"
 #include <Kismet/GameplayStatics.h>
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
@@ -33,14 +34,26 @@ void ASJ_Hologram::BeginPlay()
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
-	FVector playerLoc = player->GetActorLocation();
+	gameMode = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
+
+	/*FVector playerLoc = player->GetActorLocation();
 	FVector me = GetActorLocation();
 
-	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 300;
+	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 300;*/
+	// 불의 발견 홀로그램
+	if (gameMode->flowState == EFlowState::Firing || gameMode->flowState == EFlowState::CompleteFireDiscovery)
+	{
+		FVector p1 = FVector(10850, 11780, 1280);
 
-	FVector p1 = FVector(10850, 11780, 1280);
+		SetActorLocation(p1);
+	}
+	// 채집 홀로그램
+	if (gameMode->flowState == EFlowState::CollectAndEat || gameMode->flowState == EFlowState::CompleteCollect)
+	{
+		FVector p2 = FVector(9720, 10100, 1280);
 
-	SetActorLocation(p1);
+		SetActorLocation(p2);
+	}
 
 	FVector dir = player->GetActorLocation() - GetActorLocation();
 	dir.Normalize();
@@ -49,13 +62,6 @@ void ASJ_Hologram::BeginPlay()
 
 	SetState(EHologramState::TurnOnHologram);
 
-
-	if (destroyFX->IsValid())
-	{
-		auto effect = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), destroyFX, GetActorLocation(), GetActorRotation(), GetActorScale());
-
-	}
-	
 }
 
 // Called every frame
@@ -99,6 +105,7 @@ void ASJ_Hologram::TurnOnHologram()
 	if (createTime >= 2.0f)
 	{
 		UGameplayStatics::PlaySound2D(GetWorld(), FDHologramSound);
+		createTime = 0;
 		SetState(EHologramState::PlayHologram);
 	}
 }
@@ -128,6 +135,13 @@ void ASJ_Hologram::TurnOffHologram()
 	destroyParam = FMath::Lerp(1.0f, -1.0f, destroyTime * 0.5f);
 
 	meshComp->SetScalarParameterValueOnMaterials(TEXT("Dissolve"), destroyParam);
+
+	if (destroyTime >= 3.0f)
+	{
+		destroyTime = 0;
+		SetState(EHologramState::TurnOnHologram);
+		Destroy();
+	}
 
 	// 지식 이동 로직
 }

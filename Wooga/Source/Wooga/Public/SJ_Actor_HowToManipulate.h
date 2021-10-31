@@ -36,4 +36,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	class AVR_Player* player;
+
+	class ASJ_WoogaGameModeBase* gameModeBase;
 };

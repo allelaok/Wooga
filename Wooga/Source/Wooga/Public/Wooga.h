@@ -18,6 +18,7 @@ enum class EFlowState : uint8
 	CompleteFireDiscovery,
 	InformWatch,
 	GoToCollectCourse,
+	CollectTitle,
 	// Ã¤Áý
 	HowToCollectActorUI,
 	CollectAndEat,

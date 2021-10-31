@@ -25,6 +25,9 @@ public:
 	void SetState(EFlowState state);
 	EFlowState GetState();
 
+	// 플레이어
+	class AVR_Player* player;
+
 	// 다음 상태로 넘어가는 딜레이 타임
 	UPROPERTY()
 	float nextDelayTime;
@@ -35,8 +38,7 @@ public:
 	void InGame();
 	void ManipulateUI();
 	void GrabActorUI();
-	void FireDiscoveryTitle();
-
+	
 	// 조작방법 UI 
 	class ASJ_Actor_HowToManipulate* manipulateUI;
 
@@ -45,7 +47,6 @@ public:
 
 	// 두 UI 간에 딜레이를 위한 잡는방법UI 생성 타이머
 	FTimerHandle howToGrabUITimer;
-	void SpawnHowToGrabUI();
 
 	// 잡는 방법 알려주는 UI
 	class ASJ_HowToGrabUIActor* howToGrab;
@@ -68,6 +69,7 @@ public:
 	class AFireRock2* fireRockTwo;
 
 	// 불의 발견 교육
+	void FireDiscoveryTitle();
 	void HowToFireUI();
 	void HowToFireUINext();
 	void Firing();
@@ -107,36 +109,45 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = Hologram)
 	TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
+	
+	// 플레이어 워치 안내 UI
+	class ASJ_Actor_WatchInformUI* watchInformUI;
 
-	// 다음 장소로 이동하기 위한 가이드 라인
-	UPROPERTY(EditAnywhere, Category = GuideLine)
-	TSubclassOf<class ASJ_GuidLine> goToCollectGuideLine;
-
-	class ASJ_UIPannel* useUI;
-
-	class AVR_Player* player;
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_Actor_WatchInformUI> bpWatchInformUI;
 
 	class ASJ_GuidLine* guideLine;
 
-	UPROPERTY()
-		float currentTime;
-	UPROPERTY()
-		float destroyTime = 3.0f;
-	UPROPERTY()
-	float temporaryTime;
-
-	TArray<class AFireRock*> fireRocks;
+	// 다음 장소로 이동하기 위한 가이드 라인
+	UPROPERTY(EditAnywhere, Category = GuideLine)
+		TSubclassOf<class ASJ_GuidLine> goToCollectGuideLine;
 
 	FVector p;
-
-	FTimerHandle destroyTimer;
 
 	UPROPERTY(EditAnywhere, Category = Haptic)
 		class UHapticFeedbackEffect_Base* watchHaptic;
 
 	// 채집 교육
+	void CollectTitle();
 	void HowToCollectActorUI();
 	void CollectAndEat();
 	void CompleteCollect();
 	void GoToFistAxCourse();
+
+	// 배고픔과 채집 안내 UI
+	class ASJ_Actor_CollectAndHungryUI* collectAndHungry;
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_Actor_CollectAndHungryUI> bpCollectAndHungry;
+
+	// 사과
+	class AApple* apple;
+
+	// 사과 채집과 먹기 UI
+	class ASJ_Actor_EatAppleUI* eatAppleUI;
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_Actor_EatAppleUI> bpEatAppleUI;
+
+	// 채집 홀로그램
+	UPROPERTY(EditAnywhere, Category = Hologram)
+	TSubclassOf<class ASJ_Hologram> bpCollectHologram;
 };

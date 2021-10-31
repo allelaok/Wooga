@@ -6,6 +6,7 @@
 #include <Components/WidgetComponent.h>
 #include "VR_Player.h"
 #include <Kismet/GameplayStatics.h>
+#include "SJ_WoogaGameModeBase.h"
 
 // Sets default values
 ASJ_Actor_HowToManipulate::ASJ_Actor_HowToManipulate()

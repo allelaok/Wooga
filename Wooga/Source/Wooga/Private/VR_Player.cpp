@@ -211,9 +211,18 @@ void AVR_Player::OverlapKnowledgePoint(UPrimitiveComponent* OverlappedComp, AAct
 	auto fireEvent = Cast<AFireEvent>(OtherActor);
 	if (fireEvent)
 	{
-		knowledgePoint = 1;
-		isPlayAnim = true;
-		OtherActor->Destroy();
+		if (knowledgePoint == 0)
+		{
+			knowledgePoint = 1;
+			isPlayAnim = true;
+			OtherActor->Destroy();
+		}
+		else if (knowledgePoint == 1)
+		{
+			knowledgePoint = 2;
+			isPlayAnim = true;
+			OtherActor->Destroy();
+		}
 	}
 }
 

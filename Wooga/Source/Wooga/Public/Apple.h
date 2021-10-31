@@ -70,4 +70,6 @@ public:
 	bool bisgrab = false;
 	bool bisEat = false;
 	int32 overlabCount = 0;
+
+	bool bisEatComplete;
 };

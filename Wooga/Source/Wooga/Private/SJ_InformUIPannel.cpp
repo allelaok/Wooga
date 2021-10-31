@@ -9,6 +9,7 @@
 #include "SJ_WoogaGameModeBase.h"
 #include "SJ_InformUICreate.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "SJ_Actor_TitleUI.h"
 
 
 // Sets default values
@@ -81,16 +82,16 @@ void ASJ_InformUIPannel::RangeIn(class UPrimitiveComponent* OverlappedComp, clas
 	{
 		isTrigger = true;
 
-		FActorSpawnParameters Param;
-		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-
-		GetWorld()->SpawnActor<ASJ_InformUICreate>(informUICreate, range->GetComponentLocation(), GetActorRotation(), Param);
-
 		informFX->SetHiddenInGame(true);
 
-		if (gameModeBase->GetState() == EFlowState::GoToCollectCourse)
+		if (gameModeBase->flowState == EFlowState::GoToCollectCourse)
 		{
-			gameModeBase->SetState(EFlowState::HowToCollectActorUI);
+			FActorSpawnParameters Param;
+			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+			titleUI = GetWorld()->SpawnActor<class ASJ_Actor_TitleUI>(bpCollectTitleUI, Param);
+
+			gameModeBase->SetState(EFlowState::CollectTitle);
 		}
 	}
 }
