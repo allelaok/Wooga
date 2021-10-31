@@ -41,8 +41,10 @@ void ASJ_Actor_CollectAndHungryUI::BeginPlay()
 	FVector me = GetActorLocation();
 
 	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 200 + player->GetActorUpVector() * 50;
+	
+	FVector p1 = FVector(9850, 10150, 1270);
 
-	SetActorLocation(p);
+	SetActorLocation(p1);
 
 	// Target - me -> UI 플레이어를 향해 볼 수 있도록.
 	FVector dir = player->GetActorLocation() - GetActorLocation();

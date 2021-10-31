@@ -22,6 +22,7 @@
 #include "Apple.h"
 #include "SJ_Actor_EatAppleUI.h"
 #include "SJ_Actor_CollectAndHungryUI.h"
+#include "SJ_InformUIPannel.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -33,7 +34,7 @@ void ASJ_WoogaGameModeBase::BeginPlay()
 	Super::BeginPlay();
 
 	// 맨 처음 불의 발견 교육으로 시작
-	SetState(EFlowState::InGame);
+	SetState(EFlowState::InformWatch);
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 }
@@ -76,6 +77,7 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 		GoToCollectState();
 		break;
 	case EFlowState::CollectTitle:
+		CollectTitle();
 		break;
 	case EFlowState::HowToCollectActorUI:
 		HowToCollectActorUI();
@@ -178,7 +180,12 @@ void ASJ_WoogaGameModeBase::GrabActorUI()
 			// 사용된 UI 제거
 			howToGrab->Destroy();
 
-			SpawnTitle();
+			FActorSpawnParameters Param;
+			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+			// 불의 발견 제목
+			titleUI = GetWorld()->SpawnActor<ASJ_Actor_TitleUI>(bpFDTitle, Param);
+
 			SetState(EFlowState::FireDiscoveryTitle);
 		}
 	}
@@ -205,7 +212,7 @@ void ASJ_WoogaGameModeBase::FireDiscoveryTitle()
 		howToFire = GetWorld()->SpawnActor<ASJ_HowToFireUIActor>(howToFireUIActor, Param);
 
 		// 사용된 UI 제거
-		FDTitle->Destroy();
+		titleUI->Destroy();
 
 		// 딜레이변수 초기화
 		nextDelayTime = 0;
@@ -318,6 +325,12 @@ void ASJ_WoogaGameModeBase::Firing()
 			// 사용된 UI 제거
 			breatheFireUI->Destroy();
 
+			// 시계 햅틱 기능
+			GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
+
+			// 플레이어 워치 켜주기
+			player->playerWatch->SetHiddenInGame(false);
+
 			SetState(EFlowState::CompleteFireDiscovery);
 		}
 	}
@@ -329,12 +342,6 @@ void ASJ_WoogaGameModeBase::CompleteFireCourse()
 
 	if (nextDelayTime >= 20.0f)
 	{
-		// 시계 햅틱 기능
-		GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
-
-		// 플레이어 워치 켜주기
-		player->playerWatch->SetHiddenInGame(false);
-
 		// 임무 완료 사운드
 		UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
 
@@ -372,7 +379,14 @@ void ASJ_WoogaGameModeBase::InformWatch()
 		// 가이드 라인 표시
 		// guideLine = Cast<ASJ_GuidLine>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_GuidLine::StaticClass()));
 
-		guideLine->SetActorHiddenInGame(false);
+		// gotoCollectGuideLine->SetActorHiddenInGame(false);
+
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		informUI = GetWorld()->SpawnActor<ASJ_InformUIPannel>(bpGoToCollect, Param);
+
+		watchInformUI->Destroy();
 
 		// 딜레이 변수 초기화
 		bIsDelay = false;
@@ -385,17 +399,19 @@ void ASJ_WoogaGameModeBase::InformWatch()
 void ASJ_WoogaGameModeBase::GoToCollectState()
 {
 	// InformUIPannel 에서 관리
-}
+	informUI = Cast<ASJ_InformUIPannel>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_InformUIPannel::StaticClass()));
 
-void ASJ_WoogaGameModeBase::SpawnTitle()
-{
-	FActorSpawnParameters Param;
-	Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	if (informUI->isTrigger == true)
+	{
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-	// 불의 발견 제목
-	FDTitle = GetWorld()->SpawnActor<ASJ_Actor_TitleUI>(bpFDTitle, Param);
+		titleUI = GetWorld()->SpawnActor<class ASJ_Actor_TitleUI>(bpCollectTitleUI, Param);
 
-	// 웅장한 사운드 재생
+		UE_LOG(LogTemp, Warning, TEXT("CollectTitle"));
+
+		SetState(EFlowState::CollectTitle);
+	}
 }
 #pragma endregion
 
@@ -413,10 +429,16 @@ void ASJ_WoogaGameModeBase::CollectTitle()
 
 		collectAndHungry = GetWorld()->SpawnActor<ASJ_Actor_CollectAndHungryUI>(bpCollectAndHungry, Param);
 
+		// 제목 없애기
+		titleUI->Destroy();
+
+		// 임무 완료 사운드
+		UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
+
 		// 딜레이변수 초기화
 		nextDelayTime = 0;
 
-		SetState(EFlowState::HowToFireUI);
+		SetState(EFlowState::HowToCollectActorUI);
 	}
 }
 void ASJ_WoogaGameModeBase::HowToCollectActorUI()
@@ -424,18 +446,33 @@ void ASJ_WoogaGameModeBase::HowToCollectActorUI()
 	// UI를 끄면 다음 상태로 넘어가기
 	if (player->isClose == true)
 	{
-		// 사과 캐싱하고 아웃라인 켜주기
-		apple = Cast<AApple>(UGameplayStatics::GetActorOfClass(GetWorld(), AApple::StaticClass()));
+		bIsDelay = true;
+	}
+	if (bIsDelay == true)
+	{
+		nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
-		apple->outLine->SetVisibility(true);
+		if (nextDelayTime >= 3.0f)
+		{
+			// 사과 캐싱하고 아웃라인 켜주기
+			apple = Cast<AApple>(UGameplayStatics::GetActorOfClass(GetWorld(), AApple::StaticClass()));
 
-		// 사과 채집과 먹기 UI
-		FActorSpawnParameters Param;
-		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+			apple->outLine->SetVisibility(true);
 
-		eatAppleUI = GetWorld()->SpawnActor<ASJ_Actor_EatAppleUI>(bpEatAppleUI, Param);
+			// 임무 완료 사운드
+			UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
 
-		SetState(EFlowState::CollectAndEat);
+			// 사과 채집과 먹기 UI
+			FActorSpawnParameters Param;
+			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+			eatAppleUI = GetWorld()->SpawnActor<ASJ_Actor_EatAppleUI>(bpEatAppleUI, Param);
+
+			bIsDelay = false;
+			nextDelayTime = 0;
+
+			SetState(EFlowState::CollectAndEat);
+		}
 	}
 }
 
@@ -452,6 +489,9 @@ void ASJ_WoogaGameModeBase::CollectAndEat()
 			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 			hologram = GetWorld()->SpawnActor<ASJ_Hologram>(bpCollectHologram, Param);
+
+			// 임무 완료 사운드
+			UGameplayStatics::PlaySound2D(GetWorld(), uiSound);
 
 			// 사용된 UI 삭제
 			eatAppleUI->Destroy();

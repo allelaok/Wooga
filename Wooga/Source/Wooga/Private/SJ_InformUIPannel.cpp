@@ -41,10 +41,19 @@ void ASJ_InformUIPannel::BeginPlay()
 
 	// 게임모드 캐싱
 	gameModeBase = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
+
+	if (gameModeBase->flowState == EFlowState::InformWatch || gameModeBase->flowState == EFlowState::GoToCollectCourse)
+	{
+		FVector p1 = FVector(9897.0f, 10207.0f, 1260.0);
+
+		SetActorLocation(p1);
+
+		FRotator r1 = FRotator(0,58,0);
+
+		SetActorRotation(r1);
+	}
 	
 	range->OnComponentBeginOverlap.AddDynamic(this, &ASJ_InformUIPannel::RangeIn);
-
-	informUI->SetAutoActivate(false);
 }
 
 // Called every frame
@@ -84,15 +93,17 @@ void ASJ_InformUIPannel::RangeIn(class UPrimitiveComponent* OverlappedComp, clas
 
 		informFX->SetHiddenInGame(true);
 
-		if (gameModeBase->flowState == EFlowState::GoToCollectCourse)
+		/*if (gameModeBase->flowState == EFlowState::GoToCollectCourse)
 		{
 			FActorSpawnParameters Param;
 			Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 			titleUI = GetWorld()->SpawnActor<class ASJ_Actor_TitleUI>(bpCollectTitleUI, Param);
 
+			UE_LOG(LogTemp, Warning, TEXT("ColletctTitle"));
+
 			gameModeBase->SetState(EFlowState::CollectTitle);
-		}
+		}*/
 	}
 }
 

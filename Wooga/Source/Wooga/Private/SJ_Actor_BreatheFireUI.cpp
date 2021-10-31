@@ -36,6 +36,10 @@ void ASJ_Actor_BreatheFireUI::BeginPlay()
 	FVector p = tar + fireStraw->GetActorUpVector() * 50;
 
 	SetActorLocation(p);
+
+	FRotator r = FRotator(0, -30, 0);
+
+	SetActorRotation(r);
 }
 
 // Called every frame

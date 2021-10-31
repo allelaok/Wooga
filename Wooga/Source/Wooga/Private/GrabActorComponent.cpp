@@ -152,7 +152,7 @@ void UGrabActorComponent::RightReleaseAction()
 		fireRockR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 		fireRockR->boxComp->SetSimulatePhysics(true);
-		fireRockR->outLine->SetVisibility(true);
+		fireRockR->outLine->SetVisibility(false);
 
 		fireRockR = nullptr;
 		bisRightGrab = false;
@@ -204,6 +204,7 @@ void UGrabActorComponent::RightReleaseAction()
 		appleR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 		appleR->boxComp->SetSimulatePhysics(true);
+		appleR->outLine->SetVisibility(false);
 
 		appleR = nullptr;
 		bisLeftGrab = false;
@@ -360,6 +361,7 @@ void UGrabActorComponent::LeftReleaseAction()
 		appleL->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 		appleL->boxComp->SetSimulatePhysics(true);
+		appleL->outLine->SetVisibility(false);
 
 		appleL = nullptr;
 		bisLeftGrab = false;
