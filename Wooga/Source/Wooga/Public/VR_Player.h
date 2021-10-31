@@ -54,12 +54,18 @@ public:
 		// ¿Þ¼Õ ±×·¦ Æ÷ÀÎÆ®
 		UPROPERTY(EditAnywhere, Category = PlayerSettings)
 			class USceneComponent* leftHandLoc;
+		UPROPERTY(EditAnywhere, Category = PlayerSettings)
+			class USceneComponent* leftFALoc;
 		// ¿À¸¥¼Õ
 		UPROPERTY(EditAnywhere, Category = PlayerSettings)
 			class USkeletalMeshComponent* rightHand;
 		// ¿À¸¥¼Õ ±×·¦ Æ÷ÀÎÆ®
 		UPROPERTY(EditAnywhere, Category = PlayerSettings)
 			class USceneComponent* rightHandLoc;
+		UPROPERTY(EditAnywhere, Category = PlayerSettings)
+			class USceneComponent* rightFALoc;
+		UPROPERTY(EditAnywhere, Category = PlayerSettings)
+			class USceneComponent* rightHRLoc;
 		// ¿Þ¼Õ ±×·¦ TextLog
 		UPROPERTY(EditAnywhere, Category = PlayerSettings)
 			class UTextRenderComponent* leftLog;

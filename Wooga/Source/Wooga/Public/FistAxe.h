@@ -75,6 +75,9 @@ public:
 		class UStaticMeshComponent* rock15;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UStaticMeshComponent* faGrabPoint;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
 		class USkeletalMeshComponent* handHologramL;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)

@@ -94,7 +94,14 @@ AVR_Player::AVR_Player()
 	// 물체를 잡을때의 Rotation 값
 	leftHandLoc->SetRelativeRotation(FRotator(0.f, 0.f, 0.f));
 
-
+	// 왼손으로 물체를 잡을때의 위치 값
+	leftFALoc = CreateDefaultSubobject<USceneComponent>(TEXT("LeftFALoc"));
+	// 왼손에 붙여줌
+	leftFALoc->SetupAttachment(leftHand);
+	// 물체를 잡을때의 Location 값 
+	leftFALoc->SetRelativeLocation(FVector(10.f, 0.f, -3.f));
+	// 물체를 잡을때의 Rotation 값
+	leftFALoc->SetRelativeRotation(FRotator(0.f, 0.f, 0.f));
 
 	// 오른손 Skeletal 생성
 	rightHand = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Right Hand"));
@@ -113,6 +120,24 @@ AVR_Player::AVR_Player()
 	rightHandLoc->SetRelativeLocation(FVector(10.f, 0.f, -3.f));
 	// 물체를 잡을때의 Rotation 값
 	rightHandLoc->SetRelativeRotation(FRotator(0.f, 0.f, -90.f));
+
+	// 오른손으로 물체를 잡을때의 위치 값
+	rightFALoc = CreateDefaultSubobject<USceneComponent>(TEXT("RightFALoc"));
+	// 오른손에 붙여줌
+	rightFALoc->SetupAttachment(rightHand);
+	// 물체를 잡을때의 Location 값 
+	rightFALoc->SetRelativeLocation(FVector(10.f, 0.f, -3.f));
+	// 물체를 잡을때의 Rotation 값
+	rightFALoc->SetRelativeRotation(FRotator(0.f, 0.f, -90.f));
+
+	// 오른손으로 물체를 잡을때의 위치 값
+	rightHRLoc = CreateDefaultSubobject<USceneComponent>(TEXT("RightHRLoc"));
+	// 오른손에 붙여줌
+	rightHRLoc->SetupAttachment(rightHand);
+	// 물체를 잡을때의 Location 값 
+	rightHRLoc->SetRelativeLocation(FVector(10.f, 0.f, -3.f));
+	// 물체를 잡을때의 Rotation 값
+	rightHRLoc->SetRelativeRotation(FRotator(0.f, 0.f, -90.f));
 
 	// 오른쪽 손목 위 3D TEXT 
 	rightLog = CreateDefaultSubobject<UTextRenderComponent>(TEXT("Right Log"));
