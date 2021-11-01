@@ -34,7 +34,7 @@ void ASJ_WoogaGameModeBase::BeginPlay()
 	Super::BeginPlay();
 
 	// 맨 처음 불의 발견 교육으로 시작
-	SetState(EFlowState::InformWatch);
+	SetState(EFlowState::InGame);
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 }
