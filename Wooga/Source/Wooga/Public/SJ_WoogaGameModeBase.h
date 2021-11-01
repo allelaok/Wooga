@@ -56,10 +56,9 @@ public:
 
 	// 제목 생성 기능 및 타이머
 	FTimerHandle titleTimer;
-	void SpawnTitle();
 
 	// 불의 발견 제목 UI
-	class ASJ_Actor_TitleUI* FDTitle;
+	class ASJ_Actor_TitleUI* titleUI;
 
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_Actor_TitleUI> bpFDTitle;
@@ -103,7 +102,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_Actor_BreatheFireUI> bpBreatheFireUI;
 
-
 	// 불의 발견 홀로그램
 	class ASJ_Hologram* hologram;
 
@@ -116,16 +114,28 @@ public:
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ASJ_Actor_WatchInformUI> bpWatchInformUI;
 
+	UPROPERTY(EditAnywhere, Category = GuideLine)
+	AActor* gotoCollectGuideLine;
+
 	class ASJ_GuidLine* guideLine;
 
 	// 다음 장소로 이동하기 위한 가이드 라인
 	UPROPERTY(EditAnywhere, Category = GuideLine)
-		TSubclassOf<class ASJ_GuidLine> goToCollectGuideLine;
+		TSubclassOf<class ASJ_GuidLine> bbgoToCollectGuideLine;
 
 	FVector p;
 
 	UPROPERTY(EditAnywhere, Category = Haptic)
 		class UHapticFeedbackEffect_Base* watchHaptic;
+
+	// Inform UI Pannel
+	class ASJ_InformUIPannel* informUI;
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf <class ASJ_InformUIPannel> bpGoToCollect;
+
+	// 채집하기 제목 
+	UPROPERTY(EditAnywhere, Category = UI)
+		TSubclassOf<class ASJ_Actor_TitleUI> bpCollectTitleUI;
 
 	// 채집 교육
 	void CollectTitle();

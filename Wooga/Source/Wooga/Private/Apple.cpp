@@ -44,6 +44,8 @@ void AApple::BeginPlay()
 	UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), explosion, explosionLoc);
 
 	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AApple::OnCollisionEnter);
+
+	outLine->SetVisibility(false);
 }
 
 // Called every frame
