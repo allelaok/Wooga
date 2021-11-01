@@ -50,7 +50,7 @@ void ASJ_Hologram::BeginPlay()
 	// 채집 홀로그램
 	if (gameMode->flowState == EFlowState::CollectAndEat || gameMode->flowState == EFlowState::CompleteCollect)
 	{
-		FVector p2 = FVector(9720, 10100, 1280);
+		FVector p2 = FVector(9575, 10053, 1280);
 
 		SetActorLocation(p2);
 	}

@@ -23,6 +23,8 @@
 #include "SJ_Actor_EatAppleUI.h"
 #include "SJ_Actor_CollectAndHungryUI.h"
 #include "SJ_InformUIPannel.h"
+#include "Engine/DirectionalLight.h"
+#include "Components/LightComponent.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -195,7 +197,7 @@ void ASJ_WoogaGameModeBase::FireDiscoveryTitle()
 {
 	nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
-	if (nextDelayTime >= 9.0f)
+	if (nextDelayTime >= 6.0f)
 	{
 		// 부싯돌 캐싱
 		fireRockOne = Cast<AFireRock>(UGameplayStatics::GetActorOfClass(GetWorld(), AFireRock::StaticClass()));
@@ -241,6 +243,10 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 
 		if (nextDelayTime >= 2.0f)
 		{
+			// 부싯돌 아웃라인 꺼주기
+			fireRockOne->outLine->SetHiddenInGame(true);
+			fireRockTwo->outLine->SetHiddenInGame(true);
+
 			// 지푸라기와 화로 아웃라인
 			firePosition->outLine->SetVisibility(true);
 			fireStraw->outLine->SetVisibility(true);
@@ -289,6 +295,10 @@ void ASJ_WoogaGameModeBase::HowToFireUINext()
 
 			// 사용된 UI 제거
 			howToFireNext->Destroy();
+
+			// 지푸라기와 화로 아웃라인
+			firePosition->outLine->SetHiddenInGame(true);
+			fireStraw->outLine->SetHiddenInGame(true);
 
 			// 딜레이 변수 초기화
 			nextDelayTime = 0;
@@ -388,6 +398,8 @@ void ASJ_WoogaGameModeBase::InformWatch()
 
 		watchInformUI->Destroy();
 
+		// sunLight->GetLightComponent()->SetIntensity(10.0f);
+
 		// 딜레이 변수 초기화
 		bIsDelay = false;
 		nextDelayTime = 0;
@@ -421,7 +433,7 @@ void ASJ_WoogaGameModeBase::CollectTitle()
 	// 이때 이동을 막자
 	nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
-	if (nextDelayTime >= 9.0f)
+	if (nextDelayTime >= 6.0f)
 	{
 		// 배고픔과 채집 안내 UI
 		FActorSpawnParameters Param;

@@ -124,4 +124,7 @@ public:
 
 	UPROPERTY()
 		bool isPlayAnim;
+
+	UPROPERTY(EditAnywhere, Category = Haptic)
+		class UHapticFeedbackEffect_Base* watchHaptic;
 };

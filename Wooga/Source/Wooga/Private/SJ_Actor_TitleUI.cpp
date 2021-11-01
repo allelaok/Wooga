@@ -6,6 +6,7 @@
 #include <Components/WidgetComponent.h>
 #include "VR_Player.h"
 #include <Kismet/GameplayStatics.h>
+#include "SJ_WoogaGameModeBase.h"
 
 // Sets default values
 ASJ_Actor_TitleUI::ASJ_Actor_TitleUI()
@@ -30,17 +31,34 @@ void ASJ_Actor_TitleUI::BeginPlay()
 	
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
-	FVector playerLoc = player->GetActorLocation();
-	FVector me = GetActorLocation();
+	gameMode = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
 
-	FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 200 + player->GetActorUpVector() * 50;
+	if (gameMode->flowState == EFlowState::HowToGrabActorUI || gameMode->flowState == EFlowState::FireDiscoveryTitle)
+	{
+		FVector playerLoc = player->GetActorLocation();
+		FVector me = GetActorLocation();
 
-	SetActorLocation(p);
+		FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 200 + player->GetActorUpVector() * 50;
 
-	FVector dir = player->GetActorLocation() - GetActorLocation();
-	dir.Normalize();
+		SetActorLocation(p);
 
-	SetActorRotation(dir.Rotation());
+		FVector dir = player->GetActorLocation() - GetActorLocation();
+		dir.Normalize();
+
+		SetActorRotation(dir.Rotation());
+	}
+	else if (gameMode->flowState == EFlowState::GoToCollectCourse || gameMode->flowState == EFlowState::CollectTitle)
+	{
+		FVector p1 = FVector(9850, 10150, 1270);
+
+		SetActorLocation(p1);
+
+		FVector dir = player->GetActorLocation() - GetActorLocation();
+		dir.Normalize();
+
+		SetActorRotation(dir.Rotation());
+	}
+	
 }
 
 // Called every frame

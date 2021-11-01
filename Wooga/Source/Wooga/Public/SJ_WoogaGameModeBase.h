@@ -30,7 +30,7 @@ public:
 
 	// 다음 상태로 넘어가는 딜레이 타임
 	UPROPERTY()
-	float nextDelayTime;
+		float nextDelayTime;
 	// 딜레이타임 카운트 여부
 	bool bIsDelay;
 
@@ -38,12 +38,12 @@ public:
 	void InGame();
 	void ManipulateUI();
 	void GrabActorUI();
-	
+
 	// 조작방법 UI 
 	class ASJ_Actor_HowToManipulate* manipulateUI;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_Actor_HowToManipulate> bpManipulateUI;
+		TSubclassOf<class ASJ_Actor_HowToManipulate> bpManipulateUI;
 
 	// 두 UI 간에 딜레이를 위한 잡는방법UI 생성 타이머
 	FTimerHandle howToGrabUITimer;
@@ -52,7 +52,7 @@ public:
 	class ASJ_HowToGrabUIActor* howToGrab;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_HowToGrabUIActor> howToGrabActor;
+		TSubclassOf<class ASJ_HowToGrabUIActor> howToGrabActor;
 
 	// 제목 생성 기능 및 타이머
 	FTimerHandle titleTimer;
@@ -61,7 +61,7 @@ public:
 	class ASJ_Actor_TitleUI* titleUI;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_Actor_TitleUI> bpFDTitle;
+		TSubclassOf<class ASJ_Actor_TitleUI> bpFDTitle;
 
 	// 부싯돌
 	class AFireRock* fireRockOne;
@@ -78,13 +78,13 @@ public:
 
 	// UI Sound
 	UPROPERTY(EditAnywhere, Category = Sound)
-	class USoundBase* uiSound;
+		class USoundBase* uiSound;
 
 	// 불지피는 방법 알려주는 UI
 	class ASJ_HowToFireUIActor* howToFire;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_HowToFireUIActor> howToFireUIActor;
+		TSubclassOf<class ASJ_HowToFireUIActor> howToFireUIActor;
 
 	// 지푸라기
 	class AFirePosition* firePosition;
@@ -95,33 +95,39 @@ public:
 	class ASJ_HowToFireNextUIActor* howToFireNext;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_HowToFireNextUIActor> howToFireNextUIActor;
+		TSubclassOf<class ASJ_HowToFireNextUIActor> howToFireNextUIActor;
 
 	// 불에 숨을 불어 넣는 방법 UI
 	class ASJ_Actor_BreatheFireUI* breatheFireUI;
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_Actor_BreatheFireUI> bpBreatheFireUI;
+		TSubclassOf<class ASJ_Actor_BreatheFireUI> bpBreatheFireUI;
 
 	// 불의 발견 홀로그램
 	class ASJ_Hologram* hologram;
 
 	UPROPERTY(EditAnywhere, Category = Hologram)
-	TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
-	
+		TSubclassOf<class ASJ_Hologram> fireDisCoveryHologram;
+
 	// 플레이어 워치 안내 UI
 	class ASJ_Actor_WatchInformUI* watchInformUI;
 
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_Actor_WatchInformUI> bpWatchInformUI;
+		TSubclassOf<class ASJ_Actor_WatchInformUI> bpWatchInformUI;
 
 	UPROPERTY(EditAnywhere, Category = GuideLine)
-	AActor* gotoCollectGuideLine;
+		AActor* gotoCollectGuideLine;
 
 	class ASJ_GuidLine* guideLine;
 
 	// 다음 장소로 이동하기 위한 가이드 라인
 	UPROPERTY(EditAnywhere, Category = GuideLine)
 		TSubclassOf<class ASJ_GuidLine> bbgoToCollectGuideLine;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Light)
+		class ADirectionalLight* dirLight;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Light)
+		class ADirectionalLight* sunLight;
 
 	FVector p;
 
@@ -131,7 +137,7 @@ public:
 	// Inform UI Pannel
 	class ASJ_InformUIPannel* informUI;
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf <class ASJ_InformUIPannel> bpGoToCollect;
+		TSubclassOf <class ASJ_InformUIPannel> bpGoToCollect;
 
 	// 채집하기 제목 
 	UPROPERTY(EditAnywhere, Category = UI)
@@ -147,7 +153,7 @@ public:
 	// 배고픔과 채집 안내 UI
 	class ASJ_Actor_CollectAndHungryUI* collectAndHungry;
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_Actor_CollectAndHungryUI> bpCollectAndHungry;
+		TSubclassOf<class ASJ_Actor_CollectAndHungryUI> bpCollectAndHungry;
 
 	// 사과
 	class AApple* apple;
@@ -155,9 +161,9 @@ public:
 	// 사과 채집과 먹기 UI
 	class ASJ_Actor_EatAppleUI* eatAppleUI;
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_Actor_EatAppleUI> bpEatAppleUI;
+		TSubclassOf<class ASJ_Actor_EatAppleUI> bpEatAppleUI;
 
 	// 채집 홀로그램
 	UPROPERTY(EditAnywhere, Category = Hologram)
-	TSubclassOf<class ASJ_Hologram> bpCollectHologram;
+		TSubclassOf<class ASJ_Hologram> bpCollectHologram;
 };
