@@ -21,6 +21,8 @@ AFireStraw::AFireStraw()
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
 
+	attenuationSettings = CreateDefaultSubobject<USoundAttenuation>(TEXT("AttenuationSettings"));
+
 	pointLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("PointLight"));
 	pointLight->SetupAttachment(boxComp);
 
@@ -61,8 +63,8 @@ void AFireStraw::Tick(float DeltaTime)
 				location = this->GetActorLocation();
 				rotation = this->GetActorRotation();
 
-				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase2, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
-				UAudioComponent* MySound2 = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase3, location, rotation, VolumeMultiplier * 2, PitchMultiplier * 2, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase2, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, attenuationSettings, ConcurrencySettings, bAutoDestroy);
+				UAudioComponent* MySound2 = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase3, location, rotation, VolumeMultiplier * 2, PitchMultiplier * 2, StartTime, attenuationSettings, ConcurrencySettings, bAutoDestroy);
 				pointLight->SetHiddenInGame(false);
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), fireFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 				bisSmog = true;
@@ -85,7 +87,7 @@ void AFireStraw::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, cla
 			location = this->GetActorLocation();
 			rotation = this->GetActorRotation();
 
-			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+			UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, attenuationSettings, ConcurrencySettings, bAutoDestroy);
 			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), smogFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 			bisReadyFire = true;
 			firePosition->Destroy();

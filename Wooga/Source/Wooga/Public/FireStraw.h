@@ -74,7 +74,7 @@ public:
 		float VolumeMultiplier = 1.f;
 		float PitchMultiplier = 1.f;
 		float StartTime = 0.f;
-		class USoundAttenuation* AttenuationSettings;
+		class USoundAttenuation* attenuationSettings;
 		USoundConcurrency* ConcurrencySettings;
 		bool bAutoDestroy = false;
 		int32 overlabCount = 0;
