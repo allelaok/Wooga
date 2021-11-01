@@ -296,10 +296,6 @@ void ASJ_WoogaGameModeBase::HowToFireUINext()
 			// 사용된 UI 제거
 			howToFireNext->Destroy();
 
-			// 지푸라기와 화로 아웃라인
-			firePosition->outLine->SetHiddenInGame(true);
-			fireStraw->outLine->SetHiddenInGame(true);
-
 			// 딜레이 변수 초기화
 			nextDelayTime = 0;
 			SetState(EFlowState::Firing);
@@ -314,6 +310,10 @@ void ASJ_WoogaGameModeBase::Firing()
 	// 불을 켜면 홀로그램이 생성되고 첫번째 교육 이수 상태로 넘어간다.
 	if (fireStraw->isClear == true)
 	{
+		// 지푸라기와 화로 아웃라인
+		firePosition->outLine->SetHiddenInGame(true);
+		fireStraw->outLine->SetHiddenInGame(true);
+
 		nextDelayTime += GetWorld()->DeltaTimeSeconds;
 		if (nextDelayTime >= 3.0f)
 		{

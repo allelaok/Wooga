@@ -66,6 +66,8 @@ void AFireStraw::Tick(float DeltaTime)
 				location = this->GetActorLocation();
 				rotation = this->GetActorRotation();
 				UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundBase2, location);
+				UGameplayStatics::PlaySoundAtLocation(GetWorld(), SoundBase3, location);
+
 				fireLoopSound->Play();
 				//UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase2, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, attenuationSettings, ConcurrencySettings, bAutoDestroy);
 				//UAudioComponent* MySound2 = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase3, location, rotation, VolumeMultiplier * 2, PitchMultiplier * 2, StartTime, attenuationSettings, ConcurrencySettings, bAutoDestroy);
