@@ -21,6 +21,7 @@ ASJ_Actor_BreatheFireUI::ASJ_Actor_BreatheFireUI()
 
 	howToFireUI = CreateDefaultSubobject<UWidgetComponent>(TEXT("HowToFireUI"));
 	howToFireUI->SetupAttachment(rootComp);
+	howToFireUI->SetCollisionProfileName(TEXT("NoCollision"));
 }
 
 // Called when the game starts or when spawned

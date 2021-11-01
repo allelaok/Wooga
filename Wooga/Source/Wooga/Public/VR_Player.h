@@ -111,6 +111,7 @@ public:
 	float headRotateYaw;
 	float headRotatePitch;
 
+
 	float change;
 
 	UPROPERTY(VisibleAnywhere, Category = knowledge)
