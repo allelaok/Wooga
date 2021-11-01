@@ -241,12 +241,14 @@ void AVR_Player::OverlapKnowledgePoint(UPrimitiveComponent* OverlappedComp, AAct
 	{
 		if (knowledgePoint == 0)
 		{
+			GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
 			knowledgePoint = 1;
 			isPlayAnim = true;
 			OtherActor->Destroy();
 		}
 		else if (knowledgePoint == 1)
 		{
+			GetWorld()->GetFirstPlayerController()->PlayHapticEffect(watchHaptic, EControllerHand::Left, 0.5f, false);
 			knowledgePoint = 2;
 			isPlayAnim = true;
 			OtherActor->Destroy();

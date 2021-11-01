@@ -19,7 +19,7 @@ void USJ_UI_Title::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
 	nextDelayTime += InDeltaTime;
 
-	if (nextDelayTime >= 6.0f)
+	if (nextDelayTime >= 4.0f)
 	{
 		PlayAnimation(CloseUI);
 

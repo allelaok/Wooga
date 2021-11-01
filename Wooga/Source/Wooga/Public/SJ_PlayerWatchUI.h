@@ -67,8 +67,14 @@ public:
 		class UProgressBar* hungryGaze;
 
 	class AVR_Player* player;
+	class ASJ_WoogaGameModeBase* gameMode;
 
 	void FireDiscovery();
+
+	UPROPERTY()
+	float gazePer;
+	UPROPERTY()
+	float gazeTime;
 
 	bool isplay;
 };

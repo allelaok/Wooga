@@ -204,7 +204,6 @@ void UGrabActorComponent::RightReleaseAction()
 		appleR->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 		appleR->boxComp->SetSimulatePhysics(true);
-		appleR->outLine->SetVisibility(false);
 
 		appleR = nullptr;
 		bisLeftGrab = false;
@@ -627,6 +626,7 @@ void UGrabActorComponent::RGripApple(AActor* grabActor)
 
 			appleR->boxComp->SetSimulatePhysics(false);
 			appleR->boxComp->SetEnableGravity(true);
+			appleR->outLine->SetHiddenInGame(true);
 
 			stemR->midLoc->SetSimulatePhysics(true);
 			stemR->midLoc->SetEnableGravity(true);
@@ -671,6 +671,7 @@ void UGrabActorComponent::LGripApple(AActor* grabActor)
 
 			appleL->boxComp->SetSimulatePhysics(false);
 			appleL->boxComp->SetEnableGravity(true);
+			appleL->outLine->SetHiddenInGame(true);
 
 			stemR->midLoc->SetSimulatePhysics(true);
 			stemR->midLoc->SetEnableGravity(true);
