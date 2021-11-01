@@ -71,11 +71,21 @@ public:
 		UPROPERTY()
 			FRotator rotation;
 
+		UPROPERTY(EditAnywhere, Category = "Sound")
+		class UAudioComponent* fireLoopSound;
+
+			UPROPERTY()
 		float VolumeMultiplier = 1.f;
-		float PitchMultiplier = 1.f;
-		float StartTime = 0.f;
-		class USoundAttenuation* attenuationSettings;
-		USoundConcurrency* ConcurrencySettings;
-		bool bAutoDestroy = false;
-		int32 overlabCount = 0;
+		UPROPERTY()
+			float PitchMultiplier = 1.f;
+		UPROPERTY()
+			float StartTime = 0.f;
+		UPROPERTY()
+			class USoundAttenuation* attenuationSettings;
+		UPROPERTY()
+			USoundConcurrency* ConcurrencySettings;
+		UPROPERTY()
+			bool bAutoDestroy = false;
+		UPROPERTY()
+			int32 overlabCount = 0;
 };
