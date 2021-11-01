@@ -47,6 +47,9 @@ public:
  	UPROPERTY(EditAnywhere, Category = PickUPSettings)
  	UNiagaraSystem* explosion;
 
+	UPROPERTY()
+	float currentTime;
+
 	// sound
 	const UObject* WorldContextObject;
 

@@ -6,6 +6,7 @@
 #include "FirePosition.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/PointLightComponent.h"
 #include <Kismet/GameplayStatics.h>
 
 // Sets default values
@@ -19,6 +20,9 @@ AFireStraw::AFireStraw()
 
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh Component"));
 	meshComp->SetupAttachment(boxComp);
+
+	pointLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("PointLight"));
+	pointLight->SetupAttachment(boxComp);
 
 	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OutLine"));
 	outLine->SetupAttachment(meshComp);
@@ -59,7 +63,7 @@ void AFireStraw::Tick(float DeltaTime)
 
 				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase2, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
 				UAudioComponent* MySound2 = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase3, location, rotation, VolumeMultiplier * 2, PitchMultiplier * 2, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
-				
+				pointLight->SetHiddenInGame(false);
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), fireFactory, GetActorLocation() + FVector(0.f, 0.0f, 0.f));
 				bisSmog = true;
 				isClear = true;

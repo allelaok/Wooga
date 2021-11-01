@@ -28,7 +28,7 @@ AApple::AApple()
 	meshComp->SetupAttachment(boxComp);
 
 	mesh2 = CreateDefaultSubobject<UStaticMesh>(TEXT("Mesh2"));
-	
+
 
 	outLine = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Outline"));
 	outLine->SetupAttachment(meshComp);
@@ -51,50 +51,55 @@ void AApple::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	currentTime += DeltaTime;
 }
 
 void AApple::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	auto player = Cast<AVR_Player>(OtherActor);
 
-	if (player)
+	if (currentTime >= 1.f)
 	{
-		if (player->grabComp->bisGrabApple == true)
+		if (player)
 		{
-			if (OtherComp == player->mouthComp)
+			if (player->grabComp->bisGrabApple == true)
 			{
-			if(bisEat == false)
-			{
-				// Sound
+				if (OtherComp == player->mouthComp)
+				{
+					if (bisEat == false)
+					{
+						// Sound
 
-				location = this->GetActorLocation();
-				rotation = this->GetActorRotation();
+						location = this->GetActorLocation();
+						rotation = this->GetActorRotation();
 
-				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+						UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
 
-				/*player->grabComp->LeftReleaseAction();
-				player->grabComp->RightReleaseAction();
-				this->Destroy();*/
+						/*player->grabComp->LeftReleaseAction();
+						player->grabComp->RightReleaseAction();
+						this->Destroy();*/
 
-				meshComp->SetStaticMesh(mesh2);
-				bisEat = true;
+						meshComp->SetStaticMesh(mesh2);
+						currentTime = 0.f;
+						bisEat = true;
+					}
+
+					else if (bisEat == true)
+					{
+						location = this->GetActorLocation();
+						rotation = this->GetActorRotation();
+
+						UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase2, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
+
+						player->grabComp->LeftReleaseAction();
+						player->grabComp->RightReleaseAction();
+
+						// 사과를 완전히 다 먹었는지 확인하는 변수
+						bisEatComplete = true;
+						this->Destroy();
+					}
+				}
 			}
-
-			else if (bisEat == true)
-			{
-				location = this->GetActorLocation();
-				rotation = this->GetActorRotation();
-
-				UAudioComponent* MySound = UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SoundBase2, location, rotation, VolumeMultiplier, PitchMultiplier, StartTime, AttenuationSettings, ConcurrencySettings, bAutoDestroy);
-
-				player->grabComp->LeftReleaseAction();
-				player->grabComp->RightReleaseAction();
-
-				// 사과를 완전히 다 먹었는지 확인하는 변수
-				bisEatComplete = true;
-				this->Destroy();
-			}
-		}
 		}
 	}
 }

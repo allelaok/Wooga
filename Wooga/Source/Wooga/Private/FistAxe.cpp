@@ -5,6 +5,7 @@
 #include "DetachRock.h"
 #include "HalfRock.h"
 #include "VR_Player.h"
+#include "GrabActorComponent.h"
 #include "Components/ChildActorComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include <Kismet/GameplayStatics.h>
@@ -147,6 +148,7 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 
 			childRock = Cast<AHalfRock>(halfRock->GetChildActor());
 			childRock->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+			player->grabComp->RightReleaseAction();
 			fakeHand->SetHiddenInGame(true);
 			player->rightHand->SetHiddenInGame(false);
 			handHologramR->SetHiddenInGame(true);
@@ -510,7 +512,14 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 				rock15->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				rock15->DetachFromParent(true);
 				currentTime = 0.f;
+
+				bisD14 = true;
 			}
+		}
+
+		if (bisD15 == true)
+		{
+			rock15->SetMaterial(0, offMaterial);
 		}
 	}
 	
