@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "SJ_UI_Activity.generated.h"
+#include "SJ_UI_SystemUI.generated.h"
 
 /**
  *
  */
 UCLASS()
-class WOOGA_API USJ_UI_Activity : public UUserWidget
+class WOOGA_API USJ_UI_SystemUI : public UUserWidget
 {
 	GENERATED_BODY()
 
@@ -21,7 +21,7 @@ public:
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
 	UPROPERTY()
-		class ASJ_WoogaGameModeBase* gameMode;
+		class AVR_Player* player;
 
 	UPROPERTY(EditDefaultsOnly, BluePrintReadWrite, Category = "Animation", meta = (BindWidgetAnim), Transient)
 		class UWidgetAnimation* OpenUI;

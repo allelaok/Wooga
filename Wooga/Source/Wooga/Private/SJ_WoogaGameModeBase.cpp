@@ -25,6 +25,7 @@
 #include "SJ_InformUIPannel.h"
 #include "Engine/DirectionalLight.h"
 #include "Components/LightComponent.h"
+#include "SJ_Actor_GoToGuideLine.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -93,13 +94,31 @@ void ASJ_WoogaGameModeBase::Tick(float DeltaSeconds)
 	case EFlowState::GoToFistAxCourse:
 		GoToFistAxCourse();
 		break;
+	case  EFlowState::HandAxTitle:
+		HandAxTitle();
+		break;
+	case EFlowState::SeeMammoth:
+		SeeMammoth();
+		break;
+	}
+
+	// UI 로직
+	if (bIsUIClose == true)
+	{
+		uiChange += DeltaSeconds;
+
+		if (uiChange >= 0.1f)
+		{
+			bIsUIClose = false;
+			uiChange = 0;
+		}
 	}
 }
 
 // 캡슐화
 void ASJ_WoogaGameModeBase::SetState(EFlowState state)
 {
-	flowState = state;
+	flowState = state;                                                                                                                         
 }
 
 EFlowState ASJ_WoogaGameModeBase::GetState()
@@ -192,7 +211,9 @@ void ASJ_WoogaGameModeBase::GrabActorUI()
 		}
 	}
 }
+#pragma endregion
 
+#pragma region DiscoveryStateFunction
 void ASJ_WoogaGameModeBase::FireDiscoveryTitle()
 {
 	nextDelayTime += GetWorld()->DeltaTimeSeconds;
@@ -222,10 +243,6 @@ void ASJ_WoogaGameModeBase::FireDiscoveryTitle()
 		SetState(EFlowState::HowToFireUI);
 	}
 }
-#pragma endregion
-
-#pragma region DiscoveryStateFunction
-
 
 void ASJ_WoogaGameModeBase::HowToFireUI()
 {
@@ -239,7 +256,7 @@ void ASJ_WoogaGameModeBase::HowToFireUI()
 		nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
 		// UI 꺼주기
-		player->TurnOff();
+		bIsUIClose = true;
 
 		if (nextDelayTime >= 2.0f)
 		{
@@ -278,8 +295,8 @@ void ASJ_WoogaGameModeBase::HowToFireUINext()
 
 	if (fireStraw->bisReadyFire == true)
 	{
-		// 이전 UI 꺼주기
-		player->TurnOff();
+		// UI 꺼주기
+		bIsUIClose = true;
 
 		nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
@@ -318,7 +335,7 @@ void ASJ_WoogaGameModeBase::Firing()
 		if (nextDelayTime >= 3.0f)
 		{
 			// UI 꺼주기
-			player->TurnOff();
+			bIsUIClose = true;
 
 			// 홀로그램 생성
 			FActorSpawnParameters Param;
@@ -386,19 +403,12 @@ void ASJ_WoogaGameModeBase::InformWatch()
 
 	if (nextDelayTime >= 3.0f)
 	{
-		// 가이드 라인 표시
-		// guideLine = Cast<ASJ_GuidLine>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_GuidLine::StaticClass()));
-
-		// gotoCollectGuideLine->SetActorHiddenInGame(false);
-
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 		informUI = GetWorld()->SpawnActor<ASJ_InformUIPannel>(bpGoToCollect, Param);
 
 		watchInformUI->Destroy();
-
-		// sunLight->GetLightComponent()->SetIntensity(10.0f);
 
 		// 딜레이 변수 초기화
 		bIsDelay = false;
@@ -415,13 +425,13 @@ void ASJ_WoogaGameModeBase::GoToCollectState()
 
 	if (informUI->isTrigger == true)
 	{
+		// 채집하기 제목 UI 생성
 		FActorSpawnParameters Param;
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 		titleUI = GetWorld()->SpawnActor<class ASJ_Actor_TitleUI>(bpCollectTitleUI, Param);
 
-		UE_LOG(LogTemp, Warning, TEXT("CollectTitle"));
-
+		// 채집 상태로 넘어가기
 		SetState(EFlowState::CollectTitle);
 	}
 }
@@ -480,6 +490,9 @@ void ASJ_WoogaGameModeBase::HowToCollectActorUI()
 
 			eatAppleUI = GetWorld()->SpawnActor<ASJ_Actor_EatAppleUI>(bpEatAppleUI, Param);
 
+			// 사용 UI 없애기
+			collectAndHungry->Destroy();
+
 			bIsDelay = false;
 			nextDelayTime = 0;
 
@@ -494,6 +507,9 @@ void ASJ_WoogaGameModeBase::CollectAndEat()
 	if (apple->bisEatComplete == true)
 	{
 		nextDelayTime += GetWorld()->DeltaTimeSeconds;
+
+		bIsUIClose = true;
+
 		if (nextDelayTime >= 3.0f)
 		{
 			// 채집 홀로그램 생성
@@ -520,12 +536,51 @@ void ASJ_WoogaGameModeBase::CompleteCollect()
 	if (nextDelayTime >= 20.0f)
 	{
 		// 아웃라인 생성
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		handAxGuideLine = GetWorld()->SpawnActor<ASJ_Actor_GoToGuideLine>(bpHandAxGuideLine, Param);
+
 		SetState(EFlowState::GoToFistAxCourse);
 	}
 }
 
 void ASJ_WoogaGameModeBase::GoToFistAxCourse()
 {
+	if (handAxGuideLine->isTrigger == true)
+	{
+		// 주먹도끼(사냥하기) 제목 생성
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		titleUI = GetWorld()->SpawnActor<ASJ_Actor_TitleUI>(bpHandAxTitleUI, Param);
+
+		SetState(EFlowState::HandAxTitle);
+	}
+}
+
+#pragma endregion
+
+#pragma region HandAxFunction
+void ASJ_WoogaGameModeBase::HandAxTitle()
+{
+	// 이때 이동을 막자
+	nextDelayTime += GetWorld()->DeltaTimeSeconds;
+
+	if (nextDelayTime >= 6.0f)
+	{
+		// 제목 없애기
+		titleUI->Destroy();
+
+		// 딜레이변수 초기화
+		nextDelayTime = 0;
+
+		SetState(EFlowState::SeeMammoth);
+	}
+}
+void ASJ_WoogaGameModeBase::SeeMammoth()
+{
+	
 }
 #pragma endregion
 

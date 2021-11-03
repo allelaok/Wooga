@@ -1,26 +1,26 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "SJ_UI_Activity.h"
+#include "SJ_UI_SystemUI.h"
 #include "VR_Player.h"
 #include <Kismet/GameplayStatics.h>
 #include "SJ_WoogaGameModeBase.h"
 
-void USJ_UI_Activity::NativeConstruct()
+
+void USJ_UI_SystemUI::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	gameMode = Cast<ASJ_WoogaGameModeBase>(GetWorld()->GetAuthGameMode());
+	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 
 	PlayAnimation(OpenUI);
 }
 
-void USJ_UI_Activity::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
+void USJ_UI_SystemUI::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
-
-	if (gameMode->bIsUIClose == true)
+	if (player->isClose == true)
 	{
 		PlayAnimation(CloseUI);
 	}

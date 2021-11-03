@@ -28,6 +28,7 @@ void USJ_UI_Next::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
 	if (player->isClose == true)
 	{
+		StopAnimation(Blink);
 		PlayAnimation(CloseUI);
 	}
 }

@@ -93,7 +93,10 @@ public:
 		void TurnOff();
 
 		UPROPERTY(VisibleDefaultsOnly, Category = state)
-			bool isClose;
+		bool isClose;
+
+		UPROPERTY()
+		bool bIsCloseDelay;
 
 public:
 	void ResetHMD();
@@ -110,7 +113,6 @@ public:
 
 	float headRotateYaw;
 	float headRotatePitch;
-
 
 	float change;
 

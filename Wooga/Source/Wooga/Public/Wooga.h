@@ -18,12 +18,15 @@ enum class EFlowState : uint8
 	CompleteFireDiscovery,
 	InformWatch,
 	GoToCollectCourse,
-	CollectTitle,
 	// Ã¤Áý
+	CollectTitle,
 	HowToCollectActorUI,
 	CollectAndEat,
 	CompleteCollect,
-	GoToFistAxCourse
+	GoToFistAxCourse,
+	// »ç³É(ÁÖ¸Ôµµ³¢)
+	HandAxTitle,
+	SeeMammoth
 };
 
 UENUM(BlueprintType)

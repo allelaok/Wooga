@@ -30,9 +30,17 @@ public:
 
 	// 다음 상태로 넘어가는 딜레이 타임
 	UPROPERTY()
-		float nextDelayTime;
+	float nextDelayTime;
 	// 딜레이타임 카운트 여부
+	UPROPERTY()
 	bool bIsDelay;
+
+	// 활동 UI 관련 변수
+	UPROPERTY()
+	float uiChange;
+	// UI를 종료하려면 true
+	UPROPERTY()
+	bool bIsUIClose;
 
 	// 게임 시작
 	void InGame();
@@ -166,4 +174,17 @@ public:
 	// 채집 홀로그램
 	UPROPERTY(EditAnywhere, Category = Hologram)
 		TSubclassOf<class ASJ_Hologram> bpCollectHologram;
+
+	// 사냥(주먹도끼)
+	void HandAxTitle();
+	void SeeMammoth();
+
+	// 주먹도끼 가이드라인
+	class ASJ_Actor_GoToGuideLine* handAxGuideLine;
+	UPROPERTY(EditAnywhere, Category =GuideLine)
+	TSubclassOf<class ASJ_Actor_GoToGuideLine> bpHandAxGuideLine;
+
+	// 주먹도끼 제목(사냥하기)
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ASJ_Actor_TitleUI> bpHandAxTitleUI;
 };

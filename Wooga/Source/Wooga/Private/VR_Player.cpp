@@ -198,14 +198,28 @@ void AVR_Player::Tick(float DeltaTime)
 	mouthComp->SetRelativeRotation(FRotator(headRotatePitch, headRotateYaw, 0.f));
 	// mouthComp->SetRelativeRotation(FRotator(0.f, headRotateYaw, 0.f));
 
+	// UI 닫는 버튼을 누르면 시간이 흐를 수 있게 한다
 	if (isClose == true)
 	{
-		change += DeltaTime; 
+		bIsCloseDelay = true;
+	}
 
+	// 시간이 흐르기 시작하면
+	if (bIsCloseDelay == true)
+	{
+		change += DeltaTime;
+
+		// 0.1 초가 지나면 UI 애니메이션을 실행 할 수 있게 해준다.
 		if (change >= 0.1f)
 		{
 			isClose = false;
+		}
+		// 2.1초가 지나면 다시 버튼을 활성화 해준다.
+		if (change >= 2.1f)
+		{
 			change = 0;
+			bIsCloseDelay = false;
+			UE_LOG(LogTemp, Warning, TEXT("Can Off UI"));
 		}
 	}
 }
@@ -258,7 +272,7 @@ void AVR_Player::OverlapKnowledgePoint(UPrimitiveComponent* OverlappedComp, AAct
 
 void AVR_Player::TurnOff()
 {
-	if (isClose == false)
+	if (isClose == false && bIsCloseDelay == false)
 	{
 		isClose = true;
 	}
