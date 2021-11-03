@@ -23,19 +23,34 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION()
+		void OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 public:
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class USceneComponent* rootComp;
 
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
-		class UStaticMeshComponent* handleFA;
-
-	UPROPERTY(EditAnywhere, Category = PickUPSettings)
-		class USkeletalMeshComponent* grabR;
+		class UStaticMeshComponent* handle;
 
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
 		class UStaticMeshComponent* line;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setting)
 		class UPhysicsConstraintComponent* constraint;
+
+	UPROPERTY()
+	class AVR_Player* player;
+
+	UPROPERTY()
+		class AFistAxe* fA;
+
+	UPROPERTY()
+	bool bisOverlab = false;
+	UPROPERTY()
+	float handleX;
+	UPROPERTY()
+	float handleY;
+	UPROPERTY()
+	float handleZ;
 };

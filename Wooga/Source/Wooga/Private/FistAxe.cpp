@@ -5,6 +5,7 @@
 #include "DetachRock.h"
 #include "HalfRock.h"
 #include "VR_Player.h"
+#include "Cutting.h"
 #include "GrabActorComponent.h"
 #include "Components/ChildActorComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -522,6 +523,7 @@ void AFistAxe::OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class
 			rock15->SetMaterial(0, offMaterial);
 		}
 	}
+	
 	
 }
 
