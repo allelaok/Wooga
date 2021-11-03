@@ -11,6 +11,7 @@
 #include "FirePosition.h"
 #include "FistAxe.h"
 #include "HalfRock.h"
+#include "Cutting.h"
 #include "DrawDebugHelpers.h"
 #include "HandActorComponent.h"
 #include "Components/BoxComponent.h"
