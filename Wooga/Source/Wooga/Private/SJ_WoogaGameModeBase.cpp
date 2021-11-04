@@ -26,6 +26,7 @@
 #include "Engine/DirectionalLight.h"
 #include "Components/LightComponent.h"
 #include "SJ_Actor_GoToGuideLine.h"
+#include "SJ_Actor_MammothSpawnDestroy.h"
 
 ASJ_WoogaGameModeBase::ASJ_WoogaGameModeBase()
 {
@@ -37,7 +38,7 @@ void ASJ_WoogaGameModeBase::BeginPlay()
 	Super::BeginPlay();
 
 	// 맨 처음 불의 발견 교육으로 시작
-	SetState(EFlowState::InGame);
+	SetState(EFlowState::CompleteCollect);
 
 	player = Cast<AVR_Player>(UGameplayStatics::GetActorOfClass(GetWorld(), AVR_Player::StaticClass()));
 }
@@ -532,8 +533,9 @@ void ASJ_WoogaGameModeBase::CollectAndEat()
 void ASJ_WoogaGameModeBase::CompleteCollect()
 {
 	// 홀로그램 재생이 끝나면 플레이어 워치로 들어가고 
+	nextDelayTime += GetWorld()->DeltaTimeSeconds;
 
-	if (nextDelayTime >= 20.0f)
+	if (nextDelayTime >= 3.0f)
 	{
 		// 아웃라인 생성
 		FActorSpawnParameters Param;
@@ -541,6 +543,7 @@ void ASJ_WoogaGameModeBase::CompleteCollect()
 
 		handAxGuideLine = GetWorld()->SpawnActor<ASJ_Actor_GoToGuideLine>(bpHandAxGuideLine, Param);
 
+		nextDelayTime = 0;
 		SetState(EFlowState::GoToFistAxCourse);
 	}
 }
@@ -554,6 +557,8 @@ void ASJ_WoogaGameModeBase::GoToFistAxCourse()
 		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
 		titleUI = GetWorld()->SpawnActor<ASJ_Actor_TitleUI>(bpHandAxTitleUI, Param);
+
+		UE_LOG(LogTemp, Warning, TEXT("RangeIn"));
 
 		SetState(EFlowState::HandAxTitle);
 	}
@@ -575,12 +580,29 @@ void ASJ_WoogaGameModeBase::HandAxTitle()
 		// 딜레이변수 초기화
 		nextDelayTime = 0;
 
+		// 맘모스 생성
+		FActorSpawnParameters Param;
+		Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		mammothSpawn = Cast<ASJ_Actor_MammothSpawnDestroy>(UGameplayStatics::GetActorOfClass(GetWorld(), ASJ_Actor_MammothSpawnDestroy::StaticClass()));
+
 		SetState(EFlowState::SeeMammoth);
 	}
 }
 void ASJ_WoogaGameModeBase::SeeMammoth()
 {
-	
+	nextDelayTime += GetWorld()->DeltaTimeSeconds;
+	mammothShakeTime += GetWorld()->DeltaTimeSeconds;
+
+	if (nextDelayTime >= 20.0f)
+	{
+		if (mammothShakeTime >= 1.0f)
+		{
+			GetWorld()->GetFirstPlayerController()->PlayerCameraManager->StartCameraShake(mammothCameraShake);
+
+			mammothShakeTime = 0;
+		}
+	}
 }
 #pragma endregion
 

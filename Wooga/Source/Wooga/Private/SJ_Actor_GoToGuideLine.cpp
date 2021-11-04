@@ -44,6 +44,16 @@ void ASJ_Actor_GoToGuideLine::BeginPlay()
 
 		SetActorRotation(r1);
 	}
+	else if (gameModeBase->flowState == EFlowState::CompleteCollect || gameModeBase->flowState == EFlowState::GoToFistAxCourse)
+	{
+		FVector p2 = FVector(8170, 9163, 1230);
+
+		SetActorLocation(p2);
+
+		FRotator r2 = FRotator(0, 60, 0);
+
+		SetActorRotation(r2);
+	}
 
 	range->OnComponentBeginOverlap.AddDynamic(this, &ASJ_Actor_GoToGuideLine::RangeIn);
 }
