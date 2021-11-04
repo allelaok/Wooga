@@ -10,8 +10,8 @@ UCLASS()
 class WOOGA_API AFireRock : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	AFireRock();
 
@@ -19,7 +19,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -36,16 +36,16 @@ public:
 		class UStaticMeshComponent* outLine;
 
 	UPROPERTY()
-	float currentTime;
+		float currentTime;
 
 	UPROPERTY()
-	class AFireRock* me;
-	
+		class AFireRock* me;
+
 	UPROPERTY()
 		class AFireRock2* fireRock2;
 
 	UPROPERTY()
-	class AVR_Player* player;
+		class AVR_Player* player;
 
 	// 소켓에 넣을떄 Offset 값을 조정
 	UPROPERTY(EditAnywhere, Category = PickUPSettings)
@@ -59,10 +59,10 @@ public:
 		FVector returnKnockbackPos;
 
 	UPROPERTY()
-	FVector myPos;
+		FVector myPos;
 
 	UPROPERTY()
-	bool bisOverlab = false;
+		bool bisOverlab = false;
 
 	UPROPERTY(EditAnywhere, Category = "Explosion")
 		class UParticleSystem* explosionFactory;
@@ -71,13 +71,13 @@ public:
 	const UObject* WorldContextObject;
 
 	UPROPERTY(EditAnywhere, Category = "Sound")
-	USoundBase* SoundBase;
+		USoundBase* SoundBase;
 
 	UPROPERTY()
 		FVector location;
 	UPROPERTY()
 		FRotator rotation;
-	
+
 	float VolumeMultiplier = 1.f;
 	float PitchMultiplier = 1.f;
 	float StartTime = 0.f;
