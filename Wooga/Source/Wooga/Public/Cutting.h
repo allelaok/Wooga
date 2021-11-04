@@ -45,6 +45,15 @@ public:
 	UPROPERTY()
 		class AFistAxe* fA;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UMaterialInstance* onMaterialHand;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UMaterialInstance* onMaterialFA;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Settings)
+		class UMaterialInstance* offMaterial;
+
 	UPROPERTY()
 	bool bisOverlab = false;
 	UPROPERTY()
