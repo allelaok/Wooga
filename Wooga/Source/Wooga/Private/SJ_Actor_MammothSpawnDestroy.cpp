@@ -3,7 +3,7 @@
 
 #include "SJ_Actor_MammothSpawnDestroy.h"
 #include <Components/BoxComponent.h>
-#include <Components/SkeletalMeshComponent.h>
+#include "SJ_Actor_Mammoth.h"
 
 // Sets default values
 ASJ_Actor_MammothSpawnDestroy::ASJ_Actor_MammothSpawnDestroy()
@@ -20,9 +20,6 @@ ASJ_Actor_MammothSpawnDestroy::ASJ_Actor_MammothSpawnDestroy()
 	destroyRange = CreateDefaultSubobject<UBoxComponent>(TEXT("DestroyRange"));
 	destroyRange->SetupAttachment(rootComp);
 
-	mammoth = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mammoth"));
-	mammoth->SetupAttachment(rootComp);
-
 }
 
 // Called when the game starts or when spawned
@@ -30,8 +27,12 @@ void ASJ_Actor_MammothSpawnDestroy::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	spawnRange->OnComponentBeginOverlap.AddDynamic(this, &ASJ_Actor_MammothSpawnDestroy::TriggerIn);
+	destroyRange->OnComponentBeginOverlap.AddDynamic(this, &ASJ_Actor_MammothSpawnDestroy::TriggerIn);
 
+	FActorSpawnParameters Param;
+	Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+	mammoth = GetWorld()->SpawnActor<ASJ_Actor_Mammoth>(bpMammoth,spawnRange->GetComponentLocation(),spawnRange->GetComponentRotation(), Param);
 }
 
 // Called every frame
@@ -39,21 +40,15 @@ void ASJ_Actor_MammothSpawnDestroy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FVector me = mammoth->GetComponentLocation();
-	FVector tar = destroyRange->GetComponentLocation();
-	FVector dir = tar - me;
-	dir.Normalize();
-
-	FVector p = me + dir * speed * DeltaTime;
-
-	mammoth->SetRelativeLocation(p);
 }
 
 void ASJ_Actor_MammothSpawnDestroy::TriggerIn(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndeawx, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (OtherComp == mammoth)
+	mammoth = Cast<ASJ_Actor_Mammoth>(OtherActor);
+
+	if (mammoth)
 	{
-		mammoth->DestroyComponent();
+		mammoth->Destroy();
 	}
 }
 

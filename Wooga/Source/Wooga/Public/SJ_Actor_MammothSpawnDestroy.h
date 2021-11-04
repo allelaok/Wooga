@@ -24,9 +24,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = Range)
 	class UBoxComponent* destroyRange;
 
-	UPROPERTY(EditAnywhere, Category = Mammoth)
-	class USkeletalMeshComponent* mammoth;
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -36,8 +33,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, Category = Speed)
-	float speed = 300.0f;
+	float speed = 200.0f;
 
 	UFUNCTION()
 	void TriggerIn( UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	class ASJ_Actor_Mammoth* mammoth;
+	UPROPERTY(EditAnywhere, Category = Mammoth)
+	TSubclassOf<class ASJ_Actor_Mammoth> bpMammoth;
 };

@@ -186,5 +186,18 @@ public:
 
 	// 주먹도끼 제목(사냥하기)
 	UPROPERTY(EditAnywhere, Category = UI)
-	TSubclassOf<class ASJ_Actor_TitleUI> bpHandAxTitleUI;
+		TSubclassOf<class ASJ_Actor_TitleUI> bpHandAxTitleUI;
+
+	// 맘모스 생성 
+	class ASJ_Actor_MammothSpawnDestroy* mammothSpawn;
+	UPROPERTY(EditAnywhere, Category = Mammoth)
+	TSubclassOf<class ASJ_Actor_MammothSpawnDestroy> bpMammothSpawn;
+
+	// 카메라 쉐이크
+	UPROPERTY(EditAnywhere, Category = Mammoth)
+	TSubclassOf<class UCameraShakeBase> mammothCameraShake;
+
+	// 카메라 쉐이크 플레이 시간
+	UPROPERTY()
+	float mammothShakeTime;
 };

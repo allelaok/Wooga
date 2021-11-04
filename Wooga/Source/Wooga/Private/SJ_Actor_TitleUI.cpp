@@ -58,7 +58,20 @@ void ASJ_Actor_TitleUI::BeginPlay()
 
 		SetActorRotation(dir.Rotation());
 	}
-	
+	else if (gameMode->flowState == EFlowState::GoToFistAxCourse || gameMode->flowState == EFlowState::HandAxTitle)
+	{
+		FVector playerLoc = player->GetActorLocation();
+		FVector me = GetActorLocation();
+
+		FVector p = player->GetActorLocation() + player->GetActorForwardVector() * 200 + player->GetActorUpVector() * 50;
+
+		SetActorLocation(p);
+
+		FVector dir = player->GetActorLocation() - GetActorLocation();
+		dir.Normalize();
+
+		SetActorRotation(dir.Rotation());
+	}	
 }
 
 // Called every frame
